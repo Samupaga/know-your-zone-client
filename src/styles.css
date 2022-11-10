@@ -142,6 +142,7 @@ header {
   width: 800px;
   display: flex;
   flex-direction: column;
+  margin-top: 10rem;
 }
 
 .skyline {
