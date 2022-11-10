@@ -3,7 +3,11 @@ import "./normalize.css";
 import "./styles.css";
 
 function App() {
-  return "Hello";
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 }
 
 export default App;
