@@ -1,6 +1,6 @@
 /* font imports */
 
-@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 /* variables */
 
@@ -24,7 +24,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Slab', sans-serif;
 }
 
 html {
@@ -86,18 +86,20 @@ h6 */
   display: flex;
   flex-flow: row wrap;
   max-width: 80%;
-  margin: 3em auto;
-  height: 100vh;
+  margin: 0.2em auto;
+  height: 65vh;
   background-color: var(--secondary-bg-color);
-  justify-content: space-evenly;
+  justify-content: center;
   align-content: space-around;
+  border-radius: 5px 5px 20px 20px;
+  padding: 3em 8em;
 }
 
 .six-tile {
   width: 30%;
   margin: 0.5em;
   padding: 3em;
-  height: 45%;
+  height: 48%;
 }
 
 /* NAVBAR STYLES */
@@ -294,6 +296,7 @@ header {
 }
 
 .inner-nav {
+  font-size: 1.2em;
   background-color: var(--secondary-bg-color);
   border-radius: 5px 5px 0 0;
   padding: 1em;
@@ -305,6 +308,7 @@ header {
 }
 
 .inner-nav-clicked {
+  font-size: 1.2em;
   background-color: var(--main-bg-color);
   border-radius: 5px 5px 0 0;
   padding: 1em;
@@ -325,9 +329,10 @@ a.inner-nav-clicked {
   justify-content: center;
   align-items: center;
   padding: 10px 0 0 0;
-  border-bottom: 10px;
+  border-left: 1px solid var(--secondary-bg-color);
+  border-right: 1px solid var(--secondary-bg-color);
   border-radius: 5px 5px 0 0;
-  margin-top: 14em;
+  margin-top: 1em;
   width: 80%;
   margin-right: 10%;
   margin-left: 10%;
