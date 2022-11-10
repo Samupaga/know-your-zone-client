@@ -1,12 +1,13 @@
 import { useState } from "react";
 import "./normalize.css";
 import "./styles.css";
-import { InnerNav } from "./components";
+import { Container, InnerNav } from "./components";
 
 function App() {
   return (
     <div>
       <InnerNav />
+      <Container />
     </div>
   );
 }

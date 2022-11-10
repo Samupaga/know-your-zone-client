@@ -111,8 +111,18 @@ a.inner-nav-clicked {
   padding: 10px 0 0 0;
   border-bottom: 10px;
   border-radius: 5px 5px 0 0;
-  margin-top: 10px;
-  width: 90%;
-  margin-right: 5%;
-  margin-left: 5%;
+  margin-top: 14em;
+  width: 80%;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.container-container {
+  background-color: var(--secondary-bg-color);
+  width: 80%;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 0.2em;
+  height: 65vh;
+  border-radius: 5px 5px 20px 20px;
 }
