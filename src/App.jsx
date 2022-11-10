@@ -1,15 +1,12 @@
-import { useState } from "react";
-import "./normalize.css";
-import "./styles.css";
-import { Container, InnerNav } from "./components";
+import { useState } from 'react';
+import './normalize.css';
+import './styles.css';
+import { Card } from './components';
+import { SummaryPage } from './pages/SummaryPage';
 
 function App() {
-  return (
-    <div>
-      <InnerNav />
-      <Container />
-    </div>
-  );
+  return <SummaryPage />;
+
 }
 
 export default App;

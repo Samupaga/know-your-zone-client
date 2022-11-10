@@ -1,6 +1,6 @@
 /* font imports */
 
-@import url("https://fonts.googleapis.com/css2?family=Lilita+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 /* variables */
 
@@ -24,17 +24,18 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
   font-size: 100%;
-  letter-spacing: 1.6px;
+  letter-spacing: 1.2px;
 }
 
 img {
   width: 100%;
+  height: 100%;
 }
 
 ul {
@@ -46,6 +47,8 @@ a:visited {
   text-decoration: none;
   color: var(--main-text-color-light);
 }
+
+/* typography styles */
 
 /* h1
 h2
@@ -75,6 +78,219 @@ h6 */
   border-radius: var(--card-radius);
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.six-tile-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 80%;
+  margin: 3em auto;
+  height: 100vh;
+  background-color: var(--secondary-bg-color);
+  justify-content: space-evenly;
+  align-content: space-around;
+}
+
+.six-tile {
+  width: 30%;
+  margin: 0.5em;
+  padding: 3em;
+  height: 45%;
+}
+
+/* NAVBAR STYLES */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.nav-bar {
+  display: flex;
+  width: 100%;
+  height: 8vh;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--secondary-bg-color);
+  padding: 0 3rem;
+}
+
+.logo {
+  line-height: 0;
+  color: var(--main-text-color-light);
+
+  font-size: 1.5rem;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.bar {
+  display: block;
+  width: 35px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: var(--main-text-color-light);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.nav-link {
+  color: var(--main-text-color-light);
+  font-size: 1.5rem;
+}
+
+.nav-link.active {
+  color: var(--accent-pink);
+}
+
+.small-search-container {
+  display: flex;
+  align-items: center;
+}
+
+.small-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.small-input {
+  padding: 3px 10px;
+  border-radius: 15px;
+  outline: none;
+  border: none;
+}
+
+.nav-search-icon {
+  color: var(--main-text-color-light);
+  background-color: var(--secondary-bg-color);
+  cursor: pointer;
+}
+
+.nav-search-btn {
+  display: flex;
+  background-color: var(--secondary-bg-color);
+  border: none;
+  align-items: center;
+}
+
+/* HOME SEARCH BAR STYLES */
+
+.skyline-container {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rem;
+}
+
+.skyline {
+  display: flex;
+  align-items: flex-end;
+  padding: 0 25px;
+  opacity: 0.3;
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem 2rem;
+  background-color: var(--secondary-bg-color);
+  gap: 1rem;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
+.big-form {
+  background-color: var(--secondary-bg-color);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.big-input {
+  padding: 4px;
+  background-color: var(--secondary-bg-color);
+  outline: none;
+  border: none;
+  color: var(--main-text-color-light);
+  font-size: 1.2rem;
+  letter-spacing: 1.2px;
+  width: 100%;
+}
+
+.search-btn {
+  background-color: var(--secondary-bg-color);
+  border: none;
+}
+
+.search-icon {
+  color: var(--main-text-color-light);
+  cursor: pointer;
+}
+
+/* LONDON MAP STYLES */
+
+.london-container {
+  width: 600px;
+}
+
+/* MOBILE STYLES 600px */
+
+/* navbar styles */
+
+@media (max-width: 600px) {
+  .nav-bar {
+    padding: 0 1rem;
+  }
+  .nav-menu {
+    position: absolute;
+    flex-direction: column;
+    top: 8vh;
+    left: 0;
+    background-color: var(--secondary-bg-color);
+    width: 100%;
+    padding: 1rem 0;
+    transform: translate(100%);
+  }
+
+  .nav-menu.active {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(13px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-13px) rotate(-45deg);
+  }
 }
 
 .inner-nav {

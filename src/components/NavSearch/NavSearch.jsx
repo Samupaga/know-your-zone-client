@@ -2,7 +2,7 @@ import { useRef } from "react";
 
 import { FaSearch } from "react-icons/fa";
 
-function Search() {
+function NavSearch() {
   const searchInputRef = useRef();
 
   function handleSubmit(e) {
@@ -13,20 +13,20 @@ function Search() {
   }
 
   return (
-    <div className="search-container">
-      <form className="big-form" onSubmit={handleSubmit}>
+    <div className="small-search-container">
+      <form className="small-form" onSubmit={handleSubmit}>
         <input
-          className="big-input"
+          className="small-input"
           ref={searchInputRef}
           type="text"
-          placeholder="Enter borough name to get started"
+          placeholder="Search..."
         />
-        <button type="submit" className="search-btn">
-          <FaSearch className="search-icon" size={25} />
+        <button type="submit" className="nav-search-btn">
+          <FaSearch className="nav-search-icon" size={23} />
         </button>
       </form>
     </div>
   );
 }
 
-export default Search;
+export default NavSearch;

@@ -1,0 +1,19 @@
+.card-heading {
+  font-size: 40px;
+}
+
+.primary-info {
+  font-size: 10em;
+}
+
+.secondary-info {
+  font-size: 20px;
+}
+
+.big-number {
+  font-size: 80px;
+}
+
+.small-number {
+  display: inline-block;
+}
