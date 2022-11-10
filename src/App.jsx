@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import './normalize.css';
 import './styles.css';
-import { Card } from './components';
-import { SummaryPage } from './pages/SummaryPage';
+import { RentPage } from './pages';
 
 function App() {
-  return <SummaryPage />;
-
+  return <RentPage />;
 }
 
 export default App;

@@ -8,7 +8,7 @@ import {
 } from '../../components';
 import './summary.css';
 
-export function SummaryPage() {
+export default function SummaryPage() {
   return (
     <div className='summary-wrapper'>
       <Navbar />

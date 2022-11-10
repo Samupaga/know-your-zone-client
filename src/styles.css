@@ -74,12 +74,19 @@ h6 */
   color: var(--main-text-color-light);
 }
 
+.navy {
+  background-color: var(--secondary-bg-color);
+  color: var(--main-text-color-light);
+}
+
 .card {
   border-radius: var(--card-radius);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0.5em;
+  padding: 3em;
 }
 
 .six-tile-wrapper {
@@ -97,8 +104,6 @@ h6 */
 
 .six-tile {
   width: 30%;
-  margin: 0.5em;
-  padding: 3em;
   height: 48%;
 }
 
