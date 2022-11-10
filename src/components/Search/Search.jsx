@@ -6,21 +6,21 @@ function Search() {
   const searchInputRef = useRef();
 
   function handleSubmit(e) {
-    e.preventDefault();
     const input = searchInputRef.current.value;
     if (input === "") return;
     console.log(input);
+    e.preventDefault();
   }
 
   return (
     <div className="search-container">
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           ref={searchInputRef}
           type="text"
           placeholder="Enter borough name to get started"
         />
-        <button onClick={handleSubmit} className="search-btn">
+        <button type="submit" className="search-btn">
           <FaSearch className="search-icon" size={25} />
         </button>
       </form>
