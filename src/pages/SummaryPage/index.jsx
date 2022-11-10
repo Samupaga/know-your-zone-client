@@ -1,51 +1,46 @@
-import { Card } from '../../components';
+import { BigNumberCard, CardHIP, CardHPP } from '../../components';
 import './summary.css';
 
 export function SummaryPage() {
-  const londonRent = 900;
-  const londonCrime = 900;
-  const value = 500;
+  console.log('hi from summary');
   return (
     <div className='six-tile-wrapper'>
-      <Card
-        bigNumber={value}
+      <BigNumberCard
         className={'pink six-tile'}
+        value={1200}
+        smallNumber={'pcm'}
         secondaryInfo={'Average Rent'}
       />
-      <Card
+      <CardHIP
         className={'yellow six-tile'}
         heading={'Demographics'}
         imageSrc={
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNoRmFOHnsncJDep-IP-m7j-PFQiaC-c9_Mrt3cwunkw&s'
+          'https://www.voxco.com/wp-content/uploads/2021/03/Demographic-Segmentation-1.jpg'
         }
-        altImageText={'Graph to display demographic change'}
+        altImageText={'People standing on a pie chart'}
       />
-      <Card
+      <BigNumberCard
         className={'pink six-tile'}
-        bigNumber={'87'}
+        value={87}
         smallNumber={'/1000'}
         secondaryInfo={'Average Crime Rate'}
       />
-      <Card
+      <CardHPP
         className={'yellow six-tile'}
         heading={'Rent'}
-        primaryInfo={`${value < londonRent ? '⬇️' : '⬆️'}`}
-        secondaryInfo={`${
-          value < londonRent ? 'Below London Average' : 'Above London Average'
-        }`}
+        primaryInfo={'⬇️'}
+        secondaryInfo={'Below London Average'}
       />
-      <Card
+      <CardHPP
         className={'pink six-tile'}
         primaryInfo={'😎'}
-        secondaryInfo={'7.2 on the wellbeing score'}
+        secondaryInfo={'7.2 on the wellbeing score!'}
       />
-      <Card
+      <CardHPP
         className={'yellow six-tile'}
         heading={'Crime'}
-        primaryInfo={`${value < londonCrime ? '⬇️' : '⬆️'}`}
-        secondaryInfo={`${
-          value < londonCrime ? 'Below London Average' : 'Above London Average'
-        }`}
+        primaryInfo={'⬇️'}
+        secondaryInfo={'Below London Average'}
       />
     </div>
   );

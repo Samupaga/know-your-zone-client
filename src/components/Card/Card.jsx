@@ -1,4 +1,4 @@
-import { DataVisualisation } from '../../components';
+//import { DataVisualisation } from '../../components';
 
 const Card = ({
   value,
