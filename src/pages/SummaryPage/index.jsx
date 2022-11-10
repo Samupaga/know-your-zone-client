@@ -8,7 +8,7 @@ export function SummaryPage() {
   return (
     <div className='six-tile-wrapper'>
       <Card
-        heading={`£${value} /pcm`}
+        bigNumber={value}
         className={'pink six-tile'}
         secondaryInfo={'Average Rent'}
       />
@@ -22,7 +22,8 @@ export function SummaryPage() {
       />
       <Card
         className={'pink six-tile'}
-        heading={'87/1000'}
+        bigNumber={'87'}
+        smallNumber={'/1000'}
         secondaryInfo={'Average Crime Rate'}
       />
       <Card
