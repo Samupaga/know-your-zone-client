@@ -30,7 +30,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 100%;
-  letter-spacing: 1.6px;
+  letter-spacing: 1.2px;
 }
 
 img {
@@ -136,6 +136,38 @@ header {
   color: var(--accent-pink);
 }
 
+.small-search-container {
+  display: flex;
+  align-items: center;
+}
+
+.small-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.small-input {
+  padding: 3px 10px;
+  border-radius: 15px;
+  outline: none;
+  border: none;
+}
+
+.nav-search-icon {
+  color: var(--main-text-color-light);
+  background-color: var(--secondary-bg-color);
+  cursor: pointer;
+}
+
+.nav-search-btn {
+  display: flex;
+  background-color: var(--secondary-bg-color);
+  border: none;
+  align-items: center;
+}
+
 /* HOME SEARCH BAR STYLES */
 
 .skyline-container {
@@ -163,7 +195,7 @@ header {
   align-items: center;
 }
 
-form {
+.big-form {
   background-color: var(--secondary-bg-color);
   width: 100%;
   display: flex;
@@ -172,7 +204,7 @@ form {
   gap: 10px;
 }
 
-input {
+.big-input {
   padding: 4px;
   background-color: var(--secondary-bg-color);
   outline: none;
@@ -191,6 +223,12 @@ input {
 .search-icon {
   color: var(--main-text-color-light);
   cursor: pointer;
+}
+
+/* LONDON MAP STYLES */
+
+.london-container {
+  width: 600px;
 }
 
 /* MOBILE STYLES 600px */

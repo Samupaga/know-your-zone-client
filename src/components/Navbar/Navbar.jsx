@@ -1,4 +1,5 @@
 import { useState } from "react";
+import NavSearch from "../NavSearch";
 
 function Navbar() {
   const [hamburger, setHamburger] = useState(false);
@@ -6,6 +7,11 @@ function Navbar() {
   function toggleMenu() {
     setHamburger((hamburger) => !hamburger);
   }
+
+  const searchStyles = {
+    backgroundColor: "var(--main-bg-color)",
+    color: "var(--main-text-color-dark)",
+  };
 
   let stateCheck = hamburger ? "active" : "";
 
@@ -28,6 +34,8 @@ function Navbar() {
               FAQ
             </a>
           </li>
+
+          <NavSearch />
         </ul>
 
         <div className={`hamburger ${stateCheck}`} onClick={toggleMenu}>
