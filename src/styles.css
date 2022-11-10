@@ -47,6 +47,8 @@ a:visited {
   color: var(--main-text-color-light);
 }
 
+/* typography styles */
+
 /* h1
 h2
 h3
@@ -132,6 +134,62 @@ header {
 
 .nav-link.active {
   color: var(--accent-pink);
+}
+
+/* HOME SEARCH BAR STYLES */
+
+.skyline-container {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.skyline {
+  display: flex;
+  align-items: flex-end;
+  padding: 0 25px;
+  opacity: 0.3;
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem 2rem;
+  background-color: var(--secondary-bg-color);
+  gap: 1rem;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  background-color: var(--secondary-bg-color);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+input {
+  padding: 4px;
+  background-color: var(--secondary-bg-color);
+  outline: none;
+  border: none;
+  color: var(--main-text-color-light);
+  font-size: 1.2rem;
+  letter-spacing: 1.2px;
+  width: 100%;
+}
+
+.search-btn {
+  background-color: var(--secondary-bg-color);
+  border: none;
+}
+
+.search-icon {
+  color: var(--main-text-color-light);
+  cursor: pointer;
 }
 
 /* MOBILE STYLES 600px */
