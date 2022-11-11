@@ -1,6 +1,6 @@
 /* font imports */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 /* variables */
 
@@ -24,13 +24,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: "Roboto Slab", sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
   font-size: 100%;
   letter-spacing: 1.2px;
+  background-color: var(--main-bg-color);
 }
 
 img {
@@ -46,6 +47,11 @@ a,
 a:visited {
   text-decoration: none;
   color: var(--main-text-color-light);
+}
+
+h1 {
+  font-size: 4em;
+  padding: 0.3em;
 }
 
 /* typography styles */
@@ -259,6 +265,7 @@ header {
   align-items: center;
   background-color: var(--main-bg-color);
   gap: 1rem;
+  height: 100vh;
 }
 
 .home-title {
