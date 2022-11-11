@@ -10,7 +10,6 @@ import './rentPage.css';
 export default function SummaryPage() {
   return (
     <div className='page-wrapper'>
-      <Navbar />
       <h1>Wandsworth</h1>
       <h3 className='motto'>
         <em>"We Serve"</em>
