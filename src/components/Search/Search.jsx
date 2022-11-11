@@ -18,7 +18,7 @@ function Search() {
     const query = searchInputRef.current.value;
     if (query === "") return;
     try {
-      navigate(`/${query}`);
+      navigate(`/borough/summary/${query}`);
     } catch (error) {
       navigate("/error", { state: { message: "Failed to submit form" } });
     }
