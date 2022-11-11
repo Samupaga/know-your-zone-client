@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import './normalize.css';
-import './styles.css';
-import { RentPage } from './pages';
+import { useState } from "react";
+import "./normalize.css";
+import "./styles.css";
+import { RentPage, HomePage } from "./pages";
 
 function App() {
-  return <RentPage />;
+  return <HomePage />;
 }
 
 export default App;
