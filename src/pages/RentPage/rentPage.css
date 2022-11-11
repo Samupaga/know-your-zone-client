@@ -33,11 +33,11 @@
   margin: 0.65em;
 }
 
-img {
+/* img {
   width: 50%;
   max-height: 10%;
   object-fit: contain;
-}
+} */
 
 .big-number {
   font-size: 8em;
