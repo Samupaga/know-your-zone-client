@@ -1,10 +1,10 @@
 import { Search, Skyline } from "../index";
 
-function SkylineContainer() {
+function SkylineContainer({ setBoroughName }) {
   return (
     <div className="skyline-container">
       <Skyline />
-      <Search />
+      <Search setBoroughName={setBoroughName} />
     </div>
   );
 }

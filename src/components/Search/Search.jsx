@@ -1,6 +1,6 @@
-import { useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FaSearch } from 'react-icons/fa';
+import { useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
 
 function Search() {
   const searchInputRef = useRef();
@@ -16,27 +16,22 @@ function Search() {
   function handleSubmit(e) {
     e.preventDefault();
     const query = searchInputRef.current.value;
-    if (query === '') return;
+    if (query === "") return;
     try {
       // Save data to sessionStorage
-      sessionStorage.setItem('borough', query);
+      sessionStorage.setItem("borough", query);
       navigate(`/borough/summary`);
     } catch (error) {
-      navigate('/error', { state: { message: 'Failed to submit form' } });
+      navigate("/error", { state: { message: "Failed to submit form" } });
     }
   }
 
   return (
-    <div className='search-container'>
-      <form className='big-form' onSubmit={handleSubmit}>
-        <input
-          className='big-input'
-          ref={searchInputRef}
-          type='text'
-          placeholder='Enter borough name to get started'
-        />
-        <button type='submit' className='search-btn'>
-          <FaSearch className='search-icon' size={25} />
+    <div className="search-container">
+      <form className="big-form" onSubmit={handleSubmit}>
+        <input className="big-input" ref={searchInputRef} type="text" placeholder="Enter borough name to get started" />
+        <button type="submit" className="search-btn">
+          <FaSearch className="search-icon" size={25} />
         </button>
       </form>
     </div>
