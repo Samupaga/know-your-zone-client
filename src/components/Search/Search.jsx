@@ -1,15 +1,27 @@
-import { useRef } from "react";
-
+import { useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 
 function Search() {
   const searchInputRef = useRef();
+  const navigate = useNavigate();
+
+  // function handleSubmit(e) {
+  //   const input = searchInputRef.current.value;
+  //   if (input === "") return;
+  //   console.log(input);
+  //   e.preventDefault();
+  // }
 
   function handleSubmit(e) {
-    const input = searchInputRef.current.value;
-    if (input === "") return;
-    console.log(input);
     e.preventDefault();
+    const query = searchInputRef.current.value;
+    if (query === "") return;
+    try {
+      navigate(`/${query}`);
+    } catch (error) {
+      navigate("/error", { state: { message: "Failed to submit form" } });
+    }
   }
 
   return (
