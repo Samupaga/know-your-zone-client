@@ -18,12 +18,11 @@
   margin: 0.65em;
 }
 
-
 data-visualisation {
   width: 50%;
   max-height: 10%;
   object-fit: contain;
-} 
+}
 
 .big-number {
   font-size: 8em;
