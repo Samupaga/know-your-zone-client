@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import './normalize.css';
 import './styles.css';
-import { RentPage, HomePage, FAQPage, SummaryPage, CrimePage } from './pages';
+import {
+  RentPage,
+  HomePage,
+  FAQPage,
+  SummaryPage,
+  CrimePage,
+  DemographicsPage,
+} from './pages';
 import { Navbar } from './components';
 import { Routes, Route } from 'react-router-dom';
 
@@ -16,6 +23,7 @@ function App() {
             <Route path='summary' element={<SummaryPage />} />
             <Route path='rent' element={<RentPage />} />/
             <Route path='crime' element={<CrimePage />} />/
+            <Route path='demographics' element={<DemographicsPage />} />/
           </Route>
         </Route>
       </Routes>
