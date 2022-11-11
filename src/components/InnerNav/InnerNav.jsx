@@ -20,7 +20,11 @@ const InnerNav = () => {
         activeState={false}
       />
       <InnerNavTab page={'Wellbeing'} activeState={false} />
-      <InnerNavTab page={'Demographics'} activeState={false} />
+      <InnerNavTab
+        page={'Demographics'}
+        routeName={'/borough/demographics'}
+        activeState={false}
+      />
     </nav>
   );
 };
