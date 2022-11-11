@@ -6,6 +6,7 @@ import { Navbar } from "./components";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
+
   return (
     <>
       <Routes>
