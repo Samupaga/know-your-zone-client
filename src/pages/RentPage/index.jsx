@@ -23,12 +23,14 @@ export default function SummaryPage() {
             'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
           }
           altImageText={'Gantt Chart'}
+          secondaryInfo={'Trending rent for the past decade.'}
         />
         <CardHIP
           className={'right-column card yellow'}
           imageSrc={
             'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
           }
+          heading={'Split of some data.'}
           altImageText={'Sarah Soutoul'}
         />
         <BigNumberCard
