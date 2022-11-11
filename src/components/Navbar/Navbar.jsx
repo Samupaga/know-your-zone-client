@@ -37,7 +37,7 @@ function Navbar() {
               </Link>
             </li>
 
-            <NavSearch />
+            {/* <NavSearch /> */}
           </ul>
 
           <div className={`hamburger ${stateCheck}`} onClick={toggleMenu}>
