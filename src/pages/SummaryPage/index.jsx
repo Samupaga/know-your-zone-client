@@ -5,6 +5,7 @@ import "./summary.css";
 export default function SummaryPage({ navSearchSearching }) {
   const [isLoading, setIsLoading] = useState(true);
   const [boroughData, setBoroughData] = useState([]);
+  const [avgLondonRent, setAvgLondonRent] = useState([]);
   //For later use - fetch request example
   // Get saved data from sessionStorage
   let boroughName = sessionStorage.getItem("borough");
@@ -13,8 +14,11 @@ export default function SummaryPage({ navSearchSearching }) {
       setIsLoading(true);
       const response = await fetch(`http://localhost:3000/summary/${boroughName}`);
       const rawData = await response.json();
-      // console.log("borough name", rawData);
       setBoroughData(rawData);
+
+      const responseTwo = await fetch("http://localhost:3000/rent/london");
+      const londonData = await responseTwo.json();
+      setAvgLondonRent(londonData);
       setIsLoading(false);
     }
 
@@ -48,8 +52,8 @@ export default function SummaryPage({ navSearchSearching }) {
           <CardHPP
             className={"yellow six-tile"}
             heading={"Rent"}
-            primaryInfo={`${boroughData["rent_below_london_average"] === true ? "⬇️" : "⬆️"}`}
-            secondaryInfo={`${boroughData["rent_below_london_average"] === true ? "Below London Average" : "Above London Average"}`}
+            primaryInfo={`${boroughData["average_monthly_rent"] < avgLondonRent["rent_median"] ? "⬇️" : "⬆️"}`}
+            secondaryInfo={`${boroughData["average_monthly_rent"] < avgLondonRent["rent_median"] ? "Below London Average" : "Above London Average"}`}
           />
           <CardHPP className={"pink six-tile"} primaryInfo={"😎"} secondaryInfo={"7.2 on the wellbeing score!"} />
           <CardHPP className={"yellow six-tile"} heading={"Crime"} primaryInfo={"⬇️"} secondaryInfo={"Below London Average"} />
