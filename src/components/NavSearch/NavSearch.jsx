@@ -4,7 +4,7 @@ import { FaSearch } from "react-icons/fa";
 
 import { useNavigate } from "react-router-dom";
 
-function NavSearch() {
+function NavSearch({ setNavSearchSearching }) {
   const searchInputRef = useRef();
   const navigate = useNavigate();
 
@@ -15,6 +15,7 @@ function NavSearch() {
     try {
       // Save data to sessionStorage
       sessionStorage.setItem("borough", query);
+      setNavSearchSearching((current) => !current);
       navigate(`/borough/summary`);
     } catch (error) {
       navigate("/error", { state: { message: "Failed to submit form" } });
