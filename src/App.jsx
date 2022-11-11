@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import './normalize.css';
 import './styles.css';
-import { RentPage } from './pages';
+import { CrimePage } from './pages';
 
 function App() {
-  return <RentPage />;
+  return <CrimePage />;
 }
 
 export default App;

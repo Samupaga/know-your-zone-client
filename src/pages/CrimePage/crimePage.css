@@ -1,0 +1,12 @@
+.last-year {
+  width: 100%;
+  color: var(--main-bg-color);
+  font-size: 2em;
+  margin: 0;
+  line-height: 1;
+  height: 10%;
+}
+
+.secondary-info {
+  font-size: 1em;
+}

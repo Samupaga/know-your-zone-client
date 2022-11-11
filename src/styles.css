@@ -92,7 +92,7 @@ h6 */
 .six-tile-wrapper {
   display: flex;
   flex-flow: row wrap;
-  max-width: 80%;
+  max-width: 70%;
   margin: 0.2em auto;
   height: 65vh;
   background-color: var(--secondary-bg-color);
@@ -105,6 +105,63 @@ h6 */
 .six-tile {
   width: 30%;
   height: 48%;
+}
+
+.rent-tile-wrapper {
+  max-width: 70%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: var(--secondary-bg-color);
+  justify-content: center;
+  align-content: space-around;
+  border-radius: 5px 5px 20px 20px;
+  margin: 0.2em auto;
+  height: 65vh;
+  padding: 3em 9em;
+}
+
+.left-column {
+  width: 35%;
+  height: 50%;
+}
+
+.right-column {
+  width: 60%;
+  height: 50%;
+}
+
+.four-tile-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.four-tile {
+  width: 22%;
+  margin: 0.65em;
+}
+
+.three-tile-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
+  align-items: stretch;
+  border: 5px solid var(--accent-pink);
+  border-radius: 23px;
+  padding: 0.5em 0;
+}
+
+.three-tile {
+  height: 75%;
+  width: 30%;
+  margin: 0.5em;
+  padding: 0.5em 1.5em;
+  text-align: ce;
+}
+
+.big-number {
+  font-size: 8em;
 }
 
 /* NAVBAR STYLES */
@@ -338,9 +395,8 @@ a.inner-nav-clicked {
   border-right: 1px solid var(--secondary-bg-color);
   border-radius: 5px 5px 0 0;
   margin-top: 1em;
-  width: 80%;
-  margin-right: 10%;
-  margin-left: 10%;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .container-container {
