@@ -1,0 +1,49 @@
+.four-tile {
+  width: 45%;
+}
+
+.wellbeing-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.five-tile-wrapper {
+  display: flex;
+  flex-direction: row;
+  max-width: 70%;
+  margin: 0.2em auto;
+  height: 65vh;
+  background-color: var(--secondary-bg-color);
+  justify-content: center;
+  align-content: space-around;
+  border-radius: 5px 5px 20px 20px;
+  padding: 3em 8em;
+}
+
+.wellbeing-card {
+  width: 33%;
+}
+
+.four-wellbeing {
+  width: 63%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.emoji {
+  font-size: 5em;
+  font-weight: 600;
+}
+
+.wellbeing-card li {
+  margin-top: 0.5em;
+  font-size: 1.2em;
+  text-align: left;
+  margin-left: 0.7em;
+  list-style-type: disc;
+}
+
+.wellbeing-info {
+  font-size: 1.2em;
+}
