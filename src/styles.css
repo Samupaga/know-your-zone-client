@@ -50,16 +50,6 @@ a:visited {
 
 /* typography styles */
 
-h1 {
-  font-size: 2rem;
-  font-weight: 400;
-}
-/* h2
-h3
-h4
-h5
-h6 */
-
 /* ---------------- */
 
 .yellow {
@@ -268,6 +258,7 @@ header {
 
 .home-title {
   color: var(--main-text-color-dark);
+  font-weight: 400;
 }
 
 /* HOME SEARCH BAR STYLES */
