@@ -38,10 +38,16 @@ function Navbar({ setNavSearchSearching }) {
             </li>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             {/* <NavSearch /> */}
 =======
             <NavSearch setNavSearchSearching={setNavSearchSearching} />
 >>>>>>> abeb87978ca014df1c5d8ba036a605a169ec6989
+=======
+
+            <NavSearch setNavSearchSearching={setNavSearchSearching} />
+
+>>>>>>> 690152425b9f6bbc6f852db2fea06b02d064d3ca
           </ul>
 
           <div className={`hamburger ${stateCheck}`} onClick={toggleMenu}>

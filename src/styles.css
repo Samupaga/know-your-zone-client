@@ -278,6 +278,7 @@ header {
   text-align: center;
   background-color: var(--main-bg-color);
   gap: 1rem;
+
   min-height: 92vh;
 }
 
