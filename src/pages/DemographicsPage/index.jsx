@@ -69,7 +69,7 @@ export default function DemographicsPage({ navSearchSearching }) {
 
   function sortRaceData() {
     let raceArray = [];
-    console.log('Race Data', raceData);
+
     for (var race in raceData) {
       raceArray.push([race, raceArray[race]]);
     }
@@ -81,7 +81,7 @@ export default function DemographicsPage({ navSearchSearching }) {
 
   function secondRace() {
     let arr = sortRaceData();
-    if (arr[3][0] === 'no_religion') {
+    if (arr[3][0] === 'other') {
       secondLargestRace = arr[4][0];
     } else {
       secondLargestRace = arr[3][0];
