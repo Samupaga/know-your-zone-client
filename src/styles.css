@@ -1,6 +1,6 @@
 /* font imports */
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 /* variables */
 
@@ -24,7 +24,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto Slab", sans-serif;
+  font-family: 'Roboto Slab', sans-serif;
 }
 
 html {
@@ -227,6 +227,7 @@ header {
 
 .small-search-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -292,6 +293,7 @@ header {
 .search-container {
   display: flex;
   justify-content: space-evenly;
+  flex-direction: column;
   padding: 1rem 2rem;
   background-color: var(--secondary-bg-color);
   gap: 1rem;
@@ -330,6 +332,21 @@ header {
   cursor: pointer;
 }
 
+.dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown > a {
+  margin: 0.5em;
+  border: 2px solid var(--main-bg-color);
+  padding: 1em;
+}
+
+.dropdown > a:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
 /* LONDON MAP STYLES */
 
 .london-container {
