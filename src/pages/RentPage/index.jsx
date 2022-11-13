@@ -92,6 +92,15 @@ export default function SummaryPage({ navSearchSearching }) {
       </div>
     );
   } else {
-    return <h1>Borough info is loading.....</h1>;
+    return (
+      <div className='page-wrapper'>
+        <h1>Borough Info is loading...</h1>
+        <h3 className='motto'>
+          <em>"We Serve"</em>
+        </h3>
+        <InnerNav />
+        <div className='rent-tile-wrapper'></div>
+      </div>
+    );
   }
 }

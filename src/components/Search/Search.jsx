@@ -94,8 +94,12 @@ function Search() {
             .filter((borough) =>
               borough.toLowerCase().includes(searchQuery.toLowerCase())
             )
-            .map((borough) => (
-              <a className='dropdown-row' id={borough} onClick={searchClick}>
+            .map((borough, key) => (
+              <a
+                className={`dropdown-row ${key}`}
+                id={borough}
+                onClick={searchClick}
+              >
                 {borough}
               </a>
             ))}
