@@ -2,7 +2,7 @@ import { useState } from "react";
 import NavSearch from "../NavSearch";
 import { Outlet, Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ setNavSearchSearching }) {
   const [hamburger, setHamburger] = useState(false);
 
   function toggleMenu() {
@@ -37,7 +37,11 @@ function Navbar() {
               </Link>
             </li>
 
+<<<<<<< HEAD
             {/* <NavSearch /> */}
+=======
+            <NavSearch setNavSearchSearching={setNavSearchSearching} />
+>>>>>>> abeb87978ca014df1c5d8ba036a605a169ec6989
           </ul>
 
           <div className={`hamburger ${stateCheck}`} onClick={toggleMenu}>

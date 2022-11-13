@@ -3,6 +3,7 @@ import { InnerNavTab } from "../";
 
 const InnerNav = () => {
   return (
+<<<<<<< HEAD
     <div className="inner-nav-container">
       <nav className="tab-container">
         <InnerNavTab
@@ -28,6 +29,15 @@ const InnerNav = () => {
         />
       </nav>
     </div>
+=======
+    <nav className="tab-container">
+      <InnerNavTab page={"Summary"} routeName={"/borough/summary"} activeState={true} />
+      <InnerNavTab page={"Rent Prices"} routeName={"/borough/rent"} activeState={false} />
+      <InnerNavTab page={"Crime"} routeName={"/borough/crime"} activeState={false} />
+      <InnerNavTab page={"Wellbeing"} routeName={"/borough/wellbeing"} activeState={false} />
+      <InnerNavTab page={"Demographics"} routeName={"/borough/demographics"} activeState={false} />
+    </nav>
+>>>>>>> abeb87978ca014df1c5d8ba036a605a169ec6989
   );
 };
 

@@ -31,6 +31,13 @@ html {
   scroll-behavior: smooth;
   font-size: 100%;
   letter-spacing: 1.2px;
+  background-color: var(--main-bg-color);
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: 400;
+  margin: 0;
 }
 
 h1 {
@@ -231,6 +238,7 @@ header {
 
 .small-search-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -297,6 +305,7 @@ header {
 .search-container {
   display: flex;
   justify-content: space-evenly;
+  flex-direction: column;
   padding: 1rem 2rem;
   background-color: var(--secondary-bg-color);
   gap: 1rem;
@@ -335,6 +344,21 @@ header {
   cursor: pointer;
 }
 
+.dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown > a {
+  margin: 0.5em;
+  border: 2px solid var(--main-bg-color);
+  padding: 1em;
+}
+
+.dropdown > a:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
 /* LONDON MAP STYLES */
 
 .london-container {
