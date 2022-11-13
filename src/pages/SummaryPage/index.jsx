@@ -9,29 +9,37 @@ import {
 } from '../../components';
 import './summary.css';
 
-export default function SummaryPage() {
+export default function SummaryPage({ navSearchSearching }) {
   const [isLoading, setIsLoading] = useState(true);
+  const [boroughData, setBoroughData] = useState([]);
+  const [avgLondonRent, setAvgLondonRent] = useState([]);
   //For later use - fetch request example
   // Get saved data from sessionStorage
   let boroughName = sessionStorage.getItem('borough');
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
-      // const response = await fetch(
-      //   `http://localhost:3000/borough/summary?id=${boroughName}`
-      // );
-      // const rawData = await response.json();
-      console.log('borough name', boroughName);
+      const response = await fetch(
+        `http://localhost:3000/summary/${boroughName}`
+      );
+      const rawData = await response.json();
+      setBoroughData(rawData);
+
+      const responseTwo = await fetch('http://localhost:3000/rent/london');
+      const londonData = await responseTwo.json();
+      setAvgLondonRent(londonData);
       setIsLoading(false);
     }
 
     getBoroughInfo();
-  }, [boroughName]);
+  }, [navSearchSearching]);
+
+  console.log(boroughData);
 
   if (isLoading === false) {
     return (
       <div className='page-wrapper'>
-        <h1>Wandsworth</h1>
+        <h1>{boroughData['borough_name']}</h1>
         <h3 className='motto'>
           <em>"We Serve"</em>
         </h3>
@@ -39,7 +47,7 @@ export default function SummaryPage() {
         <div className='six-tile-wrapper'>
           <BigNumberCard
             className={'pink six-tile'}
-            value={1200}
+            value={`£${boroughData['average_monthly_rent']}`}
             smallNumber={'pcm'}
             secondaryInfo={'Average Rent'}
           />
@@ -53,15 +61,27 @@ export default function SummaryPage() {
           />
           <BigNumberCard
             className={'pink six-tile'}
-            value={87}
+            value={
+              boroughData['crime_rate_per_1000'][
+                'six_month_crime_rate_per_1000'
+              ]
+            }
             smallNumber={'/1000'}
             secondaryInfo={'Average Crime Rate'}
           />
           <CardHPP
             className={'yellow six-tile'}
             heading={'Rent'}
-            primaryInfo={'⬇️'}
-            secondaryInfo={'Below London Average'}
+            primaryInfo={`${
+              boroughData['average_monthly_rent'] < avgLondonRent['rent_median']
+                ? '⬇️'
+                : '⬆️'
+            }`}
+            secondaryInfo={`${
+              boroughData['average_monthly_rent'] < avgLondonRent['rent_median']
+                ? 'Below London Average'
+                : 'Above London Average'
+            }`}
           />
           <CardHPP
             className={'pink six-tile'}
@@ -78,6 +98,15 @@ export default function SummaryPage() {
       </div>
     );
   } else {
-    return <h1>Borough info is loading.....</h1>;
+    return (
+      <div className='page-wrapper'>
+        <h1>Borough Info is loading...</h1>
+        <h3 className='motto'>
+          <em>"We Serve"</em>
+        </h3>
+        <InnerNav />
+        <div className='six-tile-wrapper'></div>
+      </div>
+    );
   }
 }

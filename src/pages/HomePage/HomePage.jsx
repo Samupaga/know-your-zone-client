@@ -1,13 +1,13 @@
 import { Navbar, SkylineContainer, London } from "../../components";
 
-function HomePage() {
+function HomePage({ setBoroughName }) {
   return (
     <>
       <div className="hero-container">
         <h1 className="home-title">Know Your Zone</h1>
         <p>Everything you need to know about London Boroughs in one place</p>
 
-        <SkylineContainer />
+        <SkylineContainer setBoroughName={setBoroughName} />
         <London />
       </div>
     </>

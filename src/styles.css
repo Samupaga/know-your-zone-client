@@ -31,6 +31,7 @@ html {
   scroll-behavior: smooth;
   font-size: 100%;
   letter-spacing: 1.2px;
+  background-color: var(--main-bg-color);
 }
 
 h1 {
@@ -54,7 +55,9 @@ a:visited {
   color: var(--main-text-color-light);
 }
 
+
 /* CARD STYLE CLASSES */
+
 
 .yellow {
   background-color: var(--accent-yellow);
@@ -231,6 +234,7 @@ header {
 
 .small-search-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -270,7 +274,9 @@ header {
   text-align: center;
   background-color: var(--main-bg-color);
   gap: 1rem;
+
   min-height: 92vh;
+
 }
 
 .home-title {
@@ -297,6 +303,7 @@ header {
 .search-container {
   display: flex;
   justify-content: space-evenly;
+  flex-direction: column;
   padding: 1rem 2rem;
   background-color: var(--secondary-bg-color);
   gap: 1rem;
@@ -335,6 +342,21 @@ header {
   cursor: pointer;
 }
 
+.dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown > a {
+  margin: 0.5em;
+  border: 2px solid var(--main-bg-color);
+  padding: 1em;
+}
+
+.dropdown > a:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
 /* LONDON MAP STYLES */
 
 .london-container {
