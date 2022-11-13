@@ -49,12 +49,7 @@ function Search() {
     console.log('search query', searchQuery);
     setFilteredBoroughList(
       boroughList.filter((borough) =>
-        borough
-          .toLowerCase()
-          .search(
-            searchQuery.toLowerCase() ||
-              borough.toLowerCase().includes(searchQuery.toLowerCase())
-          )
+        borough.toLowerCase().includes(searchQuery.toLowerCase())
       )
     );
   }
@@ -79,33 +74,52 @@ function Search() {
     }
   }
 
-  return (
-    <div className='search-container'>
-      <form className='big-form' onSubmit={handleSubmit}>
-        <input
-          className='big-input'
-          ref={searchInputRef}
-          onChange={searchBoroughList}
-          type='text'
-          placeholder='Enter a borough to get started'
-        />
-        <button type='submit' className='search-btn'>
-          <FaSearch className='search-icon' size={25} />
-        </button>
-      </form>
-      <div className='dropdown'>
-        {boroughList
-          .filter((borough) =>
-            borough.toLowerCase().startsWith(searchQuery.toLowerCase())
-          )
-          .map((borough) => (
-            <a className='dropdown-row' id={borough} onClick={searchClick}>
-              {borough}
-            </a>
-          ))}
+  if (filteredBoroughList.length != 0) {
+    return (
+      <div className='search-container'>
+        <form className='big-form' onSubmit={handleSubmit}>
+          <input
+            className='big-input'
+            ref={searchInputRef}
+            onChange={searchBoroughList}
+            type='text'
+            placeholder='Enter a borough to get started'
+          />
+          <button type='submit' className='search-btn'>
+            <FaSearch className='search-icon' size={25} />
+          </button>
+        </form>
+        <div className='dropdown'>
+          {boroughList
+            .filter((borough) =>
+              borough.toLowerCase().includes(searchQuery.toLowerCase())
+            )
+            .map((borough) => (
+              <a className='dropdown-row' id={borough} onClick={searchClick}>
+                {borough}
+              </a>
+            ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className='search-container'>
+        <form className='big-form' onSubmit={handleSubmit}>
+          <input
+            className='big-input'
+            ref={searchInputRef}
+            onChange={searchBoroughList}
+            type='text'
+            placeholder='Enter a borough to get started'
+          />
+          <button type='submit' className='search-btn'>
+            <FaSearch className='search-icon' size={25} />
+          </button>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default Search;
