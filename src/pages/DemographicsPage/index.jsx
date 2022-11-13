@@ -19,6 +19,7 @@ export default function DemographicsPage({ navSearchSearching }) {
 
   const [isLoading, setIsLoading] = useState(true);
   const [religionData, setReligionData] = useState([]);
+  const [raceData, setRaceData] = useState([]);
   // console.log("greetings", greetings);
 
   //For later use - fetch request example
@@ -32,7 +33,13 @@ export default function DemographicsPage({ navSearchSearching }) {
         `http://localhost:3000/demographics/${boroughName}/religion`
       );
       const rawDataReligion = await response.json();
+      const ethnicityResponse = await fetch(
+        `http://localhost:3000/demographics/${boroughName}/ethnicity`
+      );
+      const ethnicityResponseData = await ethnicityResponse.json();
+      console.log(ethnicityResponseData, 'ethnicity response data');
       setReligionData(rawDataReligion);
+      setRaceData(ethnicityResponseData);
       setIsLoading(false);
     }
 
@@ -41,7 +48,6 @@ export default function DemographicsPage({ navSearchSearching }) {
 
   function sortReligionData() {
     let religionArray = [];
-    console.log('Religion Data', religionData);
     for (var religion in religionData) {
       religionArray.push([religion, religionData[religion]]);
     }
@@ -58,8 +64,30 @@ export default function DemographicsPage({ navSearchSearching }) {
     } else {
       secondLargestReligion = arr[3][0];
     }
-    console.log('Second largest religion is: ', secondLargestReligion);
     return secondLargestReligion;
+  }
+
+  function sortRaceData() {
+    let raceArray = [];
+    console.log('Race Data', raceData);
+    for (var race in raceData) {
+      raceArray.push([race, raceArray[race]]);
+    }
+    raceArray.sort(function (a, b) {
+      return b[1] - a[1];
+    });
+    return raceArray;
+  }
+
+  function secondRace() {
+    let arr = sortRaceData();
+    if (arr[3][0] === 'no_religion') {
+      secondLargestRace = arr[4][0];
+    } else {
+      secondLargestRace = arr[3][0];
+    }
+    console.log('Second largest race is: ', secondLargestRace);
+    return secondLargestRace;
   }
 
   const getGreeting = (lang) => {
@@ -92,7 +120,7 @@ export default function DemographicsPage({ navSearchSearching }) {
               'https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg'
             }
             altImageText={'speedy gonzales'}
-            secondarInfo={`${religionData['borough_name']} is home to a large ${secondLargestRace} community. Be sure to check out ${recommendedSelection}`}
+            secondaryInfo={`${boroughName} is home to a large ${secondRace()} community. Be sure to check out ${recommendedSelection}`}
           />
           <CardHIP
             className={'yellow six-tile house-type'}
