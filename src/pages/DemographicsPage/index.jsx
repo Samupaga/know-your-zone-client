@@ -17,7 +17,7 @@ export default function DemographicsPage({ navSearchSearching }) {
   let secondAgeRangePercentage = 34;
 
   const [isLoading, setIsLoading] = useState(true);
-  const [demographicData, setDemographicData] = useState([]);
+  const [religionData, setReligionData] = useState([]);
   // console.log("greetings", greetings);
 
   //For later use - fetch request example
@@ -26,14 +26,16 @@ export default function DemographicsPage({ navSearchSearching }) {
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
-      const response = await fetch(`http://localhost:3000/summary/${boroughName}`);
-      const rawData = await response.json();
-      setDemographicData(rawData);
+      const response = await fetch(`http://localhost:3000/demographics/${boroughName}/religion`);
+      const rawDataReligion = await response.json();
+      setReligionData(rawDataReligion);
       setIsLoading(false);
     }
 
     getBoroughInfo();
   }, [navSearchSearching]);
+
+  console.log("religiondata", religionData);
 
   const getGreeting = (lang) => {
     const hello = greetings.filter((greeting) => greeting.language == lang);
@@ -46,7 +48,7 @@ export default function DemographicsPage({ navSearchSearching }) {
   if (isLoading === false) {
     return (
       <div className="page-wrapper">
-        <h1>Wandsworth</h1>
+        <h1>{religionData["borough_name"]}</h1>
         <h3 className="motto">
           <em>"We Serve"</em>
         </h3>
@@ -55,7 +57,7 @@ export default function DemographicsPage({ navSearchSearching }) {
           <CardHPH
             className={"pink six-tile"}
             heading={"Language"}
-            secondaryInfo={`The majority of people speak English but did you know the second most commonly spoken language in ${boroughName} is ${secondLanguage}!`}
+            secondaryInfo={`The majority of people speak English but did you know the second most commonly spoken language in ${religionData["borough_name"]} is ${secondLanguage}!`}
             primaryInfo={`${getGreeting(secondLanguage)} 👋`}
           />
           <CardHIP
@@ -63,7 +65,7 @@ export default function DemographicsPage({ navSearchSearching }) {
             heading={"Race"}
             imageSrc={"https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"}
             altImageText={"speedy gonzales"}
-            secondarInfo={`${boroughName} is home to a large ${secondLargestRace} community. Be sure to check out ${recommendedSelection}`}
+            secondarInfo={`${religionData["borough_name"]} is home to a large ${secondLargestRace} community. Be sure to check out ${recommendedSelection}`}
           />
           <CardHIP
             className={"yellow six-tile house-type"}
@@ -82,7 +84,7 @@ export default function DemographicsPage({ navSearchSearching }) {
           <CardHP
             className={"pink six-tile age"}
             heading={"Age"}
-            secondaryInfo={`The majority of people living in ${boroughName} are aged ${ageRange} (${ageRangePercentage}%), with the second highest proportion of people aged ${secondAgeRange} (${secondAgeRangePercentage}%)`}
+            secondaryInfo={`The majority of people living in ${religionData["borough_name"]} are aged ${ageRange} (${ageRangePercentage}%), with the second highest proportion of people aged ${secondAgeRange} (${secondAgeRangePercentage}%)`}
           />
           <CardHPP
             className={"blue six-tile"}
