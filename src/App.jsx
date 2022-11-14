@@ -16,6 +16,7 @@ import { useState } from "react";
 
 function App() {
   const [navSearchSearching, setNavSearchSearching] = useState(false);
+  const [motto, setMotto] = useState("");
 
   return (
     <>
@@ -29,15 +30,31 @@ function App() {
           <Route path="borough">
             <Route
               path="summary"
-              element={<SummaryPage navSearchSearching={navSearchSearching} />}
+              element={
+                <SummaryPage
+                  navSearchSearching={navSearchSearching}
+                  motto={motto}
+                  setMotto={setMotto}
+                />
+              }
             />
             <Route
               path="rent"
-              element={<RentPage navSearchSearching={navSearchSearching} />}
+              element={
+                <RentPage
+                  navSearchSearching={navSearchSearching}
+                  motto={motto}
+                />
+              }
             />
             <Route
               path="crime"
-              element={<CrimePage navSearchSearching={navSearchSearching} />}
+              element={
+                <CrimePage
+                  navSearchSearching={navSearchSearching}
+                  motto={motto}
+                />
+              }
             />
             <Route
               path="demographics"
@@ -58,7 +75,7 @@ function App() {
               }
             />
           </Route>
-          {/* <Route path="*" element={<NotFoundPage />} /> */}
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </>
