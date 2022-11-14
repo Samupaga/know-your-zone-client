@@ -46,10 +46,8 @@ function NavSearch({ setNavSearchSearching }) {
   ];
 
   function searchBoroughList() {
-    console.log('called search borough');
     let query = searchInputRef.current.value;
     setsmallSearchQuery(query);
-    console.log('search query', smallSearchQuery);
     setsmallFilteredBoroughList(
       boroughList.filter((borough) =>
         borough.toLowerCase().includes(smallSearchQuery.toLowerCase())

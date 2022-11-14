@@ -14,6 +14,8 @@ export default function WellbeingPage({ navSearchSearching }) {
         `http://localhost:3000/demographics/${boroughName}/wellbeing`
       );
       const rawData = await response.json();
+      console.log(rawData['data']['wellbeing']);
+      setWellbeingScore(rawData['data']['wellbeing']);
       setWellbeingData(rawData);
       setIsLoading(false);
     }
