@@ -1,5 +1,7 @@
-import './normalize.css';
-import './styles.css';
+
+import "./normalize.css";
+import "./styles.css";
+
 import {
   RentPage,
   HomePage,
@@ -13,7 +15,6 @@ import {
 import { Navbar } from './components';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
 function App() {
   const [navSearchSearching, setNavSearchSearching] = useState(false);
   const [motto, setMotto] = useState('');

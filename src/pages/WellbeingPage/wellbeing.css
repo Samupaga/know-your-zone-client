@@ -31,11 +31,6 @@
   flex-wrap: wrap;
 }
 
-.emoji {
-  font-size: 5em;
-  font-weight: 600;
-}
-
 .wellbeing-card li {
   margin-top: 0.5em;
   font-size: 1.2em;

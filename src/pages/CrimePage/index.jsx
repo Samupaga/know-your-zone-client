@@ -4,9 +4,9 @@ import {
   CardHP,
   Navbar,
   InnerNav,
-} from '../../components';
-import './crimePage.css';
-import { useState, useEffect } from 'react';
+} from "../../components";
+import "./crimePage.css";
+import { useState, useEffect } from "react";
 
 export default function SummaryPage({ navSearchSearching, motto }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -15,7 +15,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
 
   //For later use - fetch request example
   // Get saved data from sessionStorage
-  let boroughName = sessionStorage.getItem('borough');
+  let boroughName = sessionStorage.getItem("borough");
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
@@ -25,16 +25,16 @@ export default function SummaryPage({ navSearchSearching, motto }) {
 
       const rawData = await response.json();
       const options = {
-        method: 'POST',
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           crimeTypes: [
-            'Burglary',
-            'Sexual Offences',
-            'Violence Against the Person',
+            "Burglary",
+            "Sexual Offences",
+            "Violence Against the Person",
           ],
         }),
       };
@@ -59,25 +59,25 @@ export default function SummaryPage({ navSearchSearching, motto }) {
           <em>"{motto}"</em>
         </h3>
         <InnerNav />
-        <div className='rent-tile-wrapper'>
+        <div className="rent-tile-wrapper">
           <CardHIP
-            className={'right-column card yellow'}
+            className={"right-column card yellow"}
             imageSrc={
-              'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
+              "https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA"
             }
-            heading={'Division of Crime'}
-            altImageText={'Sarah Soutoul'}
+            heading={"Division of Crime"}
+            altImageText={"Sarah Soutoul"}
           />
           <CardHIP
-            className={'left-column card blue'}
+            className={"left-column card blue"}
             imageSrc={
-              'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
+              "https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA"
             }
-            altImageText={'Gantt Chart'}
-            secondaryInfo={'Trending crime rates for the past decade.'}
+            altImageText={"Gantt Chart"}
+            secondaryInfo={"Trending crime rates for the past decade."}
           />
-          <div className='three-tile-wrapper right-column'>
-            <p className='last-year'>In the Last Year</p>
+          <div className="three-tile-wrapper right-column">
+            <p className="last-year">In the Last Year</p>
             <CardHP
               className={'pink three-tile'}
               heading={`${crimeStats[0]['offence_count']}`}
@@ -105,13 +105,13 @@ export default function SummaryPage({ navSearchSearching, motto }) {
     );
   } else {
     return (
-      <div className='page-wrapper'>
+      <div className="page-wrapper">
         <h1>Borough Info is loading...</h1>
-        <h3 className='motto'>
+        <h3 className="motto">
           <em>"We Serve"</em>
         </h3>
         <InnerNav />
-        <div className='rent-tile-wrapper'></div>
+        <div className="rent-tile-wrapper"></div>
       </div>
     );
   }
