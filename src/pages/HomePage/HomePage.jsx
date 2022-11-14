@@ -1,4 +1,5 @@
 import { Navbar, SkylineContainer, London } from "../../components";
+import "./homepage.css";
 
 function HomePage({ setBoroughName }) {
   return (

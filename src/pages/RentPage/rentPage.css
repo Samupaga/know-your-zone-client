@@ -1,11 +1,15 @@
-.left-column {
-  width: 35%;
-  height: 50%;
-}
-
-.right-column {
-  width: 60%;
-  height: 50%;
+.rent-tile-wrapper {
+  max-width: 70%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: var(--secondary-bg-color);
+  justify-content: center;
+  align-content: space-around;
+  border-radius: 5px 5px 20px 20px;
+  margin: 0.2em auto;
+  height: 65vh;
+  padding: 3em 9em;
 }
 
 .four-tile-wrapper {
