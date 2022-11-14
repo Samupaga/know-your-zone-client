@@ -16,6 +16,7 @@ import { useState, useEffect } from 'react';
 
 function App() {
   const [navSearchSearching, setNavSearchSearching] = useState(false);
+  const [motto, setMotto] = useState('');
 
   return (
     <>
@@ -29,26 +30,48 @@ function App() {
           <Route path='borough'>
             <Route
               path='summary'
-              element={<SummaryPage navSearchSearching={navSearchSearching} />}
+              element={
+                <SummaryPage
+                  navSearchSearching={navSearchSearching}
+                  motto={motto}
+                  setMotto={setMotto}
+                />
+              }
             />
             <Route
               path='rent'
-              element={<RentPage navSearchSearching={navSearchSearching} />}
+              element={
+                <RentPage
+                  navSearchSearching={navSearchSearching}
+                  motto={motto}
+                />
+              }
             />
             <Route
               path='crime'
-              element={<CrimePage navSearchSearching={navSearchSearching} />}
+              element={
+                <CrimePage
+                  navSearchSearching={navSearchSearching}
+                  motto={motto}
+                />
+              }
             />
             <Route
               path='demographics'
               element={
-                <DemographicsPage navSearchSearching={navSearchSearching} />
+                <DemographicsPage
+                  navSearchSearching={navSearchSearching}
+                  motto={motto}
+                />
               }
             />
             <Route
               path='wellbeing'
               element={
-                <WellbeingPage navSearchSearching={navSearchSearching} />
+                <WellbeingPage
+                  navSearchSearching={navSearchSearching}
+                  motto={motto}
+                />
               }
             />
           </Route>

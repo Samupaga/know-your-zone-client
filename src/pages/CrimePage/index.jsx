@@ -8,7 +8,7 @@ import {
 import './crimePage.css';
 import { useState, useEffect } from 'react';
 
-export default function SummaryPage({ navSearchSearching }) {
+export default function SummaryPage({ navSearchSearching, motto }) {
   const [isLoading, setIsLoading] = useState(true);
   const [crimeData, setCrimeData] = useState([]);
   const [crimeStats, setCrimeStats] = useState([]);
@@ -54,9 +54,9 @@ export default function SummaryPage({ navSearchSearching }) {
   if (isLoading === false) {
     return (
       <div className='page-wrapper'>
-        <h1>Wandsworth</h1>
+        <h1>{boroughName}</h1>
         <h3 className='motto'>
-          <em>"We Serve"</em>
+          <em>"{motto}"</em>
         </h3>
         <InnerNav />
         <div className='rent-tile-wrapper'>

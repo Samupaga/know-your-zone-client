@@ -10,7 +10,7 @@ import {
 } from '../../components';
 import './summary.css';
 
-export default function SummaryPage({ navSearchSearching }) {
+export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
   const [isLoading, setIsLoading] = useState(true);
   const [boroughData, setBoroughData] = useState([]);
   const [wellbeingScore, setWellbeingScore] = useState(0);
@@ -29,12 +29,14 @@ export default function SummaryPage({ navSearchSearching }) {
         );
         const rawData = await response.json();
         setBoroughData(rawData);
+        setMotto(rawData['motto']);
         console.log(rawData);
         const wellbeingResponse = await fetch(
           `http://localhost:3000/demographics/${boroughName}/wellbeing`
         );
         const wellbeingData = await wellbeingResponse.json();
         setWellbeingScore(wellbeingData['data']['wellbeing']);
+        setIsLoading(false);
       } catch {
         setBoroughFound(false);
         setTimeout(() => {
@@ -53,7 +55,7 @@ export default function SummaryPage({ navSearchSearching }) {
       <div className='page-wrapper'>
         <h1>{boroughData['borough_name']}</h1>
         <h3 className='motto'>
-          <em>"We Serve"</em>
+          <em>"{motto}"</em>
         </h3>
         <InnerNav />
         <div className='six-tile-wrapper'>

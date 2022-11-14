@@ -2,7 +2,7 @@ import { CardHPP, CardWellbeing, InnerNav } from '../../components';
 import './wellbeing.css';
 import { useState, useEffect } from 'react';
 
-export default function WellbeingPage({ navSearchSearching }) {
+export default function WellbeingPage({ navSearchSearching, motto }) {
   const [isLoading, setIsLoading] = useState(true);
   const [wellbeingData, setWellbeingData] = useState([]);
 
@@ -30,7 +30,7 @@ export default function WellbeingPage({ navSearchSearching }) {
       <div className='page-wrapper'>
         <h1>{wellbeingData['borough_name']}</h1>
         <h3 className='motto'>
-          <em>"We Serve"</em>
+          <em>"{motto}"</em>
         </h3>
         <InnerNav />
         <div className='wellbeing-wrapper'>
