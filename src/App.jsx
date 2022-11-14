@@ -21,7 +21,12 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Navbar setNavSearchSearching={setNavSearchSearching} />}
+          element={
+            <Navbar
+              activeLink={""}
+              setNavSearchSearching={setNavSearchSearching}
+            />
+          }
         >
           <Route index element={<HomePage />} />
           <Route path="faq" element={<FAQPage />} />
