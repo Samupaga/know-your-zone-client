@@ -5,3 +5,4 @@ export { default as HomePage } from "./HomePage";
 export { default as FAQPage } from "./FAQPage";
 export { default as DemographicsPage } from "./DemographicsPage";
 export { default as WellbeingPage } from "./WellbeingPage";
+export { default as NotFoundPage } from "./NotFoundPage";
