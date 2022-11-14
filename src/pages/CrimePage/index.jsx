@@ -8,7 +8,7 @@ import {
 import "./crimePage.css";
 import { useState, useEffect } from "react";
 
-export default function SummaryPage({ navSearchSearching }) {
+export default function SummaryPage({ navSearchSearching, motto }) {
   const [isLoading, setIsLoading] = useState(true);
   const [crimeData, setCrimeData] = useState([]);
   const [crimeStats, setCrimeStats] = useState([]);
@@ -22,6 +22,7 @@ export default function SummaryPage({ navSearchSearching }) {
       const response = await fetch(
         `http://localhost:3000/crime/${boroughName}/average/latest`
       );
+
       const rawData = await response.json();
       const options = {
         method: "POST",
@@ -42,10 +43,9 @@ export default function SummaryPage({ navSearchSearching }) {
         options
       );
       const crimeDataResponse = await crimeReponse.json();
-      console.log("Crimes by categoray", crimeDataResponse);
-      console.log("Overall crime level", crimeData);
       setCrimeData(rawData);
       setCrimeStats(crimeDataResponse);
+      setIsLoading(false);
     }
 
     getBoroughInfo();
@@ -53,10 +53,10 @@ export default function SummaryPage({ navSearchSearching }) {
 
   if (isLoading === false) {
     return (
-      <div className="page-wrapper">
-        <h1>Wandsworth</h1>
-        <h3 className="motto">
-          <em>"We Serve"</em>
+      <div className='page-wrapper'>
+        <h1>{boroughName}</h1>
+        <h3 className='motto'>
+          <em>"{motto}"</em>
         </h3>
         <InnerNav />
         <div className="rent-tile-wrapper">
@@ -79,26 +79,26 @@ export default function SummaryPage({ navSearchSearching }) {
           <div className="three-tile-wrapper right-column">
             <p className="last-year">In the Last Year</p>
             <CardHP
-              className={"pink three-tile"}
-              heading={`${crimeStats["Burglary"]}`}
-              secondaryInfo={"Counts of Burglary"}
+              className={'pink three-tile'}
+              heading={`${crimeStats[0]['offence_count']}`}
+              secondaryInfo={'Counts of Burglary'}
             />
             <CardHP
-              className={"pink three-tile"}
-              heading={`${crimeStats["Burglary"]}`}
-              secondaryInfo={"Counts of sexual offences"}
+              className={'pink three-tile'}
+              heading={`${crimeStats[1]['offence_count']}`}
+              secondaryInfo={'Counts of sexual offences'}
             />
             <CardHP
-              className={"pink three-tile"}
-              heading={`${crimeStats["Burglary"]}`}
-              secondaryInfo={"Counts of violent offences"}
+              className={'pink three-tile'}
+              heading={`${crimeStats[2]['offence_count']}`}
+              secondaryInfo={'Counts of violent offences'}
             />
           </div>
           <BigNumberCard
-            className={"left-column card navy"}
-            value={`${crimeData["General"]}`}
-            smallNumber={"/1000"}
-            secondaryInfo={"Average Crime Rate"}
+            className={'left-column card navy'}
+            value={`${crimeData['six_month_crime_rate_per_1000']}`}
+            smallNumber={'/1000'}
+            secondaryInfo={'Average Crime Rate'}
           />
         </div>
       </div>
