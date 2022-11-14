@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   BigNumberCard,
   CardHIP,
@@ -13,6 +14,7 @@ export default function SummaryPage({ navSearchSearching }) {
   const [isLoading, setIsLoading] = useState(true);
   const [boroughData, setBoroughData] = useState([]);
   const [avgLondonRent, setAvgLondonRent] = useState([]);
+  const navigate = useNavigate();
   //For later use - fetch request example
   // Get saved data from sessionStorage
   let boroughName = sessionStorage.getItem('borough');
@@ -27,8 +29,16 @@ export default function SummaryPage({ navSearchSearching }) {
 
       const responseTwo = await fetch('http://localhost:3000/rent/london');
       const londonData = await responseTwo.json();
-      setAvgLondonRent(londonData);
-      setIsLoading(false);
+      if (responseTwo.length == 0 && londonData.length == 0) {
+        useEffect(() => {
+          setTimeout(() => {
+            navigate('/');
+          }, 1000);
+        }, []);
+      } else {
+        setAvgLondonRent(londonData);
+        setIsLoading(false);
+      }
     }
 
     getBoroughInfo();

@@ -1,16 +1,36 @@
-import { React, useState } from "react";
-import { InnerNavTab } from "../";
+import { React, useState } from 'react';
+import { InnerNavTab } from '../';
 
 const InnerNav = () => {
   return (
     <div>
-      <div className="inner-nav-container">
-        <nav className="tab-container">
-          <InnerNavTab page={"Summary"} routeName={"/borough/summary"} activeState={true} />
-          <InnerNavTab page={"Rent Prices"} routeName={"/borough/rent"} activeState={false} />
-          <InnerNavTab page={"Crime"} routeName={"/borough/crime"} activeState={false} />
-          <InnerNavTab page={"Wellbeing"} activeState={false} />
-          <InnerNavTab page={"Demographics"} routeName={"/borough/demographics"} activeState={false} />
+      <div className='inner-nav-container'>
+        <nav className='tab-container'>
+          <InnerNavTab
+            page={'Summary'}
+            routeName={'/borough/summary'}
+            activeState={true}
+          />
+          <InnerNavTab
+            page={'Rent Prices'}
+            routeName={'/borough/rent'}
+            activeState={false}
+          />
+          <InnerNavTab
+            page={'Crime'}
+            routeName={'/borough/crime'}
+            activeState={false}
+          />
+          <InnerNavTab
+            page={'Wellbeing'}
+            activeState={false}
+            routeName={'/borough/wellbeing'}
+          />
+          <InnerNavTab
+            page={'Demographics'}
+            routeName={'/borough/demographics'}
+            activeState={false}
+          />
         </nav>
       </div>
     </div>
