@@ -1,12 +1,12 @@
-import { CardHPP, CardWellbeing, InnerNav } from "../../components";
-import "./wellbeing.css";
-import { useState, useEffect } from "react";
+import { CardHPP, CardWellbeing, InnerNav } from '../../components';
+import './wellbeing.css';
+import { useState, useEffect } from 'react';
 
 export default function WellbeingPage({ navSearchSearching }) {
   const [isLoading, setIsLoading] = useState(true);
   const [wellbeingData, setWellbeingData] = useState([]);
 
-  let boroughName = sessionStorage.getItem("borough");
+  let boroughName = sessionStorage.getItem('borough');
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
@@ -29,9 +29,9 @@ export default function WellbeingPage({ navSearchSearching }) {
           <em>"We Serve"</em>
         </h3>
         <InnerNav />
-        <div className="wellbeing-wrapper">
-          <div className="five-tile-wrapper">
-            <div className="four-wellbeing">
+        <div className='wellbeing-wrapper'>
+          <div className='five-tile-wrapper'>
+            <div className='four-wellbeing'>
               <CardHPP
                 className={"pink four-tile"}
                 heading={"Worthwhile"}
@@ -57,12 +57,21 @@ export default function WellbeingPage({ navSearchSearching }) {
                 secondaryInfo={"This is a measure of to what extent residents are satisfied with how their life is, out of 10."}
               />
             </div>
-            <CardWellbeing className={"yellow wellbeing-card"} />
+            <CardWellbeing className={'yellow wellbeing-card'} />
           </div>
         </div>
       </div>
     );
   } else {
-    return <h1>Borough info is loading.....</h1>;
+    return (
+      <div className='page-wrapper'>
+        <h1>Borough Info is loading...</h1>
+        <h3 className='motto'>
+          <em>"We Serve"</em>
+        </h3>
+        <InnerNav />
+        <div className='wellbeing-wrapper'></div>
+      </div>
+    );
   }
 }

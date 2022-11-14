@@ -40,6 +40,10 @@ export default function DemographicsPage({ navSearchSearching }) {
       console.log(ethnicityResponseData, 'ethnicity response data');
       setReligionData(rawDataReligion);
       setRaceData(ethnicityResponseData);
+        `http://localhost:3000/summary/${boroughName}`
+      );
+      const rawData = await response.json();
+      setDemographicData(rawData);
       setIsLoading(false);
     }
 
@@ -139,11 +143,13 @@ export default function DemographicsPage({ navSearchSearching }) {
             }
             altImageText={'Speedy gonzales'}
             secondaryInfo={`The second most followed religion is ${secondReligion()}. Expect to see ${secondLargestReligionRecommendations} `}
+
           />
           <CardHP
             className={'pink six-tile age'}
             heading={'Age'}
             secondaryInfo={`The majority of people living in ${religionData['borough_name']} are aged ${ageRange} (${ageRangePercentage}%), with the second highest proportion of people aged ${secondAgeRange} (${secondAgeRangePercentage}%)`}
+
           />
           <CardHPP
             className={'blue six-tile'}
@@ -155,6 +161,15 @@ export default function DemographicsPage({ navSearchSearching }) {
       </div>
     );
   } else {
-    return <h1>Borough info is loading.....</h1>;
+    return (
+      <div className='page-wrapper'>
+        <h1>Borough Info is loading...</h1>
+        <h3 className='motto'>
+          <em>"We Serve"</em>
+        </h3>
+        <InnerNav />
+        <div className='six-tile-wrapper'></div>
+      </div>
+    );
   }
 }
