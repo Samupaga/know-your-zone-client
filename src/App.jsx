@@ -15,6 +15,9 @@ import {
 import { Navbar } from './components';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+
+import ImageTest from './components/ImageTest'
+
 function App() {
   const [navSearchSearching, setNavSearchSearching] = useState(false);
   const [motto, setMotto] = useState('');
@@ -22,6 +25,7 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path='image' element={<ImageTest />} />
         <Route
           path='/'
           element={<Navbar setNavSearchSearching={setNavSearchSearching} />}
