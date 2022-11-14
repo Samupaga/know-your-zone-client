@@ -7,9 +7,9 @@ const CardHIP = ({
 }) => {
   return (
     <div className={`${className} card`}>
-      <h3 className='card-heading'>{heading}</h3>
-      <img className='data-visualisation' src={imageSrc} alt={altImageText} />
-      <p className='secondary-info'>{secondaryInfo}</p>
+      <h3 className="card-heading">{heading}</h3>
+      <img className="data-visualisation" src={imageSrc} alt={altImageText} />
+      <p className="secondary-info">{secondaryInfo}</p>
     </div>
   );
 };
