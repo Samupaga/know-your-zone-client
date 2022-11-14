@@ -44,7 +44,6 @@ export default function SummaryPage({ navSearchSearching }) {
         </h3>
         <InnerNav />
         <div className="rent-tile-wrapper">
-          {/* <div className="rent-page-top-grid"> */}
           <CardHIP
             className={"left-column card blue rent-item-1"}
             imageSrc={
@@ -61,37 +60,35 @@ export default function SummaryPage({ navSearchSearching }) {
             heading={"Split of some data."}
             altImageText={"Sarah Soutoul"}
           />
-          {/* </div> */}
-          {/* <div className="rent-page-bottom-grid"> */}
+
           <BigNumberCard
             className={"left-column card navy rent-item-3"}
             value={`£${averageRent["rent_median"]}`}
             smallNumber={"pcm"}
             secondaryInfo={"Average Rent"}
           />
-          {/* <div className="four-tile-wrapper right-column"> */}
-          <CardHP
-            className={"card pink four-tile rent-item-4"}
-            heading={`£${generalRent[0]["rent_median"]}`}
-            secondaryInfo={"Single Room"}
-          />
-          <CardHP
-            className={"card pink four-tile rent-item-5"}
-            heading={`£${generalRent[2]["rent_median"]}`}
-            secondaryInfo={"1 Bed"}
-          />
-          <CardHP
-            className={"card pink four-tile rent-item-6"}
-            heading={`£${generalRent[4]["rent_median"]}`}
-            secondaryInfo={"3 Bed"}
-          />
-          <CardHP
-            className={"card pink four-tile rent-item-7"}
-            heading={`£${generalRent[5]["rent_median"]}`}
-            secondaryInfo={"4+ Bed"}
-          />
-          {/* </div> */}
-          {/* </div> */}
+          <div className="four-tile-wrapper right-column">
+            <CardHP
+              className={"card pink four-tile rent-item-4"}
+              heading={`£${generalRent[0]["rent_median"]}`}
+              secondaryInfo={"Single Room"}
+            />
+            <CardHP
+              className={"card pink four-tile rent-item-5"}
+              heading={`£${generalRent[2]["rent_median"]}`}
+              secondaryInfo={"1 Bed"}
+            />
+            <CardHP
+              className={"card pink four-tile rent-item-6"}
+              heading={`£${generalRent[4]["rent_median"]}`}
+              secondaryInfo={"3 Bed"}
+            />
+            <CardHP
+              className={"card pink four-tile rent-item-7"}
+              heading={`£${generalRent[5]["rent_median"]}`}
+              secondaryInfo={"4+ Bed"}
+            />
+          </div>
         </div>
       </div>
     );
