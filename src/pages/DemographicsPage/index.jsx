@@ -10,7 +10,6 @@ export default function DemographicsPage({ navSearchSearching }) {
   let secondLargestRace = 'Asian';
   let recommendedSelection =
     'Tooting highstreet or Tooting market for a wide selection of authentic south asian cuisine!';
-  let secondLargestReligion = 'Islam';
   let secondLargestReligionRecommendations =
     'mosques around Wandsworth such as the first purpose-built mosque, Fazl Mosque in Southfields!';
   let ageRange = '35-54';
@@ -19,16 +18,28 @@ export default function DemographicsPage({ navSearchSearching }) {
   let secondAgeRangePercentage = 34;
 
   const [isLoading, setIsLoading] = useState(true);
-  const [demographicData, setDemographicData] = useState([]);
+  const [religionData, setReligionData] = useState([]);
+  const [raceData, setRaceData] = useState([]);
   // console.log("greetings", greetings);
 
   //For later use - fetch request example
   // Get saved data from sessionStorage
   let boroughName = sessionStorage.getItem('borough');
+  let secondLargestReligion = '';
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
       const response = await fetch(
+        `http://localhost:3000/demographics/${boroughName}/religion`
+      );
+      const rawDataReligion = await response.json();
+      const ethnicityResponse = await fetch(
+        `http://localhost:3000/demographics/${boroughName}/ethnicity`
+      );
+      const ethnicityResponseData = await ethnicityResponse.json();
+      console.log(ethnicityResponseData, 'ethnicity response data');
+      setReligionData(rawDataReligion);
+      setRaceData(ethnicityResponseData);
         `http://localhost:3000/summary/${boroughName}`
       );
       const rawData = await response.json();
@@ -38,6 +49,50 @@ export default function DemographicsPage({ navSearchSearching }) {
 
     getBoroughInfo();
   }, [navSearchSearching]);
+
+  function sortReligionData() {
+    let religionArray = [];
+    for (var religion in religionData) {
+      religionArray.push([religion, religionData[religion]]);
+    }
+    religionArray.sort(function (a, b) {
+      return b[1] - a[1];
+    });
+    return religionArray;
+  }
+
+  function secondReligion() {
+    let arr = sortReligionData();
+    if (arr[3][0] === 'no_religion') {
+      secondLargestReligion = arr[4][0];
+    } else {
+      secondLargestReligion = arr[3][0];
+    }
+    return secondLargestReligion;
+  }
+
+  function sortRaceData() {
+    let raceArray = [];
+
+    for (var race in raceData) {
+      raceArray.push([race, raceArray[race]]);
+    }
+    raceArray.sort(function (a, b) {
+      return b[1] - a[1];
+    });
+    return raceArray;
+  }
+
+  function secondRace() {
+    let arr = sortRaceData();
+    if (arr[3][0] === 'other') {
+      secondLargestRace = arr[4][0];
+    } else {
+      secondLargestRace = arr[3][0];
+    }
+    console.log('Second largest race is: ', secondLargestRace);
+    return secondLargestRace;
+  }
 
   const getGreeting = (lang) => {
     const hello = greetings.filter((greeting) => greeting.language == lang);
@@ -50,7 +105,7 @@ export default function DemographicsPage({ navSearchSearching }) {
   if (isLoading === false) {
     return (
       <div className='page-wrapper'>
-        <h1>Wandsworth</h1>
+        <h1>{religionData['borough_name']}</h1>
         <h3 className='motto'>
           <em>"We Serve"</em>
         </h3>
@@ -69,7 +124,7 @@ export default function DemographicsPage({ navSearchSearching }) {
               'https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg'
             }
             altImageText={'speedy gonzales'}
-            secondarInfo={`${boroughName} is home to a large ${secondLargestRace} community. Be sure to check out ${recommendedSelection}`}
+            secondaryInfo={`${boroughName} is home to a large ${secondRace()} community. Be sure to check out ${recommendedSelection}`}
           />
           <CardHIP
             className={'yellow six-tile house-type'}
@@ -87,12 +142,14 @@ export default function DemographicsPage({ navSearchSearching }) {
               'https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg'
             }
             altImageText={'Speedy gonzales'}
-            secondaryInfo={`The second most popular religion is ${secondLargestReligion}. Expect to see ${secondLargestReligionRecommendations} `}
+            secondaryInfo={`The second most followed religion is ${secondReligion()}. Expect to see ${secondLargestReligionRecommendations} `}
+
           />
           <CardHP
             className={'pink six-tile age'}
             heading={'Age'}
-            secondaryInfo={`The majority of people living in ${boroughName} are aged ${ageRange} (${ageRangePercentage}%), with the second highest proportion of people aged ${secondAgeRange} (${secondAgeRangePercentage}%)`}
+            secondaryInfo={`The majority of people living in ${religionData['borough_name']} are aged ${ageRange} (${ageRangePercentage}%), with the second highest proportion of people aged ${secondAgeRange} (${secondAgeRangePercentage}%)`}
+
           />
           <CardHPP
             className={'blue six-tile'}
