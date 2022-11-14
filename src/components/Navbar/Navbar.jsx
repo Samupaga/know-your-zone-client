@@ -1,6 +1,6 @@
 import { useState } from "react";
 import NavSearch from "../NavSearch";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, NavLink } from "react-router-dom";
 
 function Navbar({ setNavSearchSearching }) {
   const [hamburger, setHamburger] = useState(false);
@@ -16,6 +16,10 @@ function Navbar({ setNavSearchSearching }) {
 
   let stateCheck = hamburger ? "active" : "";
 
+  let activeStyle = {
+    color: "var(--accent-pink)",
+  };
+
   return (
     <>
       <header>
@@ -26,15 +30,25 @@ function Navbar({ setNavSearchSearching }) {
 
           <ul className={`nav-menu ${stateCheck}`}>
             <li className="nav-item">
-              <Link to="/" className="nav-link active" id="nav-link">
+              <NavLink
+                to="/"
+                className="nav-link"
+                id="nav-link"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
                 Home
-              </Link>
+              </NavLink>
             </li>
 
             <li className="nav-item">
-              <Link to="/faq" className="nav-link" id="nav-link">
+              <NavLink
+                to="/faq"
+                className="nav-link"
+                id="nav-link"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
                 FAQ
-              </Link>
+              </NavLink>
             </li>
 
             {/* <NavSearch /> */}

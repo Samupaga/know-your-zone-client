@@ -1,12 +1,3 @@
-* {
-  text-align: center;
-}
-
-.data-visualisation {
-  max-height: 45%;
-  border-radius: 5px;
-}
-
 .house-type {
   display: flex;
 }
