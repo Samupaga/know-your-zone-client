@@ -37,6 +37,8 @@ function Navbar({ setNavSearchSearching }) {
               </Link>
             </li>
 
+            {/* <NavSearch /> */}
+
             <NavSearch setNavSearchSearching={setNavSearchSearching} />
           </ul>
 
