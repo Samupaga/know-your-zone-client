@@ -1,5 +1,5 @@
-import { React, useState } from 'react';
-import { InnerNavTab } from '../';
+import { React, useState } from "react";
+import { InnerNavTab } from "../";
 
 const InnerNav = () => {
   return (
@@ -20,7 +20,11 @@ const InnerNav = () => {
           routeName={"/borough/crime"}
           activeState={false}
         />
-        <InnerNavTab page={"Wellbeing"} activeState={false} />
+        <InnerNavTab
+          page={"Wellbeing"}
+          routeName={"/borough/wellbeing"}
+          activeState={false}
+        />
         <InnerNavTab
           page={"Demographics"}
           routeName={"/borough/demographics"}

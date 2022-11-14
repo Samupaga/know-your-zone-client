@@ -24,9 +24,9 @@ function Navbar({ setNavSearchSearching }) {
     <>
       <header>
         <nav className="nav-bar" id="nav-bar">
-          <a className="logo" href="">
+          <NavLink to="/" className="logo" href="">
             Know Your Zone
-          </a>
+          </NavLink>
 
           <ul className={`nav-menu ${stateCheck}`}>
             <li className="nav-item">
