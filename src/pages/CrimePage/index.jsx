@@ -53,13 +53,13 @@ export default function SummaryPage({ navSearchSearching, motto }) {
 
   if (isLoading === false) {
     return (
-      <div className='page-wrapper'>
+      <div className="page-wrapper">
         <h1>{boroughName}</h1>
-        <h3 className='motto'>
+        <h3 className="motto">
           <em>"{motto}"</em>
         </h3>
         <InnerNav />
-        <div className="rent-tile-wrapper">
+        <div className="crime-tile-wrapper">
           <CardHIP
             className={"right-column card yellow"}
             imageSrc={
@@ -78,27 +78,29 @@ export default function SummaryPage({ navSearchSearching, motto }) {
           />
           <div className="three-tile-wrapper right-column">
             <p className="last-year">In the Last Year</p>
-            <CardHP
-              className={'pink three-tile'}
-              heading={`${crimeStats[0]['offence_count']}`}
-              secondaryInfo={'Counts of Burglary'}
-            />
-            <CardHP
-              className={'pink three-tile'}
-              heading={`${crimeStats[1]['offence_count']}`}
-              secondaryInfo={'Counts of sexual offences'}
-            />
-            <CardHP
-              className={'pink three-tile'}
-              heading={`${crimeStats[2]['offence_count']}`}
-              secondaryInfo={'Counts of violent offences'}
-            />
+            <div className="inner-three-tile-wrapper">
+              <CardHP
+                className={"pink three-tile"}
+                heading={`${crimeStats[0]["offence_count"]}`}
+                secondaryInfo={"Counts of Burglary"}
+              />
+              <CardHP
+                className={"pink three-tile"}
+                heading={`${crimeStats[1]["offence_count"]}`}
+                secondaryInfo={"Counts of sexual offences"}
+              />
+              <CardHP
+                className={"pink three-tile"}
+                heading={`${crimeStats[2]["offence_count"]}`}
+                secondaryInfo={"Counts of violent offences"}
+              />
+            </div>
           </div>
           <BigNumberCard
-            className={'left-column card navy'}
-            value={`${crimeData['six_month_crime_rate_per_1000']}`}
-            smallNumber={'/1000'}
-            secondaryInfo={'Average Crime Rate'}
+            className={"left-column card navy"}
+            value={`${crimeData["six_month_crime_rate_per_1000"]}`}
+            smallNumber={"/1000"}
+            secondaryInfo={"Average Crime Rate"}
           />
         </div>
       </div>

@@ -177,29 +177,19 @@ header {
   gap: 1rem;
 }
 
-.inner-nav {
+.inner-nav-link {
   background-color: var(--secondary-bg-color);
   border-radius: 5px 5px 0 0;
-
   width: 100%;
   text-align: center;
   display: flex;
   justify-content: center;
   font-weight: 500;
+  padding: 1rem;
 }
 
-.inner-nav-clicked {
+.inner-nav-link.active {
   background-color: var(--main-bg-color);
-  border-radius: 5px 5px 0 0;
-  padding: 1em;
-  width: 100%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  font-weight: 500;
-}
-
-a.inner-nav-clicked {
   color: var(--main-text-color-dark);
 }
 

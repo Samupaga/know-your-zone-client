@@ -8,13 +8,12 @@ const InnerNavTab = ({ page, routeName }) => {
   //   setIsActive((current) => !current);
   // };
 
+  let activeStyle = {
+    color: "var(--accent-pink)",
+  };
+
   return (
-    <NavLink
-      to={routeName}
-      className={({ isActive }) =>
-        isActive ? "inner-nav-clicked" : "inner-nav"
-      }
-    >
+    <NavLink to={routeName} className="inner-nav-link">
       {page}
     </NavLink>
   );

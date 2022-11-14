@@ -75,7 +75,7 @@ function App() {
               }
             />
           </Route>
-          <Route path="*" element={<NotFoundPage />} />
+          {/* <Route path="*" element={<NotFoundPage />} /> */}
         </Route>
       </Routes>
     </>
@@ -83,4 +83,3 @@ function App() {
 }
 
 export default App;
-``;
