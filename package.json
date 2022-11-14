@@ -14,13 +14,14 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.3",
-    "react-icons": "^4.6.0"
+    "react-icons": "^4.6.0",
+    "react-router-dom": "^6.4.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "@vitejs/plugin-react": "^2.2.0",
+    "esbuild-windows-64": "^0.15.13",
     "vite": "^3.2.3"
   }
 }
