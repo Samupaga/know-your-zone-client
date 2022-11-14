@@ -1,5 +1,6 @@
 import "./normalize.css";
 import "./styles.css";
+
 import {
   RentPage,
   HomePage,
@@ -21,12 +22,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={
-            <Navbar
-              activeLink={""}
-              setNavSearchSearching={setNavSearchSearching}
-            />
-          }
+          element={<Navbar setNavSearchSearching={setNavSearchSearching} />}
         >
           <Route index element={<HomePage />} />
           <Route path="faq" element={<FAQPage />} />
@@ -46,13 +42,19 @@ function App() {
             <Route
               path="demographics"
               element={
-                <DemographicsPage navSearchSearching={navSearchSearching} />
+                <DemographicsPage
+                  navSearchSearching={navSearchSearching}
+                  motto={motto}
+                />
               }
             />
             <Route
               path="wellbeing"
               element={
-                <WellbeingPage navSearchSearching={navSearchSearching} />
+                <WellbeingPage
+                  navSearchSearching={navSearchSearching}
+                  motto={motto}
+                />
               }
             />
           </Route>
