@@ -11,18 +11,18 @@
   padding: 2rem;
 }
 
-.inner-three-tile-wrapper {
+/* .inner-three-tile-wrapper {
   display: flex;
-}
+} */
 
-.last-year {
+/* .last-year {
   width: 100%;
   color: var(--main-bg-color);
   font-size: 2em;
   margin: 0;
   line-height: 1;
   height: 10%;
-}
+} */
 
 /* .secondary-info {
   font-size: 1em;
