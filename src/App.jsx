@@ -1,6 +1,6 @@
 import "./normalize.css";
 import "./styles.css";
-import { RentPage, HomePage, FAQPage, SummaryPage, CrimePage, DemographicsPage, WellbeingPage } from "./pages";
+import { RentPage, HomePage, FAQPage, SummaryPage, CrimePage, DemographicsPage, WellbeingPage, NotFoundPage } from "./pages";
 import { Navbar } from "./components";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
@@ -21,6 +21,7 @@ function App() {
             <Route path="demographics" element={<DemographicsPage navSearchSearching={navSearchSearching} />} />
             <Route path="wellbeing" element={<WellbeingPage navSearchSearching={navSearchSearching} />} />
           </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </>
