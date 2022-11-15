@@ -5,36 +5,42 @@ import Chart from '../Chart'
 const CardHIP = ({
   className,
   heading,
-  imageSrc,
-  raceData=null,
-  altImageText,
+  dataResponse,
   secondaryInfo,
 }) => {
 
-  const [chartData, setChartData] = useState({})
-  const [isDataLoaded, setIsDataLoaded] = useState(false)
+  const [chartData, setChartData] = useState({});
+  const [isDataLoading, setIsDataLoading] = useState(true)
 
   useEffect(() => {
-    const setupChartData = () => {
-      if(raceData !== null) {
-        setChartData({
-          labels: raceData.data.map(elem => elem.category),
-          dataset: [
+    const createChartData = () => {
+      if(dataResponse !== undefined) {
+        const labels = dataResponse.data.map(elem => elem.category)
+        const values = dataResponse.data.map(elem => elem.value)
+        const chartOptions = {
+          labels: labels,
+          datasets: [
             {
-              label: "Ethnicity Data",
-              data: raceData.data.map(elem => elem.value)
+              label: "Data",
+              data: values,
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+              ]
             }
           ]
-        })
-
-        setIsDataLoaded(true)
+        }
+  
+        setChartData(chartOptions)
       }
-    }
 
-    setupChartData()
+      setIsDataLoading(false)
+    }
+    createChartData()
   }, [])
 
-  if(!isDataLoaded) {
+  if(isDataLoading) {
     return (
       <p>Chart not loaded</p>
     )
@@ -42,7 +48,7 @@ const CardHIP = ({
     return (
       <div className={`${className} card`}>
         <h3 className="card-heading">{heading}</h3>
-        {raceData === null ? <img className="data-visualisation" src={imageSrc} alt={altImageText} /> : <Chart className="data-visualisation" chartData={chartData} />}
+        {dataResponse === undefined || Object.keys(chartData).length === 0 ? null : <Chart chartData={chartData} />}
         <p className="secondary-info">{secondaryInfo}</p>
       </div>
     );
