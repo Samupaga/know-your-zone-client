@@ -41,8 +41,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
       setReligionData(rawDataReligion);
       setRaceData(ethnicityResponseData);
 
-      const rawData = await response.json();
-      setDemographicData(rawData);
+    //   setDemographicData(rawData);
       setIsLoading(false);
     }
 
@@ -98,9 +97,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
           <CardHIP
             className={'blue six-tile'}
             heading={'Race'}
-            imageSrc={
-              'https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg'
-            }
+            raceData={raceData}
             altImageText={'speedy gonzales'}
             secondaryInfo={`${boroughName} is home to a large ${secondRace()} community. Be sure to check out ${recommendedSelection}`}
           />
@@ -120,7 +117,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
               'https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg'
             }
             altImageText={'Speedy gonzales'}
-            secondaryInfo={`The second most followed religion is ${secondReligion()}. Expect to see ${secondLargestReligionRecommendations} `}
+            secondaryInfo={`The second most followed religion is test. Expect to see ${secondLargestReligionRecommendations} `}
           />
           <CardHP
             className={'pink six-tile age'}
