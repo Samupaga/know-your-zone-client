@@ -9,6 +9,7 @@ import {
   CrimePage,
   DemographicsPage,
   WellbeingPage,
+  NotFoundPage,
 } from "./pages";
 import { Navbar } from "./components";
 import { Routes, Route } from "react-router-dom";
@@ -75,7 +76,7 @@ function App() {
               }
             />
           </Route>
-          {/* <Route path="*" element={<NotFoundPage />} /> */}
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </>
