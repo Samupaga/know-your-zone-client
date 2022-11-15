@@ -226,6 +226,7 @@ header {
   height: 100%;
   width: 100%;
   gap: 1rem;
+  box-shadow: rgba(255, 255, 255, 0.16) 1px 1px 10px 1px;
 }
 
 .yellow {
@@ -346,5 +347,11 @@ header {
 
   .emoji {
     font-size: 5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 3rem;
   }
 }

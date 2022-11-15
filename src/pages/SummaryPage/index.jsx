@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
+import { motion, AnimatePresence } from "framer-motion";
+
+
+
 import { BigNumberCard, CardHIP, CardHPP, Navbar, Container, InnerNav } from "../../components";
+
 import "./summary.css";
 
 export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
@@ -24,9 +30,11 @@ export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
         setMotto(rawData["motto"]);
         console.log("raw data", rawData);
         console.log(boroughData["average_monthly_rent"]);
+
         const wellbeingResponse = await fetch(`http://localhost:3000/demographics/${boroughName}/wellbeing`);
         const wellbeingData = await wellbeingResponse.json();
         setWellbeingScore(wellbeingData["data"][4]["value"]);
+
         setIsLoading(false);
       } catch {
         setBoroughFound(false);
@@ -40,14 +48,21 @@ export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
 
   if (isLoading === false) {
     return (
-      <div className="page-wrapper">
-        <h1>{boroughData["borough_name"]}</h1>
-        <h3 className="motto">
-          <em>"{motto}"</em>
-        </h3>
-        <InnerNav />
-        <div className="six-tile-wrapper">
-          <BigNumberCard
+
+      <AnimatePresence>
+        <motion.div
+          initial={{ x: 300, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -300, opacity: 0 }}
+          className="page-wrapper"
+        >
+          <h1>{boroughData["borough_name"]}</h1>
+          <h3 className="motto">
+            <em>"{motto}"</em>
+          </h3>
+          <InnerNav />
+          <div className="six-tile-wrapper">
+            <BigNumberCard
             className={"pink six-tile"}
             value={`£${boroughData["average_monthly_rent"]}`}
             smallNumber={"pcm"}
@@ -82,21 +97,28 @@ export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
             primaryInfo={`${boroughData["crime_below_london_average"] ? "⬇️" : "⬆️"}`}
             secondaryInfo={`${boroughData["crime_below_london_average"] ? "Below London Average" : "Above London Average"}`}
           />
-        </div>
-      </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
     );
   } else if (boroughFound === false) {
-    return <h3>We are really sorry, the borough you have entered has not been found. You will now be redirected back to the home page.</h3>;
-  } else {
     return (
-      <div className="page-wrapper">
-        <h1>Borough Info is loading...</h1>
-        <h3 className="motto">
-          <em>"We Serve"</em>
-        </h3>
-        <InnerNav />
-        <div className="six-tile-wrapper"></div>
-      </div>
+      <h3>
+        We are really sorry, the borough you have entered has not been found.
+        You will now be redirected back to the home page.
+      </h3>
     );
-  }
+  } // else {
+  //   return (
+  //     <div className="page-wrapper">
+  //       <h1>Borough Info is loading...</h1>
+  //       <h3 className="motto">
+  //         <em>"We Serve"</em>
+  //       </h3>
+  //       <InnerNav />
+  //       <div className="wellbeing-wrapper"></div>
+  //     </div>
+  //   );
+  // }
+
 }

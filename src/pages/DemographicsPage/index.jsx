@@ -3,10 +3,14 @@ import "./demoPage.css";
 import { useState, useEffect } from "react";
 import greetings from "../../assets/greetings";
 
+import { motion, AnimatePresence } from "framer-motion";
+
 export default function DemographicsPage({ navSearchSearching, motto }) {
   let secondLanguage = "Hawaiian";
-  let recommendedSelection = "Tooting highstreet or Tooting market for a wide selection of authentic south asian cuisine!";
-  let secondLargestReligionRecommendations = "mosques around Wandsworth such as the first purpose-built mosque, Fazl Mosque in Southfields!";
+  let recommendedSelection =
+    "Tooting highstreet or Tooting market for a wide selection of authentic south asian cuisine!";
+  let secondLargestReligionRecommendations =
+    "mosques around Wandsworth such as the first purpose-built mosque, Fazl Mosque in Southfields!";
 
   const [isLoading, setIsLoading] = useState(true);
   const [religionData, setReligionData] = useState([]);
@@ -19,16 +23,26 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
-      const response = await fetch(`http://localhost:3000/demographics/${boroughName}/religion`);
+      const response = await fetch(
+        `http://localhost:3000/demographics/${boroughName}/religion`
+      );
       const rawDataReligion = await response.json();
-      const ethnicityResponse = await fetch(`http://localhost:3000/demographics/${boroughName}/ethnicity`);
+      const ethnicityResponse = await fetch(
+        `http://localhost:3000/demographics/${boroughName}/ethnicity`
+      );
       const ethnicityResponseData = await ethnicityResponse.json();
 
-      const ageResponse = await fetch(`http://localhost:3000/demographics/${boroughName}/age`);
+      const ageResponse = await fetch(
+        `http://localhost:3000/demographics/${boroughName}/age`
+      );
       const rawDataAge = await ageResponse.json();
-      const sexResponse = await fetch(`http://localhost:3000/demographics/${boroughName}/sex`);
+      const sexResponse = await fetch(
+        `http://localhost:3000/demographics/${boroughName}/sex`
+      );
       const rawDataSex = await sexResponse.json();
-      const langResponse = await fetch(`http://localhost:3000/summary/${boroughName}`);
+      const langResponse = await fetch(
+        `http://localhost:3000/summary/${boroughName}`
+      );
       const rawDataLang = await langResponse.json();
       setReligionData(rawDataReligion);
       setRaceData(ethnicityResponseData);
@@ -56,11 +70,20 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
   function biggestReligion() {
     let arr = religionData;
     console.log(arr);
-    if (arr["data"][1]["category"] != "no_religion" && arr["data"][1]["category"] != "other_religion") {
+    if (
+      arr["data"][1]["category"] != "no_religion" &&
+      arr["data"][1]["category"] != "other_religion"
+    ) {
       secondReligion = arr["data"][1]["category"];
-    } else if (arr["data"][2]["category"] != "no_religion" && arr["data"][2]["category"] != "other_religion") {
+    } else if (
+      arr["data"][2]["category"] != "no_religion" &&
+      arr["data"][2]["category"] != "other_religion"
+    ) {
       secondReligion = arr["data"][2]["category"];
-    } else if (arr["data"][3]["category"] != "no_religion" && arr["data"][3]["category"] != "other_religion") {
+    } else if (
+      arr["data"][3]["category"] != "no_religion" &&
+      arr["data"][3]["category"] != "other_religion"
+    ) {
       secondReligion = arr["data"][3]["category"];
     }
     console.log("second largest religion is", secondReligion);
@@ -125,13 +148,20 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
 
   if (isLoading === false) {
     return (
-      <div className="page-wrapper">
-        <h1>{religionData["borough_name"]}</h1>
-        <h3 className="motto">
-          <em>"{motto}"</em>
-        </h3>
-        <InnerNav />
-        <div className="six-tile-wrapper">
+
+      <AnimatePresence>
+        <div className="page-wrapper">
+          <h1>{religionData["borough_name"]}</h1>
+          <h3 className="motto">
+            <em>{motto}</em>
+          </h3>
+          <InnerNav />
+          <motion.div
+            initial={{ x: 300, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -300, opacity: 0 }}
+            className="six-tile-wrapper"
+          >
           <CardHPH
             className={"pink six-tile"}
             heading={"Language"}
@@ -174,19 +204,22 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
             primaryInfo={`${100 < sexData["data"][0]["value"] ? "🙋‍♂️" : "🙋‍♀️"}`}
             secondaryInfo={`There are ${sexData["data"][0]["value"]} males to every 100 females!`}
           />
+           
+          </motion.div>
+
         </div>
-      </div>
+      </AnimatePresence>
     );
-  } else {
-    return (
-      <div className="page-wrapper">
-        <h1>Borough Info is loading...</h1>
-        <h3 className="motto">
-          <em>"We Serve"</em>
-        </h3>
-        <InnerNav />
-        <div className="six-tile-wrapper"></div>
-      </div>
-    );
-  }
+  } // else {
+  //   return (
+  //     <div className="page-wrapper">
+  //       <h1>Borough Info is loading...</h1>
+  //       <h3 className="motto">
+  //         <em>"We Serve"</em>
+  //       </h3>
+  //       <InnerNav />
+  //       <div className="wellbeing-wrapper"></div>
+  //     </div>
+  //   );
+  // }
 }
