@@ -129,7 +129,7 @@ header {
 
 .small-input {
   padding: 3px 10px;
-  border-radius: 15px;
+  border-radius: 2px;
   outline: none;
   border: none;
 }
@@ -158,6 +158,7 @@ header {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  padding-top: 3rem;
 }
 
 /* INNER NAV STYLES */
