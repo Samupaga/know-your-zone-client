@@ -72,11 +72,14 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
 
   function secondRace() {
     let arr = raceData;
-    if (arr["data"][0]["category"] != "white") {
+    if (arr["data"][0]["category"] != "white" && arr["data"][0]["category"] != "other") {
       secondPopularRace = arr["data"][0]["category"];
-    } else if (arr["data"][1] != "white") {
+    } else if (arr["data"][1]["category"] != "white" && arr["data"][1]["category"] != "other") {
       secondPopularRace = arr["data"][1]["category"];
+    } else {
+      secondPopularRace = arr["data"][2]["category"];
     }
+
     let capitalizedRace = capitalizeFirstLetter(secondPopularRace);
     return capitalizedRace;
   }
