@@ -15,7 +15,6 @@ export default function WellbeingPage({ navSearchSearching, motto }) {
       );
       const rawData = await response.json();
       console.log(rawData['data']['wellbeing']);
-      setWellbeingScore(rawData['data']['wellbeing']);
       setWellbeingData(rawData);
       setIsLoading(false);
     }

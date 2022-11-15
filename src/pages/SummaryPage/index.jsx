@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,8 +8,8 @@ import {
   Navbar,
   Container,
   InnerNav,
-} from "../../components";
-import "./summary.css";
+} from '../../components';
+import './summary.css';
 
 export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,7 +19,7 @@ export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
   const navigate = useNavigate();
   //For later use - fetch request example
   // Get saved data from sessionStorage
-  let boroughName = sessionStorage.getItem("borough");
+  let boroughName = sessionStorage.getItem('borough');
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
@@ -32,7 +31,8 @@ export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
         const rawData = await response.json();
         setBoroughData(rawData);
         setMotto(rawData['motto']);
-        console.log(rawData);
+        console.log('raw data', rawData);
+        console.log(boroughData['average_monthly_rent']);
         const wellbeingResponse = await fetch(
           `http://localhost:3000/demographics/${boroughName}/wellbeing`
         );
@@ -44,9 +44,6 @@ export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
         setTimeout(() => {
           navigate('/');
         }, 5000);
-        return (
-          <h1>Sorry, the borough you have searched for has not been found.</h1>
-        );
       }
     }
     getBoroughInfo();
@@ -60,30 +57,30 @@ export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
           <em>"{motto}"</em>
         </h3>
         <InnerNav />
-        <div className="six-tile-wrapper">
+        <div className='six-tile-wrapper'>
           <BigNumberCard
-            className={"pink six-tile"}
-            value={`£${boroughData["average_monthly_rent"]}`}
-            smallNumber={"pcm"}
-            secondaryInfo={"Average Rent"}
+            className={'pink six-tile'}
+            value={`£${boroughData['average_monthly_rent']}`}
+            smallNumber={'pcm'}
+            secondaryInfo={'Average Rent'}
           />
           <CardHIP
-            className={"yellow six-tile"}
-            heading={"Demographics"}
+            className={'yellow six-tile'}
+            heading={'Demographics'}
             imageSrc={
-              "https://www.voxco.com/wp-content/uploads/2021/03/Demographic-Segmentation-1.jpg"
+              'https://www.voxco.com/wp-content/uploads/2021/03/Demographic-Segmentation-1.jpg'
             }
-            altImageText={"People standing on a pie chart"}
+            altImageText={'People standing on a pie chart'}
           />
           <BigNumberCard
             className={'pink six-tile'}
-            value={boroughData['crime_rate_per_1000']}
+            value={Math.floor(boroughData['crime_rate_per_1000'])}
             smallNumber={'/1000'}
             secondaryInfo={'Average Crime Rate'}
           />
           <CardHPP
-            className={"yellow six-tile"}
-            heading={"Rent"}
+            className={'yellow six-tile'}
+            heading={'Rent'}
             primaryInfo={`${
               boroughData['rent_below_london_average'] === true ? '⬇️' : '⬆️'
             }`}
@@ -122,13 +119,13 @@ export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
     );
   } else {
     return (
-      <div className="page-wrapper">
+      <div className='page-wrapper'>
         <h1>Borough Info is loading...</h1>
-        <h3 className="motto">
+        <h3 className='motto'>
           <em>"We Serve"</em>
         </h3>
         <InnerNav />
-        <div className="six-tile-wrapper"></div>
+        <div className='six-tile-wrapper'></div>
       </div>
     );
   }
