@@ -8,7 +8,7 @@ import {
 import './rentPage.css';
 import { useState, useEffect } from 'react';
 
-export default function SummaryPage({ navSearchSearching, motto }) {
+export default function RentPage({ navSearchSearching, motto }) {
   const [isLoading, setIsLoading] = useState(true);
   const [averageRent, setAverageRent] = useState([]);
   const [generalRent, setGeneralRent] = useState([]);
@@ -20,7 +20,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
       setIsLoading(true);
       const response = await fetch(`http://localhost:3000/rent/${boroughName}`);
       const averageRentPrice = await response.json();
-      setAverageRent(averageRentPrice);
+      setAverageRent(averageRentPrice[0]);
 
       const responseTwo = await fetch(
         `http://localhost:3000/rent/${boroughName}/accommodation`
