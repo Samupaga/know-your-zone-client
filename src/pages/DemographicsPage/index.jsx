@@ -13,7 +13,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
   const [raceData, setRaceData] = useState([]);
   const [ageData, setAgeData] = useState([]);
   const [sexData, setSexData] = useState([]);
-  const [langData, setLangData] = useState([]);
+  const [summaryData, setSummaryData] = useState([]);
 
   let boroughName = sessionStorage.getItem("borough");
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
       setAgeData(rawDataAge);
       setSexData(rawDataSex);
       setIsLoading(false);
-      setLangData(rawDataLang);
+      setSummaryData(rawDataLang);
     }
 
     getBoroughInfo();
@@ -66,6 +66,19 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
     console.log("second largest religion is", secondReligion);
     let capitalizedReligion = capitalizeFirstLetter(secondReligion);
     return capitalizedReligion;
+  }
+
+  let secondPopularRace;
+
+  function secondRace() {
+    let arr = raceData;
+    if (arr["data"][0]["category"] != "white") {
+      secondPopularRace = arr["data"][0]["category"];
+    } else if (arr["data"][1] != "white") {
+      secondPopularRace = arr["data"][1]["category"];
+    }
+    let capitalizedRace = capitalizeFirstLetter(secondPopularRace);
+    return capitalizedRace;
   }
 
   function ageFormatting(age) {
@@ -112,22 +125,24 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
       <div className="page-wrapper">
         <h1>{religionData["borough_name"]}</h1>
         <h3 className="motto">
-          <em>{motto}</em>
+          <em>"{motto}"</em>
         </h3>
         <InnerNav />
         <div className="six-tile-wrapper">
           <CardHPH
             className={"pink six-tile"}
             heading={"Language"}
-            secondaryInfo={`The majority of people speak English but did you know the second most commonly spoken language in ${religionData["borough_name"]} is ${langData["second_lang"]}!`}
-            primaryInfo={`${getGreeting(langData["second_lang"])} 👋`}
+            secondaryInfo={`The majority of people speak English but did you know the second most commonly spoken language in ${religionData["borough_name"]} is ${summaryData["second_lang"]}!`}
+            primaryInfo={`${getGreeting(summaryData["second_lang"])} 👋`}
           />
           <CardHIP
             className={"blue six-tile"}
             heading={"Race"}
             imageSrc={"https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"}
             altImageText={"speedy gonzales"}
-            secondaryInfo={`${religionData["borough_name"]} is home to a large ${raceData["data"][1]["category"]} community. Be sure to check out ${recommendedSelection}`}
+            secondaryInfo={`${religionData["borough_name"]} is home to a large ${secondRace()} community. Be sure to check out ${
+              summaryData["checkout"]
+            }`}
           />
           <CardHIP
             className={"yellow six-tile house-type"}
@@ -141,7 +156,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
             heading={"Religion"}
             imageSrc={"https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"}
             altImageText={"Speedy gonzales"}
-            secondaryInfo={`The largest religious group identify as ${biggestReligion()}. However, expect to see ${secondLargestReligionRecommendations} `}
+            secondaryInfo={`The largest religious group identify as ${biggestReligion()}. However, expect to see ${summaryData["expect"]} `}
           />
           <CardHP
             className={"pink six-tile age"}
