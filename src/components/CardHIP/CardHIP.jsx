@@ -13,8 +13,25 @@ const CardHIP = ({
   secondaryInfo,
 }) => {
 
-  const [chartData, setChartData] = useState({});
+  const [chartData, setChartData] = useState(null);
   const [isDataLoading, setIsDataLoading] = useState(true)
+
+  const createLineData = () => {
+    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+    const values  = [10, 20, 30, 40, 50, 60, 70]
+    const chartOptions = {
+      labels: labels, 
+      datasets: [
+        { 
+          data: values, 
+          backgroundColor: [
+            'rgba(53, 162, 235, 0.5)'
+          ]
+        }
+      ]
+    }
+    setChartData(chartOptions)
+  }
 
   const createDonutData = () => {
     if(dataResponse !== undefined) {
@@ -37,24 +54,10 @@ const CardHIP = ({
 
       setChartData(chartOptions)
     }
-  }
 
-
-  const createLineData = () => {
-    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-    const values  = [10, 20, 30, 40, 50, 60, 70]
-    const chartOptions = {
-      labels: labels, 
-      datasets: [
-        { 
-          data: values, 
-          backgroundColor: [
-            'rgba(53, 162, 235, 0.5)'
-          ]
-        }
-      ]
+    else {
+        createLineData()
     }
-    setChartData(chartOptions)
   }
 
   const createBarData = () => {
@@ -97,7 +100,7 @@ const CardHIP = ({
       <div className={`${className} card`}>
         <h3 className="card-heading">{heading}</h3>
         {/* {dataResponse === undefined || Object.keys(chartData).length === 0 ? null : <Chart chartData={chartData} />} */}
-        <Chart chartData={chartData} />
+        {chartData === null ? null : <Chart chartType={chartType} chartData={chartData} />}
         <p className="secondary-info">{secondaryInfo}</p>
       </div>
     );
