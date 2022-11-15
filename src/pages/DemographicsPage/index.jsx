@@ -97,26 +97,18 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
           <CardHIP
             className={'blue six-tile'}
             heading={'Race'}
-            raceData={raceData}
-            altImageText={'speedy gonzales'}
+            dataResponse={raceData}
             secondaryInfo={`${boroughName} is home to a large ${secondRace()} community. Be sure to check out ${recommendedSelection}`}
           />
           <CardHIP
             className={'yellow six-tile house-type'}
             heading={'House Type'}
             secondaryInfo={"Here's what the makeup of houses tend to look like"}
-            imageSrc={
-              'https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg'
-            }
-            altImageText={'Speedy gonzales'}
           />
           <CardHIP
             className={'yellow six-tile'}
             heading={'Religion'}
-            imageSrc={
-              'https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg'
-            }
-            altImageText={'Speedy gonzales'}
+            dataResponse={religionData}
             secondaryInfo={`The second most followed religion is test. Expect to see ${secondLargestReligionRecommendations} `}
           />
           <CardHP
