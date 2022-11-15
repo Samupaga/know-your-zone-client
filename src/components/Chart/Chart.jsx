@@ -1,15 +1,18 @@
-import { Pie } from 'react-chartjs-2'
+import { Doughnut } from 'react-chartjs-2'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Chart = ({ chartData }) => {
   return (
     <div>
-      <Pie
+      <Doughnut
         data={chartData}
         options={{
             plugins: {
                 title: {
                     display: true,
-                    text: "Ethnicity data"
+                    text: "Donut Chart"
                 }
             }
         }}
