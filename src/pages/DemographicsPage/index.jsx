@@ -3,6 +3,8 @@ import "./demoPage.css";
 import { useState, useEffect } from "react";
 import greetings from "../../assets/greetings";
 
+import { motion, AnimatePresence } from "framer-motion";
+
 export default function DemographicsPage({ navSearchSearching, motto }) {
   let secondLanguage = "Hawaiian";
   let recommendedSelection =
@@ -130,65 +132,74 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
 
   if (isLoading === false) {
     return (
-      <div className="page-wrapper">
-        <h1>{religionData["borough_name"]}</h1>
-        <h3 className="motto">
-          <em>{motto}</em>
-        </h3>
-        <InnerNav />
-        <div className="six-tile-wrapper">
-          <CardHPH
-            className={"pink six-tile"}
-            heading={"Language"}
-            secondaryInfo={`The majority of people speak English but did you know the second most commonly spoken language in ${religionData["borough_name"]} is ${langData["second_lang"]}!`}
-            primaryInfo={`${getGreeting(langData["second_lang"])} 👋`}
-          />
-          <CardHIP
-            className={"blue six-tile"}
-            heading={"Race"}
-            imageSrc={
-              "https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"
-            }
-            altImageText={"speedy gonzales"}
-            secondaryInfo={`${religionData["borough_name"]} is home to a large ${raceData["data"][1]["category"]} community. Be sure to check out ${recommendedSelection}`}
-          />
-          <CardHIP
-            className={"yellow six-tile house-type"}
-            heading={"House Type"}
-            secondaryInfo={"Here's what the makeup of houses tend to look like"}
-            imageSrc={
-              "https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"
-            }
-            altImageText={"Speedy gonzales"}
-          />
-          <CardHIP
-            className={"yellow six-tile"}
-            heading={"Religion"}
-            imageSrc={
-              "https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"
-            }
-            altImageText={"Speedy gonzales"}
-            secondaryInfo={`The largest religious group identify as ${biggestReligion()}. However, expect to see ${secondLargestReligionRecommendations} `}
-          />
-          <CardHP
-            className={"pink six-tile age"}
-            heading={"Age"}
-            secondaryInfo={`The majority of people living in ${
-              religionData["borough_name"]
-            } are aged ${ageFormatting(
-              ageData["data"][0]["category"]
-            )}, with the second highest proportion of people aged ${ageFormatting(
-              ageData["data"][1]["category"]
-            )}.`}
-          />
-          <CardHPP
-            className={"blue six-tile"}
-            heading={"Sex"}
-            primaryInfo={`${100 < sexData["data"][0]["value"] ? "🙋‍♂️" : "🙋‍♀️"}`}
-            secondaryInfo={`There are ${sexData["data"][0]["value"]} males to every 100 females!`}
-          />
+      <AnimatePresence>
+        <div className="page-wrapper">
+          <h1>{religionData["borough_name"]}</h1>
+          <h3 className="motto">
+            <em>{motto}</em>
+          </h3>
+          <InnerNav />
+          <motion.div
+            initial={{ x: 300, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -300, opacity: 0 }}
+            className="six-tile-wrapper"
+          >
+            <CardHPH
+              className={"pink six-tile"}
+              heading={"Language"}
+              secondaryInfo={`The majority of people speak English but did you know the second most commonly spoken language in ${religionData["borough_name"]} is ${langData["second_lang"]}!`}
+              primaryInfo={`${getGreeting(langData["second_lang"])} 👋`}
+            />
+            <CardHIP
+              className={"blue six-tile"}
+              heading={"Race"}
+              imageSrc={
+                "https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"
+              }
+              altImageText={"speedy gonzales"}
+              secondaryInfo={`${religionData["borough_name"]} is home to a large ${raceData["data"][1]["category"]} community. Be sure to check out ${recommendedSelection}`}
+            />
+            <CardHIP
+              className={"yellow six-tile house-type"}
+              heading={"House Type"}
+              secondaryInfo={
+                "Here's what the makeup of houses tend to look like"
+              }
+              imageSrc={
+                "https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"
+              }
+              altImageText={"Speedy gonzales"}
+            />
+            <CardHIP
+              className={"yellow six-tile"}
+              heading={"Religion"}
+              imageSrc={
+                "https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"
+              }
+              altImageText={"Speedy gonzales"}
+              secondaryInfo={`The largest religious group identify as ${biggestReligion()}. However, expect to see ${secondLargestReligionRecommendations} `}
+            />
+            <CardHP
+              className={"pink six-tile age"}
+              heading={"Age"}
+              secondaryInfo={`The majority of people living in ${
+                religionData["borough_name"]
+              } are aged ${ageFormatting(
+                ageData["data"][0]["category"]
+              )}, with the second highest proportion of people aged ${ageFormatting(
+                ageData["data"][1]["category"]
+              )}.`}
+            />
+            <CardHPP
+              className={"blue six-tile"}
+              heading={"Sex"}
+              primaryInfo={`${100 < sexData["data"][0]["value"] ? "🙋‍♂️" : "🙋‍♀️"}`}
+              secondaryInfo={`There are ${sexData["data"][0]["value"]} males to every 100 females!`}
+            />
+          </motion.div>
         </div>
-      </div>
+      </AnimatePresence>
     );
   } // else {
   //   return (

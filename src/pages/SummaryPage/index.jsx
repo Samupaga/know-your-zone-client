@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { motion, AnimatePresence } from "framer-motion";
+
 import {
   BigNumberCard,
   CardHIP,
@@ -51,64 +53,71 @@ export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
 
   if (isLoading === false) {
     return (
-      <div className="page-wrapper">
-        <h1>{boroughData["borough_name"]}</h1>
-        <h3 className="motto">
-          <em>"{motto}"</em>
-        </h3>
-        <InnerNav />
-        <div className="six-tile-wrapper">
-          <BigNumberCard
-            className={"pink six-tile"}
-            value={`£${boroughData["average_monthly_rent"]}`}
-            smallNumber={"pcm"}
-            secondaryInfo={"Average Rent"}
-          />
-          <CardHIP
-            className={"yellow six-tile"}
-            heading={"Demographics"}
-            imageSrc={
-              "https://www.voxco.com/wp-content/uploads/2021/03/Demographic-Segmentation-1.jpg"
-            }
-            altImageText={"People standing on a pie chart"}
-          />
-          <BigNumberCard
-            className={"pink six-tile"}
-            value={Math.floor(boroughData["crime_rate_per_1000"])}
-            smallNumber={"/1000"}
-            secondaryInfo={"Average Crime Rate"}
-          />
-          <CardHPP
-            className={"yellow six-tile"}
-            heading={"Rent"}
-            primaryInfo={`${
-              boroughData["rent_below_london_average"] === true ? "⬇️" : "⬆️"
-            }`}
-            secondaryInfo={`${
-              boroughData["rent_below_london_average"] === true
-                ? "Below London Average"
-                : "Above London Average"
-            }`}
-          />
-          <CardHPP
-            className={"pink six-tile"}
-            primaryInfo={`${wellbeingScore > 7.3 ? "😎" : "🙂"}`}
-            secondaryInfo={`${wellbeingScore} on the wellbeing score!`}
-          />
-          <CardHPP
-            className={"yellow six-tile"}
-            heading={"Crime"}
-            primaryInfo={`${
-              boroughData["crime_below_london_average"] ? "⬇️" : "⬆️"
-            }`}
-            secondaryInfo={`${
-              boroughData["crime_below_london_average"]
-                ? "Below London Average"
-                : "Above London Average"
-            }`}
-          />
-        </div>
-      </div>
+      <AnimatePresence>
+        <motion.div
+          initial={{ x: 300, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -300, opacity: 0 }}
+          className="page-wrapper"
+        >
+          <h1>{boroughData["borough_name"]}</h1>
+          <h3 className="motto">
+            <em>"{motto}"</em>
+          </h3>
+          <InnerNav />
+          <div className="six-tile-wrapper">
+            <BigNumberCard
+              className={"pink six-tile"}
+              value={`£${boroughData["average_monthly_rent"]}`}
+              smallNumber={"pcm"}
+              secondaryInfo={"Average Rent"}
+            />
+            <CardHIP
+              className={"yellow six-tile"}
+              heading={"Demographics"}
+              imageSrc={
+                "https://www.voxco.com/wp-content/uploads/2021/03/Demographic-Segmentation-1.jpg"
+              }
+              altImageText={"People standing on a pie chart"}
+            />
+            <BigNumberCard
+              className={"pink six-tile"}
+              value={Math.floor(boroughData["crime_rate_per_1000"])}
+              smallNumber={"/1000"}
+              secondaryInfo={"Average Crime Rate"}
+            />
+            <CardHPP
+              className={"yellow six-tile"}
+              heading={"Rent"}
+              primaryInfo={`${
+                boroughData["rent_below_london_average"] === true ? "⬇️" : "⬆️"
+              }`}
+              secondaryInfo={`${
+                boroughData["rent_below_london_average"] === true
+                  ? "Below London Average"
+                  : "Above London Average"
+              }`}
+            />
+            <CardHPP
+              className={"pink six-tile"}
+              primaryInfo={`${wellbeingScore > 7.3 ? "😎" : "🙂"}`}
+              secondaryInfo={`${wellbeingScore} on the wellbeing score!`}
+            />
+            <CardHPP
+              className={"yellow six-tile"}
+              heading={"Crime"}
+              primaryInfo={`${
+                boroughData["crime_below_london_average"] ? "⬇️" : "⬆️"
+              }`}
+              secondaryInfo={`${
+                boroughData["crime_below_london_average"]
+                  ? "Below London Average"
+                  : "Above London Average"
+              }`}
+            />
+          </div>
+        </motion.div>
+      </AnimatePresence>
     );
   } else if (boroughFound === false) {
     return (
