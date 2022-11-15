@@ -1,24 +1,32 @@
-import { Doughnut } from 'react-chartjs-2'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+// import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
+// import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend} from 'chart.js';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+import Donut from './Donut';
+import LinePlot from './Line'; 
+import BarPlot from './Bar';
 
-const Chart = ({ chartData }) => {
-  return (
-    <div>
-      <Doughnut
-        data={chartData}
-        options={{
-            plugins: {
-                title: {
-                    display: true,
-                    text: "Donut Chart"
-                }
-            }
-        }}
-      />
-    </div>
-  );
+
+const Chart = ({ chartType, chartData }) => {
+
+  if ( chartType === 'donut') {
+    return (
+      <div>
+        <Donut chartData={chartData} />
+      </div>
+    );
+  } else if ( chartType === 'line' ) {
+    return (
+      <div>
+        <LinePlot chartData={chartData} />
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <BarPlot chartData={chartData} />
+      </div>
+    );
+  }    
 };
 
 export default Chart;

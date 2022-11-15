@@ -66,6 +66,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
               "https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA"
             }
             heading={"Division of Crime"}
+            cardType={'bar'}
             altImageText={"Sarah Soutoul"}
           />
           <CardHIP
@@ -74,6 +75,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
               "https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA"
             }
             altImageText={"Gantt Chart"}
+            cardType={'line'}
             secondaryInfo={"Trending crime rates for the past decade."}
           />
           <div className="three-tile-wrapper right-column">
