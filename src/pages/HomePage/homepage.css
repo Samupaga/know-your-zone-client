@@ -3,6 +3,7 @@
 .hero-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   text-align: center;
   background-color: var(--main-bg-color);
@@ -33,6 +34,7 @@
 }
 
 .search-container {
+  position: relative;
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
@@ -77,12 +79,10 @@
 .dropdown {
   display: flex;
   flex-direction: column;
-}
-
-.dropdown > a {
-  margin: 0.5em;
-  border: 2px solid var(--main-bg-color);
-  padding: 1em;
+  text-align: left;
+  width: 100%;
+  gap: 5px;
+  padding: 4px;
 }
 
 .dropdown > a:hover {
