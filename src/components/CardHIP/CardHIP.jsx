@@ -37,13 +37,10 @@ const CardHIP = ({
 
       setChartData(chartOptions)
     }
-
-    setIsDataLoading(false)
   }
 
 
   const createLineData = () => {
-      
     const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
     const values  = [10, 20, 30, 40, 50, 60, 70]
     const chartOptions = {
@@ -58,8 +55,6 @@ const CardHIP = ({
       ]
     }
     setChartData(chartOptions)
-  
-  setIsDataLoading(false)
   }
 
   const createBarData = () => {
@@ -77,18 +72,18 @@ const CardHIP = ({
       ]
     }
     setChartData(chartOptions)
-  
-  setIsDataLoading(false)
   }
 
   useEffect(() => {
     if (chartType === 'donut'){
       createDonutData()
-    } else if (chartType == 'line') {
+    } else if (chartType === 'line') {
       createLineData()
-    } else {
+    } else if (chartType === 'bar') {
       createBarData()
     }
+
+    setIsDataLoading(false)
   }, [])
 
   
