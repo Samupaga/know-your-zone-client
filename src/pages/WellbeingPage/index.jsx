@@ -10,7 +10,9 @@ export default function WellbeingPage({ navSearchSearching, motto }) {
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
-      const response = await fetch(`http://localhost:3000/demographics/${boroughName}/wellbeing`);
+      const response = await fetch(
+        `http://localhost:3000/demographics/${boroughName}/wellbeing`
+      );
       const rawData = await response.json();
       console.log(rawData["data"]["wellbeing"]);
       setWellbeingData(rawData);
@@ -36,41 +38,49 @@ export default function WellbeingPage({ navSearchSearching, motto }) {
               className={"pink four-tile"}
               heading={"Worthwhile"}
               primaryInfo={`${wellbeingData["data"][1]["value"]}`}
-              secondaryInfo={"This is a measure of to what extent residents feel the things they do in their life are worthwhile, out of 10."}
+              secondaryInfo={
+                "This is a measure of to what extent residents feel the things they do in their life are worthwhile, out of 10."
+              }
             />
             <CardHPP
               className={"blue four-tile"}
               heading={"Happiness"}
               primaryInfo={`${wellbeingData["data"][2]["value"]}`}
-              secondaryInfo={"This is a measure of to what extent residents feel happy in their day to day life, out of 10."}
+              secondaryInfo={
+                "This is a measure of to what extent residents feel happy in their day to day life, out of 10."
+              }
             />
             <CardHPP
               className={"blue four-tile"}
               heading={"Anxiety"}
               primaryInfo={`${wellbeingData["data"][3]["value"]}`}
-              secondaryInfo={"This is a measure of to what extent residents feel anxious in their day to day life, out of 10."}
+              secondaryInfo={
+                "This is a measure of to what extent residents feel anxious in their day to day life, out of 10."
+              }
             />
             <CardHPP
               className={"pink four-tile"}
               heading={"Life Satisfaction"}
               primaryInfo={`${wellbeingData["data"][0]["value"]}`}
-              secondaryInfo={"This is a measure of to what extent residents are satisfied with how their life is, out of 10."}
+              secondaryInfo={
+                "This is a measure of to what extent residents are satisfied with how their life is, out of 10."
+              }
             />
           </div>
           <CardWellbeing className={"yellow wellbeing-card"} />
         </div>
       </div>
     );
-  } else {
-    return (
-      <div className="page-wrapper">
-        <h1>Borough Info is loading...</h1>
-        <h3 className="motto">
-          <em>"We Serve"</em>
-        </h3>
-        <InnerNav />
-        <div className="wellbeing-wrapper"></div>
-      </div>
-    );
-  }
+  } // else {
+  //   return (
+  //     <div className="page-wrapper">
+  //       <h1>Borough Info is loading...</h1>
+  //       <h3 className="motto">
+  //         <em>"We Serve"</em>
+  //       </h3>
+  //       <InnerNav />
+  //       <div className="wellbeing-wrapper"></div>
+  //     </div>
+  //   );
+  // }
 }
