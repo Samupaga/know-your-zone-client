@@ -99,6 +99,7 @@ function Search() {
                 className={`dropdown-row ${key}`}
                 id={borough}
                 onClick={searchClick}
+                key={borough}
               >
                 {borough}
               </a>
