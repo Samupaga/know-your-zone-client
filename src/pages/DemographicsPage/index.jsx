@@ -152,7 +152,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
           <CardHIP
             className={'yellow six-tile'}
             heading={'Religion'}
-            cardType={'donut'}
+            chartType={'donut'}
             dataResponse={religionData}
             secondaryInfo={`The largest religious group identify as ${biggestReligion()}. However, expect to see ${summaryData["expect"]} `}
           />

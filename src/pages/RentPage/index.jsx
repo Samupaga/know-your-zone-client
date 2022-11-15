@@ -49,6 +49,7 @@ export default function RentPage({ navSearchSearching, motto }) {
             imageSrc={
               'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
             }
+            chartType={'line'}
             altImageText={'Gantt Chart'}
             secondaryInfo={'Trending rent for the past decade.'}
           />
@@ -57,6 +58,7 @@ export default function RentPage({ navSearchSearching, motto }) {
             // imageSrc={
             //   'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
             // }
+            chartType={'donut'}
             heading={'Split of some data.'}
             altImageText={'Sarah Soutoul'}
           />
