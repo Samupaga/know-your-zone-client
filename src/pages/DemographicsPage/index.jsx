@@ -17,7 +17,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
   const [raceData, setRaceData] = useState([]);
   const [ageData, setAgeData] = useState([]);
   const [sexData, setSexData] = useState([]);
-  const [langData, setLangData] = useState([]);
+  const [summaryData, setSummaryData] = useState([]);
 
   let boroughName = sessionStorage.getItem("borough");
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
       setAgeData(rawDataAge);
       setSexData(rawDataSex);
       setIsLoading(false);
-      setLangData(rawDataLang);
+      setSummaryData(rawDataLang);
     }
 
     getBoroughInfo();
@@ -89,6 +89,22 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
     console.log("second largest religion is", secondReligion);
     let capitalizedReligion = capitalizeFirstLetter(secondReligion);
     return capitalizedReligion;
+  }
+
+  let secondPopularRace;
+
+  function secondRace() {
+    let arr = raceData;
+    if (arr["data"][0]["category"] != "white" && arr["data"][0]["category"] != "other") {
+      secondPopularRace = arr["data"][0]["category"];
+    } else if (arr["data"][1]["category"] != "white" && arr["data"][1]["category"] != "other") {
+      secondPopularRace = arr["data"][1]["category"];
+    } else {
+      secondPopularRace = arr["data"][2]["category"];
+    }
+
+    let capitalizedRace = capitalizeFirstLetter(secondPopularRace);
+    return capitalizedRace;
   }
 
   function ageFormatting(age) {
@@ -132,6 +148,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
 
   if (isLoading === false) {
     return (
+
       <AnimatePresence>
         <div className="page-wrapper">
           <h1>{religionData["borough_name"]}</h1>
@@ -145,59 +162,51 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
             exit={{ x: -300, opacity: 0 }}
             className="six-tile-wrapper"
           >
-            <CardHPH
-              className={"pink six-tile"}
-              heading={"Language"}
-              secondaryInfo={`The majority of people speak English but did you know the second most commonly spoken language in ${religionData["borough_name"]} is ${langData["second_lang"]}!`}
-              primaryInfo={`${getGreeting(langData["second_lang"])} 👋`}
-            />
-            <CardHIP
-              className={"blue six-tile"}
-              heading={"Race"}
-              imageSrc={
-                "https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"
-              }
-              altImageText={"speedy gonzales"}
-              secondaryInfo={`${religionData["borough_name"]} is home to a large ${raceData["data"][1]["category"]} community. Be sure to check out ${recommendedSelection}`}
-            />
-            <CardHIP
-              className={"yellow six-tile house-type"}
-              heading={"House Type"}
-              secondaryInfo={
-                "Here's what the makeup of houses tend to look like"
-              }
-              imageSrc={
-                "https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"
-              }
-              altImageText={"Speedy gonzales"}
-            />
-            <CardHIP
-              className={"yellow six-tile"}
-              heading={"Religion"}
-              imageSrc={
-                "https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"
-              }
-              altImageText={"Speedy gonzales"}
-              secondaryInfo={`The largest religious group identify as ${biggestReligion()}. However, expect to see ${secondLargestReligionRecommendations} `}
-            />
-            <CardHP
-              className={"pink six-tile age"}
-              heading={"Age"}
-              secondaryInfo={`The majority of people living in ${
-                religionData["borough_name"]
-              } are aged ${ageFormatting(
-                ageData["data"][0]["category"]
-              )}, with the second highest proportion of people aged ${ageFormatting(
-                ageData["data"][1]["category"]
-              )}.`}
-            />
-            <CardHPP
-              className={"blue six-tile"}
-              heading={"Sex"}
-              primaryInfo={`${100 < sexData["data"][0]["value"] ? "🙋‍♂️" : "🙋‍♀️"}`}
-              secondaryInfo={`There are ${sexData["data"][0]["value"]} males to every 100 females!`}
-            />
+          <CardHPH
+            className={"pink six-tile"}
+            heading={"Language"}
+            secondaryInfo={`The majority of people speak English but did you know the second most commonly spoken language in ${religionData["borough_name"]} is ${summaryData["second_lang"]}!`}
+            primaryInfo={`${getGreeting(summaryData["second_lang"])} 👋`}
+          />
+          <CardHIP
+            className={"blue six-tile"}
+            heading={"Race"}
+            imageSrc={"https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"}
+            altImageText={"speedy gonzales"}
+            secondaryInfo={`${religionData["borough_name"]} is home to a large ${secondRace()} community. Be sure to check out ${
+              summaryData["checkout"]
+            }`}
+          />
+          <CardHIP
+            className={"yellow six-tile house-type"}
+            heading={"House Type"}
+            secondaryInfo={"Here's what the makeup of houses tend to look like"}
+            imageSrc={"https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"}
+            altImageText={"Speedy gonzales"}
+          />
+          <CardHIP
+            className={"yellow six-tile"}
+            heading={"Religion"}
+            imageSrc={"https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"}
+            altImageText={"Speedy gonzales"}
+            secondaryInfo={`The largest religious group identify as ${biggestReligion()}. However, expect to see ${summaryData["expect"]} `}
+          />
+          <CardHP
+            className={"pink six-tile age"}
+            heading={"Age"}
+            secondaryInfo={`The majority of people living in ${religionData["borough_name"]} are aged ${ageFormatting(
+              ageData["data"][0]["category"]
+            )}, with the second highest proportion of people aged ${ageFormatting(ageData["data"][1]["category"])}.`}
+          />
+          <CardHPP
+            className={"blue six-tile"}
+            heading={"Sex"}
+            primaryInfo={`${100 < sexData["data"][0]["value"] ? "🙋‍♂️" : "🙋‍♀️"}`}
+            secondaryInfo={`There are ${sexData["data"][0]["value"]} males to every 100 females!`}
+          />
+           
           </motion.div>
+
         </div>
       </AnimatePresence>
     );
