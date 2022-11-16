@@ -30,24 +30,14 @@ function Navbar({ setNavSearchSearching }) {
 
           <ul className={`nav-menu ${stateCheck}`}>
             <li className="nav-item">
-              <NavLink
-                to="/"
-                className="nav-link"
-                id="nav-link"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
+              <NavLink to="/" className="nav-link" id="nav-link" style={({ isActive }) => (isActive ? activeStyle : undefined)}>
                 Home
               </NavLink>
             </li>
 
             <li className="nav-item">
-              <NavLink
-                to="/faq"
-                className="nav-link"
-                id="nav-link"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                FAQ
+              <NavLink to="/faq" className="nav-link" id="nav-link" style={({ isActive }) => (isActive ? activeStyle : undefined)}>
+                About
               </NavLink>
             </li>
 
