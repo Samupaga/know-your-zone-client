@@ -163,7 +163,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
               chartType={'donut'}
               dataResponse={houseData}
               secondaryInfo={
-                `Hover over the chart slices to find out the different type of occupants you can expect to find in the borough of ${houseData.borough_name}`
+                `Hover over the chart slices to find out the different types of households you can expect to find in the borough of ${houseData.borough_name}`
               }
               imageSrc={
                 'https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg'

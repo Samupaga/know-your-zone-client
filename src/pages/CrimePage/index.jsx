@@ -121,7 +121,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             imageSrc={
               'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
             }
-            heading={'Counts of Crime Comparison'}
+            heading={'Difference in Crime Counts for the Past Year'}
             dataResponse={crimeStats}
             chartType={'bar'}
             secondaryInfo={'Hover over the bars to see the difference in crime counts between this borough and the average for all London boroughs'}

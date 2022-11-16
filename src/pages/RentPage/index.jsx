@@ -88,7 +88,7 @@ export default function RentPage({ navSearchSearching, motto }) {
             className={'left-column card navy rent-item-3'}
             value={`£${averageRent['rent_median']}`}
             smallNumber={'pcm'}
-            secondaryInfo={'is the average rent price across all accommodadtion types'}
+            secondaryInfo={'is the average rent price across all accommodation types'}
           />
 
           <div className='four-tile-wrapper right-column'>
