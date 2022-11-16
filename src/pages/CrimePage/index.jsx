@@ -1,10 +1,4 @@
-import {
-  BigNumberCard,
-  CardHIP,
-  CardHP,
-  Navbar,
-  InnerNav,
-} from "../../components";
+import { BigNumberCard, CardHIP, CardHP, Navbar, InnerNav } from "../../components";
 import "./crimePage.css";
 import { useState, useEffect } from "react";
 
@@ -21,9 +15,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
-      const response = await fetch(
-        `http://localhost:3000/crime/${boroughName}/average/latest`
-      );
+      const response = await fetch(`http://localhost:3000/crime/${boroughName}/average/latest`);
 
       const rawData = await response.json();
       const options = {
@@ -33,17 +25,10 @@ export default function SummaryPage({ navSearchSearching, motto }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          crimeTypes: [
-            "Burglary",
-            "Sexual Offences",
-            "Violence Against the Person",
-          ],
+          crimeTypes: ["Burglary", "Sexual Offences", "Violence Against the Person"],
         }),
       };
-      const crimeReponse = await fetch(
-        `http://localhost:3000/crime/${boroughName}`,
-        options
-      );
+      const crimeReponse = await fetch(`http://localhost:3000/crime/${boroughName}`, options);
       const crimeDataResponse = await crimeReponse.json();
       setCrimeData(rawData);
       setCrimeStats(crimeDataResponse);
@@ -62,12 +47,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             <em>"{motto}"</em>
           </h3>
           <InnerNav />
-          <motion.div
-            initial={{ x: 300, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -300, opacity: 0 }}
-            className="crime-tile-wrapper"
-          >
+          <motion.div initial={{ x: 300, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -300, opacity: 0 }} className="crime-tile-wrapper">
             <CardHIP
               className={"right-column card yellow"}
               imageSrc={
@@ -77,7 +57,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
               altImageText={"Sarah Soutoul"}
             />
             <CardHIP
-              className={"left-column card blue"}
+              className={"left-column card yellow"}
               imageSrc={
                 "https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA"
               }
@@ -106,9 +86,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             </div>
             <BigNumberCard
               className={"left-column card navy"}
-              value={`${Math.floor(
-                crimeData["six_month_crime_rate_per_1000"]
-              )}`}
+              value={`${Math.floor(crimeData["six_month_crime_rate_per_1000"])}`}
               smallNumber={"/1000"}
               secondaryInfo={"Average Crime Rate"}
             />
