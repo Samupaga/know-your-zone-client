@@ -19,6 +19,20 @@
   align-items: stretch;
 } */
 
+.demo-tile-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-template-rows: 2fr 1fr;
+  gap: 30px 10px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-bg-color);
+  border-radius: 5px 5px 20px 20px;
+  padding: 2rem;
+}
+
 .six-tile > .secondary-info {
   font-size: 0.9rem;
 }

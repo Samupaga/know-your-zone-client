@@ -138,16 +138,10 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
             initial={{ x: 300, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: -300, opacity: 0 }}
-            className='six-tile-wrapper'
+            className='demo-tile-wrapper'
           >
-            <CardHPH
-              className={'pink six-tile'}
-              heading={'Language'}
-              secondaryInfo={`The majority of people speak English but did you know the second most commonly spoken language in ${allData[0]['borough_name']} is ${summaryData['second_lang']}!`}
-              primaryInfo={`${getGreeting(summaryData['second_lang'])} 👋`}
-            />
             <CardHIP
-              className={'blue six-tile'}
+              className={'pink six-tile'}
               heading={'Population of people of each race'}
               dataResponse={allData[1]}
               chartType={'donut'}
@@ -158,7 +152,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
               }`}
             />
             <CardHIP
-              className={'yellow six-tile house-type'}
+              className={'blue six-tile house-type'}
               heading={'House Type'}
               secondaryInfo={
                 "Here's what the makeup of houses tend to look like"
@@ -169,7 +163,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
               altImageText={'Speedy gonzales'}
             />
             <CardHIP
-              className={'pink six-tile'}
+              className={'yellow six-tile'}
               heading={'Population of people following each faith'}
               chartType={'donut'}
               dataResponse={allData[0]}
@@ -177,6 +171,12 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
               secondaryInfo={`The largest religious group identify as ${biggestReligion()}. However, expect to see ${
                 summaryData['expect']
               } `}
+            />
+            <CardHPH
+              className={'pink six-tile'}
+              heading={'Language'}
+              secondaryInfo={`The majority of people speak English but did you know the second most commonly spoken language in ${allData[0]['borough_name']} is ${summaryData['second_lang']}!`}
+              primaryInfo={`${getGreeting(summaryData['second_lang'])} 👋`}
             />
             <CardHP
               className={'blue six-tile age'}
