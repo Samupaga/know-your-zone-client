@@ -1,12 +1,16 @@
+
 import {
   BigNumberCard,
   CardHIP,
   CardHP,
   Navbar,
   InnerNav,
-} from "../../components";
-import "./crimePage.css";
-import { useState, useEffect } from "react";
+} from '../../components';
+import './crimePage.css';
+import { useState, useEffect } from 'react';
+
+
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function SummaryPage({ navSearchSearching, motto }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +34,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
 
   //For later use - fetch request example
   // Get saved data from sessionStorage
-  let boroughName = sessionStorage.getItem("borough");
+  let boroughName = sessionStorage.getItem('borough');
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
@@ -40,12 +44,13 @@ export default function SummaryPage({ navSearchSearching, motto }) {
 
       const rawData = await response.json();
       const options = {
-        method: "POST",
+        method: 'POST',
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+
           crimeTypes: [
             "Burglary",
             "Sexual Offences",
@@ -59,12 +64,10 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             "Possession of Weapons",
             "Public Order Offences"
           ],
+
         }),
       };
-      const crimeReponse = await fetch(
-        `http://localhost:3000/crime/${boroughName}`,
-        options
-      );
+      const crimeReponse = await fetch(`http://localhost:3000/crime/${boroughName}`, options);
       const crimeDataResponse = await crimeReponse.json();
       setCrimeData(rawData);
       setCrimeRateBiannual(rawData.slice(5).reduce((prev, curr) => curr.crime_rate + prev, 0)/6)
@@ -78,13 +81,13 @@ export default function SummaryPage({ navSearchSearching, motto }) {
 
   if (isLoading === false) {
     return (
-      <div className="page-wrapper">
-        <h1>{boroughName}</h1>
-        <h3 className="motto">
-          <em>"{motto}"</em>
-        </h3>
-        <InnerNav />
-        <div className="crime-tile-wrapper">
+      <AnimatePresence>
+          <motion.div
+            initial={{ x: 300, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -300, opacity: 0 }}
+            className='crime-tile-wrapper'
+          >
           <CardHIP
             className={"right-column card yellow"}
             imageSrc={
@@ -96,7 +99,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             altImageText={"Sarah Soutoul"}
           />
           <CardHIP
-            className={"left-column card blue"}
+            className={"left-column card yellow"}
             imageSrc={
               "https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA"
             }
@@ -135,19 +138,19 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             smallNumber={"/1000"}
             secondaryInfo={"Average Crime Rate"}
           />
-        </div>
-      </div>
+        </motion.div>
+      </AnimatePresence>
     );
-  } else {
-    return (
-      <div className="page-wrapper">
-        <h1>Borough Info is loading...</h1>
-        <h3 className="motto">
-          <em>"We Serve"</em>
-        </h3>
-        <InnerNav />
-        <div className="rent-tile-wrapper"></div>
-      </div>
-    );
-  }
+  } // else {
+  //   return (
+  //     <div className="page-wrapper">
+  //       <h1>Borough Info is loading...</h1>
+  //       <h3 className="motto">
+  //         <em>"We Serve"</em>
+  //       </h3>
+  //       <InnerNav />
+  //       <div className="wellbeing-wrapper"></div>
+  //     </div>
+  //   );
+  // }
 }

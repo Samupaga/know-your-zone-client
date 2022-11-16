@@ -3,11 +3,9 @@ import "./demoPage.css";
 import { useState, useEffect } from "react";
 import greetings from "../../assets/greetings";
 
-export default function DemographicsPage({ navSearchSearching, motto }) {
-  let secondLanguage = "Hawaiian";
-  let recommendedSelection = "Tooting highstreet or Tooting market for a wide selection of authentic south asian cuisine!";
-  let secondLargestReligionRecommendations = "mosques around Wandsworth such as the first purpose-built mosque, Fazl Mosque in Southfields!";
+import { motion, AnimatePresence } from "framer-motion";
 
+export default function DemographicsPage({ navSearchSearching, motto }) {
   const [isLoading, setIsLoading] = useState(true);
   const [religionData, setReligionData] = useState([]);
   const [raceData, setRaceData] = useState([]);
@@ -56,6 +54,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
   function biggestReligion() {
     let arr = religionData;
     console.log(arr);
+
     if (arr["data"][1]["category"] != "no_religion" && arr["data"][1]["category"] != "other_religion") {
       secondReligion = arr["data"][1]["category"];
     } else if (arr["data"][2]["category"] != "no_religion" && arr["data"][2]["category"] != "other_religion") {
@@ -72,11 +71,14 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
 
   function secondRace() {
     let arr = raceData;
-    if (arr["data"][0]["category"] != "white") {
+    if (arr["data"][0]["category"] != "white" && arr["data"][0]["category"] != "other") {
       secondPopularRace = arr["data"][0]["category"];
-    } else if (arr["data"][1] != "white") {
+    } else if (arr["data"][1]["category"] != "white" && arr["data"][1]["category"] != "other") {
       secondPopularRace = arr["data"][1]["category"];
+    } else {
+      secondPopularRace = arr["data"][2]["category"];
     }
+
     let capitalizedRace = capitalizeFirstLetter(secondPopularRace);
     return capitalizedRace;
   }
@@ -122,13 +124,8 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
 
   if (isLoading === false) {
     return (
-      <div className="page-wrapper">
-        <h1>{religionData["borough_name"]}</h1>
-        <h3 className="motto">
-          <em>"{motto}"</em>
-        </h3>
-        <InnerNav />
-        <div className="six-tile-wrapper">
+     <AnimatePresence>
+      <motion.div initial={{ x: 300, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -300, opacity: 0 }} className="six-tile-wrapper">
           <CardHPH
             className={"pink six-tile"}
             heading={"Language"}
@@ -169,19 +166,19 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
             primaryInfo={`${100 < sexData["data"][0]["value"] ? "🙋‍♂️" : "🙋‍♀️"}`}
             secondaryInfo={`There are ${sexData["data"][0]["value"]} males to every 100 females!`}
           />
-        </div>
-      </div>
+        </motion.div>
+       </AnimatePresence>
     );
-  } else {
-    return (
-      <div className="page-wrapper">
-        <h1>Borough Info is loading...</h1>
-        <h3 className="motto">
-          <em>"We Serve"</em>
-        </h3>
-        <InnerNav />
-        <div className="six-tile-wrapper"></div>
-      </div>
-    );
-  }
+  } // else {
+  //   return (
+  //     <div className="page-wrapper">
+  //       <h1>Borough Info is loading...</h1>
+  //       <h3 className="motto">
+  //         <em>"We Serve"</em>
+  //       </h3>
+  //       <InnerNav />
+  //       <div className="wellbeing-wrapper"></div>
+  //     </div>
+  //   );
+  // }
 }

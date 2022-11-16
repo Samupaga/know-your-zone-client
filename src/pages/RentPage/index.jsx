@@ -1,3 +1,4 @@
+
 import {
   BigNumberCard,
   CardHIP,
@@ -7,6 +8,8 @@ import {
 } from '../../components';
 import './rentPage.css';
 import { useState, useEffect } from 'react';
+
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function RentPage({ navSearchSearching, motto }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -29,9 +32,7 @@ export default function RentPage({ navSearchSearching, motto }) {
       setAverageRent(averageRentPrice[0]);
       setRentHistory(averageRentPrice);
 
-      const responseTwo = await fetch(
-        `http://localhost:3000/rent/${boroughName}/accommodation`
-      );
+      const responseTwo = await fetch(`http://localhost:3000/rent/${boroughName}/accommodation`);
       const generalRentInfo = await responseTwo.json();
       setGeneralRent(generalRentInfo);
       setIsLoading(false);
@@ -44,13 +45,13 @@ export default function RentPage({ navSearchSearching, motto }) {
 
   if (isLoading === false) {
     return (
-      <div className='page-wrapper'>
-        <h1>{averageRent['borough_name']}</h1>
-        <h3 className='motto'>
-          <em>"{motto}"</em>
-        </h3>
-        <InnerNav />
-        <div className='rent-tile-wrapper'>
+      <AnimatePresence>
+          <motion.div
+            initial={{ x: 300, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -300, opacity: 0 }}
+            className='rent-tile-wrapper'
+          >
           <CardHIP
             className={'left-column card blue rent-item-1'}
             imageSrc={
@@ -90,7 +91,6 @@ export default function RentPage({ navSearchSearching, motto }) {
               className={'card pink four-tile rent-item-5'}
               heading={`£${generalRent[2]['rent_median']}`}
               secondaryInfo={'1 Bed'}
-            />
             <CardHP
               className={'card pink four-tile rent-item-6'}
               heading={`£${generalRent[4]['rent_median']}`}
@@ -102,19 +102,19 @@ export default function RentPage({ navSearchSearching, motto }) {
               secondaryInfo={'4+ Bed'}
             />
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </AnimatePresence>
     );
-  } else {
-    return (
-      <div className='page-wrapper'>
-        <h1>Borough Info is loading...</h1>
-        <h3 className='motto'>
-          <em>"We Serve"</em>
-        </h3>
-        <InnerNav />
-        <div className='rent-tile-wrapper'></div>
-      </div>
-    );
-  }
+  } // else {
+  //   return (
+  //     <div className="page-wrapper">
+  //       <h1>Borough Info is loading...</h1>
+  //       <h3 className="motto">
+  //         <em>"We Serve"</em>
+  //       </h3>
+  //       <InnerNav />
+  //       <div className="wellbeing-wrapper"></div>
+  //     </div>
+  //   );
+  // }
 }

@@ -3,11 +3,12 @@
 .hero-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
   align-items: center;
   text-align: center;
   background-color: var(--main-bg-color);
   gap: 1rem;
+  padding-top: 3rem;
 
   min-height: 92vh;
 }
@@ -28,9 +29,9 @@
 .skyline {
   display: flex;
   align-items: flex-end;
-  padding: 0 25px;
-  opacity: 0.3;
+  opacity: 0.6;
   width: 100%;
+  border-radius: 2px;
 }
 
 .search-container {
@@ -41,7 +42,7 @@
   padding: 1rem 2rem;
   background-color: var(--secondary-bg-color);
   gap: 1rem;
-  border-radius: 25px;
+  border-radius: 2px;
   justify-content: center;
   align-items: center;
 }
@@ -64,6 +65,7 @@
   font-size: 1.2rem;
   letter-spacing: 1.2px;
   width: 100%;
+  border-bottom: solid 1px rgb(252, 238, 240, 0.3);
 }
 
 .search-btn {
@@ -77,12 +79,15 @@
 }
 
 .dropdown {
+  position: absolute;
   display: flex;
   flex-direction: column;
   text-align: left;
   width: 100%;
   gap: 5px;
-  padding: 4px;
+  padding: 1rem 2rem;
+  top: 62px;
+  background-color: var(--secondary-bg-color);
 }
 
 .dropdown > a:hover {
@@ -103,10 +108,6 @@
 
   .hero-container {
     padding: 0 1rem;
-  }
-
-  h1 {
-    font-size: 3rem;
   }
 
   .search-container {
