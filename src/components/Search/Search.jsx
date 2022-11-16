@@ -64,14 +64,11 @@ function Search() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    //if (searchQuery === '') return;
-    try {
-      // Save data to sessionStorage
-      sessionStorage.setItem("borough", filteredBoroughList[0]);
-      navigate(`/borough/summary`);
-    } catch (error) {
-      navigate("/error", { state: { message: "Failed to submit form" } });
-    }
+    if (searchQuery === "") return;
+
+    // Save data to sessionStorage
+    sessionStorage.setItem("borough", filteredBoroughList[0]);
+    navigate(`/borough/summary`);
   }
 
   if (filteredBoroughList.length != 0) {

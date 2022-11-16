@@ -40,12 +40,10 @@ export default function WellbeingPage({ navSearchSearching, motto }) {
           >
             <div className='four-wellbeing'>
               <CardHPP
-                className={'pink four-tile'}
-                heading={'Worthwhile'}
-                primaryInfo={`${wellbeingData['data'][1]['value']}`}
-                secondaryInfo={
-                  'This is a measure of to what extent residents feel the things they do in their life are worthwhile, out of 10.'
-                }
+                className={"pink four-tile"}
+                heading={"Worthwhile"}
+                primaryInfo={`${wellbeingData["data"][1]["value"]}`}
+                secondaryInfo={`This is a measure of to what extent residents feel the things they do in their life are worthwhile, out of 10.`}
               />
               <CardHPP
                 className={'blue four-tile'}
