@@ -14,6 +14,14 @@
   height: 65vh;
 }
 
+.big-number {
+  font-size: 6rem;
+}
+
+.secondary-info {
+  font-size: 1.1rem;
+}
+
 /* TABLET STYLES 820px */
 
 @media (max-width: 1016px) {
