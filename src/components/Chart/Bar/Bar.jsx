@@ -9,12 +9,27 @@ const BarPlot = ({ chartData }) => {
         <Bar
           data={chartData}
           options={{
-              plugins: {
-                  title: {
-                      display: true,
-                      text: "Bar Chart"
-                  }
-              }
+            scales: {
+                x: {
+                    display: false
+                },
+                y: {
+                    ticks: {
+                        color: 'black'
+                    }
+                }
+            },
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                title: {
+                    display: true,
+                    text: "Bar Chart", 
+                    color: 'black'
+                }
+            }
           }}
         />
     

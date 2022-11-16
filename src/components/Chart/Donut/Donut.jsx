@@ -9,12 +9,16 @@ const Donut = ({ chartData }) => {
       <Doughnut
         data={chartData}
         options={{
-            plugins: {
-                title: {
-                    display: true,
-                    text: "Donut Chart"
-                }
+          plugins: {
+            legend: {
+              display: false, 
+            }, 
+            title: {
+              display: true,
+              text: "Donut Chart", 
+              color: 'black'
             }
+          }
         }}
       />
   
