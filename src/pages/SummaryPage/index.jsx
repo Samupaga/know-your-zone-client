@@ -56,7 +56,6 @@ export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
           <CardHIP
             className={"yellow six-tile"}
             heading={"Demographics"}
-            chartType={"donut"}
             imageSrc={"https://www.voxco.com/wp-content/uploads/2021/03/Demographic-Segmentation-1.jpg"}
             altImageText={"People standing on a pie chart"}
           />
