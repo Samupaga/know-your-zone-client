@@ -125,8 +125,8 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
             <CardHIP
               className={"blue six-tile"}
               heading={"Race"}
-              imageSrc={"https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"}
-              altImageText={"speedy gonzales"}
+              dataResponse={allData[0]}
+              chartType={"donut"}
               secondaryInfo={`${allData[0]["borough_name"]} is home to a large ${secondRace()} community. Be sure to check out ${
                 summaryData["checkout"]
               }`}
@@ -141,7 +141,8 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
             <CardHIP
               className={"pink six-tile"}
               heading={"Religion"}
-              imageSrc={"https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"}
+              chartType={"donut"}
+              dataResponse={allData[0]}
               altImageText={"Speedy gonzales"}
               secondaryInfo={`The largest religious group identify as ${biggestReligion()}. However, expect to see ${summaryData["expect"]} `}
             />
