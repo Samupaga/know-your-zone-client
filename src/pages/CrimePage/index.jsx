@@ -12,6 +12,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
   const [isLoading, setIsLoading] = useState(true);
   const [crimeData, setCrimeData] = useState([]);
   const [crimeStats, setCrimeStats] = useState([]);
+  const [crimeRateBiannual, setCrimeRateBiannual] = useState(null);
 
   //For later use - fetch request example
   // Get saved data from sessionStorage
@@ -52,6 +53,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
       );
       const crimeDataResponse = await crimeReponse.json();
       setCrimeData(rawData);
+      setCrimeRateBiannual(rawData.slice(5).reduce((prev, curr) => curr.crime_rate + prev, 0)/6)
       setCrimeStats(crimeDataResponse);
       setIsLoading(false);
     }
@@ -74,6 +76,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
               "https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA"
             }
             heading={"Division of Crime"}
+            dataResponse={crimeStats}
             chartType={'bar'}
             altImageText={"Sarah Soutoul"}
           />
@@ -83,7 +86,6 @@ export default function SummaryPage({ navSearchSearching, motto }) {
               "https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA"
             }
             altImageText={"Gantt Chart"}
-            dataResponse={crimeStats}
             chartType={'line'}
             secondaryInfo={"Trending crime rates for the past decade."}
           />
