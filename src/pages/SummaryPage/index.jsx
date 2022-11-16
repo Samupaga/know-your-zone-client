@@ -7,7 +7,7 @@ import { BigNumberCard, CardHIP, CardHPP, Navbar, Container, InnerNav } from "..
 
 import "./summary.css";
 
-export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
+export default function SummaryPage({ navSearchSearching }) {
   const [isLoading, setIsLoading] = useState(true);
   const [boroughData, setBoroughData] = useState([]);
   const [wellbeingScore, setWellbeingScore] = useState(0);
@@ -23,12 +23,14 @@ export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
         const response = await fetch(`http://localhost:3000/summary/${boroughName}`);
         const rawData = await response.json();
         setBoroughData(rawData);
-        setMotto(rawData["motto"]);
-        console.log("raw data", rawData);
+        // setMotto(rawData['motto']);
+        // console.log('raw data', rawData);
+
 
         const wellbeingResponse = await fetch(`http://localhost:3000/demographics/${boroughName}/wellbeing`);
         const wellbeingData = await wellbeingResponse.json();
-        setWellbeingScore(wellbeingData["data"][4]["value"]);
+        setWellbeingScore(wellbeingData['data'][4]['value']);
+
 
         setIsLoading(false);
       } catch (err) {
@@ -45,12 +47,11 @@ export default function SummaryPage({ navSearchSearching, motto, setMotto }) {
   if (isLoading === false) {
     return (
       <AnimatePresence>
-        <motion.div initial={{ x: 300, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -300, opacity: 0 }} className="page-wrapper">
-          <h1>{boroughData["borough_name"]}</h1>
-          <h3 className="motto">
-            <em>"{motto}"</em>
-          </h3>
-          <InnerNav />
+        <motion.div
+          initial={{ x: 300, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -300, opacity: 0 }}
+        >
           <div className="six-tile-wrapper">
             <BigNumberCard
               className={"yellow six-tile"}
