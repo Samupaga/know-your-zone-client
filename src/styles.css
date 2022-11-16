@@ -384,3 +384,7 @@ header {
     font-size: 3rem;
   }
 }
+
+.data-img {
+  width: 100%;
+}

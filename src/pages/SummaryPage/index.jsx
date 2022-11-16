@@ -68,9 +68,9 @@ export default function SummaryPage({ navSearchSearching }) {
         >
           <BigNumberCard
             className={"yellow six-tile"}
+            heading={"Average Rent"}
             value={`£${boroughData["average_monthly_rent"]}`}
             smallNumber={"pcm"}
-            secondaryInfo={"Average Rent"}
           />
           <CardHIP
             className={"blue six-tile"}
@@ -81,10 +81,11 @@ export default function SummaryPage({ navSearchSearching }) {
             altImageText={"People standing on a pie chart"}
           />
           <BigNumberCard
+            heading={"Average Crime Rate"}
             className={"pink six-tile"}
             value={Math.floor(boroughData["crime_rate_per_1000"])}
             smallNumber={"/1000"}
-            secondaryInfo={"Average Crime Rate"}
+            // secondaryInfo={"Average Crime Rate"}
           />
           <CardHPP
             className={"yellow six-tile"}
