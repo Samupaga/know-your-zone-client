@@ -15,30 +15,36 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
-      const langResponse = await fetch(
-        `http://localhost:3000/summary/${boroughName}`
-      );
-      const rawDataLang = await langResponse.json();
-      setSummaryData(rawDataLang);
+      try {
+        const langResponse = await fetch(
+          `http://localhost:3000/summary/${boroughName}`
+        );
+        const rawDataLang = await langResponse.json();
+        setSummaryData(rawDataLang);
 
-      // household data to then make graph
-      const response = await fetch(`http://localhost:3000/demographics/${boroughName}/household`)
-      let household = await response.json();
-      setHouseData(household);
+        //household data to then make graph
+        const response = await fetch(
+          `http://localhost:3000/demographics/${boroughName}/household`
+        );
+        let household = await response.json();
+        setHouseData(household);
 
-      let requestArray = [
-        fetch(`http://localhost:3000/demographics/${boroughName}/religion`),
-        fetch(`http://localhost:3000/demographics/${boroughName}/ethnicity`),
-        fetch(`http://localhost:3000/demographics/${boroughName}/age`),
-        fetch(`http://localhost:3000/demographics/${boroughName}/sex`),
-      ];
+        let requestArray = [
+          fetch(`http://localhost:3000/demographics/${boroughName}/religion`),
+          fetch(`http://localhost:3000/demographics/${boroughName}/ethnicity`),
+          fetch(`http://localhost:3000/demographics/${boroughName}/age`),
+          fetch(`http://localhost:3000/demographics/${boroughName}/sex`),
+        ];
 
-      let responses = await Promise.all(requestArray);
-      let data = await Promise.all(
-        responses.map(async (response) => await response.json())
-      );
-      setAllData(data);
-      setIsLoading(false);
+        let responses = await Promise.all(requestArray);
+        let data = await Promise.all(
+          responses.map(async (response) => await response.json())
+        );
+        setAllData(data);
+        setIsLoading(false);
+      } catch (err) {
+        console.log(err);
+      }
     }
 
     getBoroughInfo();
@@ -58,7 +64,6 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
 
   function biggestReligion() {
     let arr = allData[0];
-    console.log(arr);
 
     if (
       arr['data'][0]['category'] != 'no_religion' &&
@@ -162,20 +167,16 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
               heading={'Household Composition'}
               chartType={'donut'}
               dataResponse={houseData}
-              secondaryInfo={
-                `Hover over the chart slices to find out the different types of households you can expect to find in the borough of ${houseData.borough_name}`
-              }
+              secondaryInfo={`Hover over the chart slices to find out the different types of households you can expect to find in the borough of ${boroughName}.`}
               imageSrc={
                 'https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg'
               }
-              altImageText={'Speedy gonzales'}
             />
             <CardHIP
               className={'yellow six-tile'}
               heading={'Population of people following each faith'}
               chartType={'donut'}
               dataResponse={allData[0]}
-              altImageText={'Speedy gonzales'}
               secondaryInfo={`The largest religious group identify as ${biggestReligion()}. However, expect to see ${
                 summaryData['expect']
               } `}

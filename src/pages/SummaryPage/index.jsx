@@ -24,6 +24,7 @@ export default function SummaryPage({ navSearchSearching }) {
   const [boroughData, setBoroughData] = useState([]);
   const [wellbeingScore, setWellbeingScore] = useState(0);
   const [boroughFound, setBoroughFound] = useState(true);
+  const [dataVisualisationdData, setDataVisualisationData] = useState([]);
   const navigate = useNavigate();
   //For later use - fetch request example
   // Get saved data from sessionStorage
@@ -37,6 +38,12 @@ export default function SummaryPage({ navSearchSearching }) {
         );
         const rawData = await response.json();
         setBoroughData(rawData);
+
+        const dataVisualisation = await fetch(
+          `http://localhost:3000/demographics/${boroughName}/ethnicity`
+        );
+        const visualisationPoints = await dataVisualisation.json();
+        setDataVisualisationData(visualisationPoints);
         // setMotto(rawData['motto']);
         // console.log('raw data', rawData);
 
@@ -75,11 +82,9 @@ export default function SummaryPage({ navSearchSearching }) {
           />
           <CardHIP
             className={'blue six-tile'}
-            heading={'Demographics'}
-            imageSrc={
-              'https://www.voxco.com/wp-content/uploads/2021/03/Demographic-Segmentation-1.jpg'
-            }
-            altImageText={'People standing on a pie chart'}
+            heading={'Population of people of each race'}
+            dataResponse={dataVisualisationdData}
+            chartType={'donut'}
           />
           <BigNumberCard
             className={'pink six-tile'}
@@ -105,9 +110,9 @@ export default function SummaryPage({ navSearchSearching }) {
           />
 
           <CardHEI
-            className={"blue six-tile"}
-            heading={"Wellbeing"}
-            emoji={`${wellbeingScore > 7.3 ? "😎" : "🙂"}`}
+            className={'blue six-tile'}
+            heading={'Wellbeing'}
+            emoji={`${wellbeingScore > 7.3 ? '😎' : '🙂'}`}
             secondaryInfo={`${wellbeingScore} on the wellbeing score!`}
           />
           <CardHPP

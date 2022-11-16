@@ -60,6 +60,14 @@
   height: 100%;
 }
 
+.four-tile-wrapper .card-heading {
+  font-size: 3rem;
+}
+
+.four-tile-wrapper > .four-tile .secondary-info {
+  font-size: 1rem;
+}
+
 @media (max-width: 600px) {
   .four-tile-wrapper {
     grid-template-columns: 1fr;

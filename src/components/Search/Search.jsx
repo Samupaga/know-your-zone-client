@@ -46,7 +46,6 @@ function Search() {
   function searchBoroughList() {
     let query = searchInputRef.current.value;
     setSearchQuery(query);
-    console.log('search query', searchQuery);
     setFilteredBoroughList(
       boroughList.filter((borough) =>
         borough.toLowerCase().includes(searchQuery.toLowerCase())
@@ -55,7 +54,6 @@ function Search() {
   }
 
   function searchClick(e) {
-    console.log('search click called');
     filteredBoroughList[0] = e.target.id;
     sessionStorage.setItem('borough', filteredBoroughList[0]);
     navigate(`/borough/summary`);

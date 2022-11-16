@@ -124,23 +124,22 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             heading={'Difference in Crime Counts for the Past Year'}
             dataResponse={crimeStats}
             chartType={'bar'}
-            secondaryInfo={'Hover over the bars to see the difference in crime counts between this borough and the average for all London boroughs'}
-            altImageText={'Sarah Soutoul'}
+            secondaryInfo={
+              'Hover over the bars to see the difference in crime counts between this borough and the average for all London boroughs'
+            }
           />
           <CardHIP
             heading={'Monthly crime rate'}
             className={'left-column card yellow'}
-            imageSrc={
-              'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
-            }
-            altImageText={'Gantt Chart'}
             dataResponse={crimeData.reverse().map((elem) => elem.crime_rate)}
             chartType={'line'}
             xAxisTitle={xAxisTitle}
             yAxisTitle={yAxisTitle}
             londonLabels={londonLabels}
             londonData={londonCrimeRate}
-            secondaryInfo={'Hover over the markers to see the monthly crime rate in both this borough and London for the last 2 years'}
+            secondaryInfo={
+              'Hover over the markers to see the monthly crime rate in both this borough and London for the last 2 years'
+            }
           />
           <div className='three-tile-wrapper right-column'>
             <p className='card-heading last-year'>In the Last Year</p>
@@ -166,7 +165,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             className={'left-column card navy'}
             value={`${crimeRateBiannual.toFixed(2)}`}
             smallNumber={'/1000'}
-            secondaryInfo={'average crime rate for the last 6 months'}
+            secondaryInfo={'Average crime rate for the last 6 months'}
           />
         </motion.div>
       </AnimatePresence>
