@@ -256,6 +256,7 @@ header {
   width: 100%;
   gap: 1rem;
   box-shadow: rgba(255, 255, 255, 0.16) 1px 1px 10px 1px;
+  word-wrap: break-word;
 }
 
 .yellow {
@@ -383,4 +384,8 @@ header {
   h1 {
     font-size: 3rem;
   }
+}
+
+.data-img {
+  width: 100%;
 }
