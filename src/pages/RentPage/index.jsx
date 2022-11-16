@@ -19,7 +19,7 @@ export default function RentPage({ navSearchSearching, motto }) {
   const [rentHistory, setRentHistory] = useState([]);
 
   const xAxisTitle = "Period Covering 2018/09 to 2022/03"
-  const yAxisTitle = "£"
+  const yAxisTitle = "£ per Month"
 
   const londonLabels = ['2018/09-2019/09', '2019/03-2020/03', '2019/09-2020/09', '2020/03-2021/03' , '2020/09-2021/09', '2021/03-2022/03'];
   //For later use - fetch request example

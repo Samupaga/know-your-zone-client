@@ -30,7 +30,7 @@ const CardHIP = ({
         data: values, 
         borderColor: 'black', 
         backgroundColor: [
-          'yellow'
+          'rgba(255, 205, 86)'
         ]
       }
     ]
@@ -39,9 +39,9 @@ const CardHIP = ({
       dataSets.push({ 
         label: 'London', 
         data: londonData,
-        borderColor: 'rgb(255, 99, 132)', 
+        borderColor: 'black', 
         backgroundColor: [
-          'rgb(255, 99, 132)'
+          'rgb(54, 162, 235)'
         ],
         
       })
@@ -67,8 +67,10 @@ const CardHIP = ({
             data: values,
             backgroundColor: [
               'rgb(255, 99, 132)',
+              'rgb(75, 192, 192)',
+              'rgb(255, 205, 86)',
               'rgb(54, 162, 235)',
-              'rgb(255, 205, 86)'
+              'rgb(201, 203, 207)',
             ]
           }
         ]
@@ -95,7 +97,17 @@ const CardHIP = ({
         { 
           data: values, 
           backgroundColor: [
-            'rgba(53, 162, 235, 0.5)'
+            '#0085ad', 
+            '#af272f',
+            '#444444',
+            '#3b99ed', 
+            '#743161',
+            '#522506',
+            '#fd7f1c',
+            '#4c8c2b',
+            '#cb6356',
+            '#5E4C6C',
+            '#191970',
           ]
         }
       ]

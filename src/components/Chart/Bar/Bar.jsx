@@ -25,7 +25,7 @@ const BarPlot = ({ chartData }) => {
                     display: false,
                 },
                 title: {
-                    display: true,
+                    display: false,
                     text: "Bar Chart", 
                     color: 'black'
                 }

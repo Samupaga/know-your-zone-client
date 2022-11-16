@@ -14,7 +14,7 @@ const Donut = ({ chartData }) => {
               display: false, 
             }, 
             title: {
-              display: true,
+              display: false,
               text: "Donut Chart", 
               color: 'black'
             }
