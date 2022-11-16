@@ -91,6 +91,7 @@ export default function RentPage({ navSearchSearching, motto }) {
               className={'card pink four-tile rent-item-5'}
               heading={`£${generalRent[2]['rent_median']}`}
               secondaryInfo={'1 Bed'}
+            />
             <CardHP
               className={'card pink four-tile rent-item-6'}
               heading={`£${generalRent[4]['rent_median']}`}
