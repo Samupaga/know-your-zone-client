@@ -124,7 +124,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             heading={'Counts of Crime Comparison'}
             dataResponse={crimeStats}
             chartType={'bar'}
-            secondaryInfo={'Hover over the bars to see the difference in crime counts between this borough and the London average'}
+            secondaryInfo={'Hover over the bars to see the difference in crime counts between this borough and the average for all London boroughs'}
             altImageText={'Sarah Soutoul'}
           />
           <CardHIP
