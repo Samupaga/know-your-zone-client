@@ -35,6 +35,14 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             "Burglary",
             "Sexual Offences",
             "Violence Against the Person",
+            "Theft",
+            "Robbery",
+            "Arson and Criminal Damage",
+            "Drug Offences",
+            "Vehicle Offences",
+            "Miscellaneous Crimes Against Society",
+            "Possession of Weapons",
+            "Public Order Offences"
           ],
         }),
       };
@@ -75,6 +83,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
               "https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA"
             }
             altImageText={"Gantt Chart"}
+            dataResponse={crimeStats}
             chartType={'line'}
             secondaryInfo={"Trending crime rates for the past decade."}
           />
