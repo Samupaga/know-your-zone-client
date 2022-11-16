@@ -14,7 +14,6 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "chart.js": "^3.9.1",
-    "esbuild-windows-64": "^0.15.14",
     "framer-motion": "^7.6.6",
     "react": "^18.2.0",
     "react-chartjs-2": "^4.3.1",
