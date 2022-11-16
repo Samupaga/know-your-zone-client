@@ -4,13 +4,11 @@ import {
   CardHP,
   Navbar,
   InnerNav,
+} from '../../components';
+import './rentPage.css';
+import { useState, useEffect } from 'react';
 
-} from "../../components";
-import "./rentPage.css";
-import { useState, useEffect } from "react";
-
-import { motion, AnimatePresence } from "framer-motion";
-
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function RentPage({ navSearchSearching, motto }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,10 +19,17 @@ export default function RentPage({ navSearchSearching, motto }) {
   const xAxisTitle = "Period Covering 2018/09 to 2022/03"
   const yAxisTitle = "£ per Month"
 
-  const londonLabels = ['2018/09-2019/09', '2019/03-2020/03', '2019/09-2020/09', '2020/03-2021/03' , '2020/09-2021/09', '2021/03-2022/03'];
+  const londonLabels = [
+    '2018/09-2019/09',
+    '2019/03-2020/03',
+    '2019/09-2020/09',
+    '2020/03-2021/03',
+    '2020/09-2021/09',
+    '2021/03-2022/03',
+  ];
   //For later use - fetch request example
   // Get saved data from sessionStorage
-  let boroughName = sessionStorage.getItem("borough");
+  let boroughName = sessionStorage.getItem('borough');
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
@@ -49,20 +54,19 @@ export default function RentPage({ navSearchSearching, motto }) {
   if (isLoading === false) {
     return (
       <AnimatePresence>
-
         <motion.div
           initial={{ x: 300, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: -300, opacity: 0 }}
-          className="rent-tile-wrapper"
+          className='rent-tile-wrapper'
         >
           <CardHIP
-            className={"left-column card blue rent-item-1"}
+            className={'left-column card blue rent-item-1'}
             imageSrc={
-              "https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA"
+              'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
             }
-            altImageText={"Gantt Chart"}
-            secondaryInfo={"Trending rent for the past decade."}
+            altImageText={'Gantt Chart'}
+            secondaryInfo={'Median rent across all accommodation types'}
             chartType={'line'}
             londonLabels={londonLabels}
             dataResponse={rentHistory.reverse().map((elem) => elem.rent_median)}
@@ -70,44 +74,42 @@ export default function RentPage({ navSearchSearching, motto }) {
             yAxisTitle={yAxisTitle}
           />
           <CardHIP
-            className={"right-column card blue rent-item-2"}
+            className={'right-column card blue rent-item-2'}
             // imageSrc={
             //   'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
             // }
-            chartType={"donut"}
-            heading={"Split of some data."}
-            altImageText={"Sarah Soutoul"}
+            chartType={'donut'}
+            heading={'Split of some data'}
+            altImageText={'Sarah Soutoul'}
           />
 
           <BigNumberCard
-            className={"left-column card navy rent-item-3"}
-            value={`£${averageRent["rent_median"]}`}
-            smallNumber={"pcm"}
-            secondaryInfo={"Average Rent"}
+            className={'left-column card navy rent-item-3'}
+            value={`£${averageRent['rent_median']}`}
+            smallNumber={'pcm'}
+            secondaryInfo={'Average rent across all accommodation types'}
           />
 
-          <div className="four-tile-wrapper right-column">
+          <div className='four-tile-wrapper right-column'>
             <CardHP
-              className={"card pink four-tile rent-item-4"}
-              heading={`£${generalRent[0]["rent_median"]}`}
-              secondaryInfo={"Single Room"}
+              className={'card pink four-tile rent-item-4'}
+              heading={`£${generalRent[0]['rent_median']}`}
+              secondaryInfo={'Single Room'}
             />
             <CardHP
-              className={"card pink four-tile rent-item-5"}
-              heading={`£${generalRent[2]["rent_median"]}`}
-              secondaryInfo={"1 Bed"}
+              className={'card pink four-tile rent-item-5'}
+              heading={`£${generalRent[2]['rent_median']}`}
+              secondaryInfo={'1 Bed'}
             />
             <CardHP
-              className={"card pink four-tile rent-item-6"}
-              heading={`£${generalRent[4]["rent_median"]}`}
-              secondaryInfo={"3 Bed"}
+              className={'card pink four-tile rent-item-6'}
+              heading={`£${generalRent[4]['rent_median']}`}
+              secondaryInfo={'3 Bed'}
             />
             <CardHP
-              className={"card pink four-tile rent-item-7"}
-              heading={`£${generalRent[5]["rent_median"]}`}
-              secondaryInfo={"4+ Bed"}
-
-          
+              className={'card pink four-tile rent-item-7'}
+              heading={`£${generalRent[5]['rent_median']}`}
+              secondaryInfo={'4+ Bed'}
             />
           </div>
         </motion.div>
