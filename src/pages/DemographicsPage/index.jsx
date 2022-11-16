@@ -149,6 +149,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
 
   if (isLoading === false) {
     return (
+
       <AnimatePresence>
         <motion.div
           initial={{ x: 300, opacity: 0 }}
@@ -156,6 +157,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
           exit={{ x: -300, opacity: 0 }}
           className="six-tile-wrapper"
         >
+
           <CardHPH
             className={"pink six-tile"}
             heading={"Language"}
@@ -163,34 +165,28 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
             primaryInfo={`${getGreeting(summaryData["second_lang"])} 👋`}
           />
           <CardHIP
-            className={"blue six-tile"}
-            heading={"Race"}
-            imageSrc={
-              "https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"
-            }
-            altImageText={"speedy gonzales"}
-            secondaryInfo={`${
-              religionData["borough_name"]
-            } is home to a large ${secondRace()} community. Be sure to check out ${
-              summaryData["checkout"]
-            }`}
+
+            className={'blue six-tile'}
+            heading={'Race'}
+            dataResponse={raceData}
+            chartType={'donut'}
+            secondaryInfo={`${religionData["borough_name"]} is home to a large ${secondRace()} community. Be sure to check out ${
+                summaryData["checkout"]
+              }`}
+
           />
           <CardHIP
             className={"yellow six-tile house-type"}
             heading={"House Type"}
             secondaryInfo={"Here's what the makeup of houses tend to look like"}
-            imageSrc={
-              "https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"
-            }
-            altImageText={"Speedy gonzales"}
+
+            
           />
           <CardHIP
             className={"pink six-tile"}
             heading={"Religion"}
-            imageSrc={
-              "https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"
-            }
-            altImageText={"Speedy gonzales"}
+           chartType={'donut'}
+            dataResponse={religionData}
             secondaryInfo={`The largest religious group identify as ${biggestReligion()}. However, expect to see ${
               summaryData["expect"]
             } `}
@@ -208,12 +204,15 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
           />
           <CardHPP
             className={"yellow six-tile"}
+
             heading={"Sex"}
             primaryInfo={`${100 < sexData["data"][0]["value"] ? "🙋‍♂️" : "🙋‍♀️"}`}
             secondaryInfo={`There are ${sexData["data"][0]["value"]} males to every 100 females!`}
           />
         </motion.div>
+
       </AnimatePresence>
+
     );
   } // else {
   //   return (
