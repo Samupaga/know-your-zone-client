@@ -67,6 +67,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
       );
       const crimeDataResponse = await crimeReponse.json();
       setCrimeData(rawData);
+      setCrimeRateBiannual(rawData.slice(5).reduce((prev, curr) => curr.crime_rate + prev, 0)/6)
       setCrimeStats(crimeDataResponse);
       setCrimeRateBiannual(rawData.slice(0, 6).reduce((prev, curr) => curr.crime_rate + prev, 0)/6)
       setIsLoading(false);
