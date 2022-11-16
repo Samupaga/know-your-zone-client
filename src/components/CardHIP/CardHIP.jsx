@@ -22,20 +22,25 @@ const CardHIP = ({
 
     const dataSets = [
       {
-        label: 'borough',
-        data: values,
-        borderColor: 'black',
-        backgroundColor: ['yellow'],
-      },
-    ];
+        label: 'borough', 
+        data: values, 
+        borderColor: 'black', 
+        backgroundColor: [
+          'rgba(255, 205, 86)'
+        ]
+      }
+    ]
 
     if (londonData !== null) {
       dataSets.push({
         label: 'London',
         data: londonData,
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: ['rgb(255, 99, 132)'],
-      });
+        borderColor: 'black', 
+        backgroundColor: [
+          'rgb(54, 162, 235)'
+        ],
+        
+      })
     }
 
     const chartOptions = {
@@ -57,12 +62,14 @@ const CardHIP = ({
             data: values,
             backgroundColor: [
               'rgb(255, 99, 132)',
-              'rgb(54, 162, 235)',
+              'rgb(75, 192, 192)',
               'rgb(255, 205, 86)',
-            ],
-          },
-        ],
-      };
+              'rgb(54, 162, 235)',
+              'rgb(201, 203, 207)',
+            ]
+          }
+        ]
+      }
 
       setChartData(chartOptions);
     }
@@ -100,14 +107,26 @@ const CardHIP = ({
     const chartOptions = {
       labels: londonLabels,
       datasets: [
-        {
-          data: values,
-          backgroundColor: ['rgba(53, 162, 235, 0.5)'],
-        },
-      ],
-    };
-    setChartData(chartOptions);
-  };
+        { 
+          data: values, 
+          backgroundColor: [
+            '#0085ad', 
+            '#af272f',
+            '#444444',
+            '#3b99ed', 
+            '#743161',
+            '#522506',
+            '#fd7f1c',
+            '#4c8c2b',
+            '#cb6356',
+            '#5E4C6C',
+            '#191970',
+          ]
+        }
+      ]
+    }
+    setChartData(chartOptions)
+  }
 
   useEffect(() => {
     if (chartType === 'donut') {

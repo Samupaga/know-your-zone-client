@@ -164,7 +164,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
           </div>
           <BigNumberCard
             className={'left-column card navy'}
-            value={`${Math.floor(crimeRateBiannual)}`}
+            value={`${crimeRateBiannual.toFixed(2)}`}
             smallNumber={'/1000'}
             secondaryInfo={'Average crime rate over the last six months'}
           />

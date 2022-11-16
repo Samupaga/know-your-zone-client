@@ -22,44 +22,46 @@ ChartJS.register(
 
 const LinePlot = ({ chartData, xAxisTitle, yAxisTitle }) => {
   return (
-    <Line
-      data={chartData}
+    <Line 
+
+      data={chartData} 
       options={{
         scales: {
-          x: {
+          x : {
             ticks: {
-              display: false,
-            },
+              display: false
+            }, 
             title: {
-              display: true,
-              text: xAxisTitle,
-              color: "black",
-            },
-          },
-          y: {
+              display: true, 
+              text: xAxisTitle, 
+              color: 'black'
+            }
+          }, 
+          y : {
             ticks: {
-              color: "black",
-            },
+              display: false
+            }, 
             title: {
-              display: true,
-              text: yAxisTitle,
-              color: "black",
-            },
-          },
-        },
-        responsive: true,
+              display: true, 
+              text: yAxisTitle, 
+              color: 'black'
+            }
+          }
+        }, 
+        responsive: true, 
         plugins: {
           legend: {
-            position: "right",
             display: false,
-          },
+          }, 
           title: {
-            display: true,
-            text: "Line Chart",
-            color: "black",
-          },
-        },
+            display: false, 
+            text: 'Line Chart', 
+            color: 'black'
+          }
+        } 
+        
       }}
+    
     />
   );
 };

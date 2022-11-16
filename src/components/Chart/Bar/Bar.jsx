@@ -16,6 +16,11 @@ const BarPlot = ({ chartData }) => {
                 y: {
                     ticks: {
                         color: 'black'
+                    }, 
+                    title: {
+                        text: 'Crime Counts', 
+                        display: true, 
+                        color: 'black'
                     }
                 }
             },
@@ -25,7 +30,7 @@ const BarPlot = ({ chartData }) => {
                     display: false,
                 },
                 title: {
-                    display: true,
+                    display: false,
                     text: "Bar Chart", 
                     color: 'black'
                 }
