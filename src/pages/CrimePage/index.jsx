@@ -121,14 +121,14 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             imageSrc={
               'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
             }
-            heading={'Crime counts relative to borough average'}
+            heading={'Difference in Crime Counts for the Past Year'}
             dataResponse={crimeStats}
             chartType={'bar'}
-            secondaryInfo={'Hover over the chart to see more information'}
+            secondaryInfo={'Hover over the bars to see the difference in crime counts between this borough and the average for all London boroughs'}
             altImageText={'Sarah Soutoul'}
           />
           <CardHIP
-            heading={'Monthly crime rate over the last two years'}
+            heading={'Monthly crime rate'}
             className={'left-column card yellow'}
             imageSrc={
               'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
@@ -140,7 +140,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             yAxisTitle={yAxisTitle}
             londonLabels={londonLabels}
             londonData={londonCrimeRate}
-            secondaryInfo={'Current borough compared to London'}
+            secondaryInfo={'Hover over the markers to see the monthly crime rate in both this borough and London for the last 2 years'}
           />
           <div className='three-tile-wrapper right-column'>
             <p className='card-heading last-year'>In the Last Year</p>
@@ -148,7 +148,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
               <CardHP
                 className={'pink three-tile'}
                 heading={`${Math.floor(crimeStats[0]['offence_count'])}`}
-                secondaryInfo={'Counts of Burglary'}
+                secondaryInfo={'Counts of burglary'}
               />
               <CardHP
                 className={'pink three-tile'}
@@ -166,7 +166,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             className={'left-column card navy'}
             value={`${crimeRateBiannual.toFixed(2)}`}
             smallNumber={'/1000'}
-            secondaryInfo={'Average crime rate over the last six months'}
+            secondaryInfo={'average crime rate for the last 6 months'}
           />
         </motion.div>
       </AnimatePresence>

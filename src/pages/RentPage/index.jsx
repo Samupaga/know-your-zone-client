@@ -66,7 +66,8 @@ export default function RentPage({ navSearchSearching, motto }) {
               'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
             }
             altImageText={'Gantt Chart'}
-            secondaryInfo={'Median rent across all accommodation types'}
+            heading={'Median Rent'}
+            secondaryInfo={'Median rent paid across all house types for the last 4 years'}
             chartType={'line'}
             londonLabels={londonLabels}
             dataResponse={rentHistory.reverse().map((elem) => elem.rent_median)}
@@ -87,7 +88,7 @@ export default function RentPage({ navSearchSearching, motto }) {
             className={'left-column card navy rent-item-3'}
             value={`£${averageRent['rent_median']}`}
             smallNumber={'pcm'}
-            secondaryInfo={'Average rent across all accommodation types'}
+            secondaryInfo={'is the average rent price across all accommodation types'}
           />
 
           <div className='four-tile-wrapper right-column'>
