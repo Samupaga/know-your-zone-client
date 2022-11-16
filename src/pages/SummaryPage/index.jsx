@@ -11,6 +11,7 @@ import {
   BigNumberCard,
   CardHIP,
   CardHPP,
+  CardHEI,
   Navbar,
   Container,
   InnerNav,
@@ -102,10 +103,11 @@ export default function SummaryPage({ navSearchSearching }) {
                 : 'Above London Average'
             }`}
           />
-          <CardHPP
-            className={'blue six-tile'}
-            heading={'Wellbeing'}
-            primaryInfo={`${wellbeingScore > 7.3 ? '😎' : '🙂'}`}
+
+          <CardHEI
+            className={"blue six-tile"}
+            heading={"Wellbeing"}
+            emoji={`${wellbeingScore > 7.3 ? "😎" : "🙂"}`}
             secondaryInfo={`${wellbeingScore} on the wellbeing score!`}
           />
           <CardHPP
