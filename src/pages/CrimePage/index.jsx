@@ -1,16 +1,14 @@
-
 import {
   BigNumberCard,
   CardHIP,
   CardHP,
   Navbar,
   InnerNav,
-} from '../../components';
-import './crimePage.css';
-import { useState, useEffect } from 'react';
+} from "../../components";
+import "./crimePage.css";
+import { useState, useEffect } from "react";
 
-
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function SummaryPage({ navSearchSearching, motto }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,27 +32,29 @@ export default function SummaryPage({ navSearchSearching, motto }) {
 
   //For later use - fetch request example
   // Get saved data from sessionStorage
-  let boroughName = sessionStorage.getItem('borough');
+  let boroughName = sessionStorage.getItem("borough");
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
       const response = await fetch(
+
         `http://localhost:3000/crime/${boroughName}/average/history`
+
       );
 
       const rawData = await response.json();
       const options = {
-        method: 'POST',
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-
           crimeTypes: [
             "Burglary",
             "Sexual Offences",
             "Violence Against the Person",
+
             "Theft",
             "Robbery",
             "Arson and Criminal Damage",
@@ -63,11 +63,14 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             "Miscellaneous Crimes Against Society",
             "Possession of Weapons",
             "Public Order Offences"
-          ],
 
+          ],
         }),
       };
-      const crimeReponse = await fetch(`http://localhost:3000/crime/${boroughName}`, options);
+      const crimeReponse = await fetch(
+        `http://localhost:3000/crime/${boroughName}`,
+        options
+      );
       const crimeDataResponse = await crimeReponse.json();
       setCrimeData(rawData);
       setCrimeRateBiannual(rawData.slice(5).reduce((prev, curr) => curr.crime_rate + prev, 0)/6)
@@ -82,20 +85,24 @@ export default function SummaryPage({ navSearchSearching, motto }) {
   if (isLoading === false) {
     return (
       <AnimatePresence>
+
           <motion.div
             initial={{ x: 300, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: -300, opacity: 0 }}
             className='crime-tile-wrapper'
           >
+
           <CardHIP
             className={"right-column card yellow"}
             imageSrc={
               "https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA"
             }
             heading={"Division of Crime"}
+
             dataResponse={crimeStats}
             chartType={'bar'}
+
             altImageText={"Sarah Soutoul"}
           />
           <CardHIP
@@ -104,12 +111,14 @@ export default function SummaryPage({ navSearchSearching, motto }) {
               "https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA"
             }
             altImageText={"Gantt Chart"}
+
             dataResponse={crimeData.reverse().map((elem) => elem.crime_rate)}
             chartType={'line'}
             xAxisTitle={xAxisTitle}
             yAxisTitle={yAxisTitle}
             londonLabels={londonLabels}
             londonData={londonCrimeRate}
+
             secondaryInfo={"Trending crime rates for the past decade."}
           />
           <div className="three-tile-wrapper right-column">
@@ -134,7 +143,9 @@ export default function SummaryPage({ navSearchSearching, motto }) {
           </div>
           <BigNumberCard
             className={"left-column card navy"}
+
             value={`${Math.floor(crimeRateBiannual)}`}
+
             smallNumber={"/1000"}
             secondaryInfo={"Average Crime Rate"}
           />
