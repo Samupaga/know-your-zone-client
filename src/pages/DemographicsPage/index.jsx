@@ -6,12 +6,6 @@ import greetings from '../../assets/greetings';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function DemographicsPage({ navSearchSearching, motto }) {
-  let secondLanguage = 'Hawaiian';
-  let recommendedSelection =
-    'Tooting highstreet or Tooting market for a wide selection of authentic south asian cuisine!';
-  let secondLargestReligionRecommendations =
-    'mosques around Wandsworth such as the first purpose-built mosque, Fazl Mosque in Southfields!';
-
   const [isLoading, setIsLoading] = useState(true);
   const [religionData, setReligionData] = useState([]);
   const [raceData, setRaceData] = useState([]);
@@ -23,26 +17,16 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
-      const response = await fetch(
-        `http://localhost:3000/demographics/${boroughName}/religion`
-      );
+      const response = await fetch(`http://localhost:3000/demographics/${boroughName}/religion`);
       const rawDataReligion = await response.json();
-      const ethnicityResponse = await fetch(
-        `http://localhost:3000/demographics/${boroughName}/ethnicity`
-      );
+      const ethnicityResponse = await fetch(`http://localhost:3000/demographics/${boroughName}/ethnicity`);
       const ethnicityResponseData = await ethnicityResponse.json();
 
-      const ageResponse = await fetch(
-        `http://localhost:3000/demographics/${boroughName}/age`
-      );
+      const ageResponse = await fetch(`http://localhost:3000/demographics/${boroughName}/age`);
       const rawDataAge = await ageResponse.json();
-      const sexResponse = await fetch(
-        `http://localhost:3000/demographics/${boroughName}/sex`
-      );
+      const sexResponse = await fetch(`http://localhost:3000/demographics/${boroughName}/sex`);
       const rawDataSex = await sexResponse.json();
-      const langResponse = await fetch(
-        `http://localhost:3000/summary/${boroughName}`
-      );
+      const langResponse = await fetch(`http://localhost:3000/summary/${boroughName}`);
       const rawDataLang = await langResponse.json();
       setReligionData(rawDataReligion);
       setRaceData(ethnicityResponseData);
@@ -70,6 +54,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
   function biggestReligion() {
     let arr = religionData;
     console.log(arr);
+
     if (
       arr['data'][1]['category'] != 'no_religion' &&
       arr['data'][1]['category'] != 'other_religion'
@@ -85,6 +70,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
       arr['data'][3]['category'] != 'other_religion'
     ) {
       secondReligion = arr['data'][3]['category'];
+
     }
     console.log('second largest religion is', secondReligion);
     let capitalizedReligion = capitalizeFirstLetter(secondReligion);
@@ -163,57 +149,46 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
             className='six-tile-wrapper'
           >
             <CardHPH
-              className={'pink six-tile'}
-              heading={'Language'}
-              secondaryInfo={`The majority of people speak English but did you know the second most commonly spoken language in ${religionData['borough_name']} is ${summaryData['second_lang']}!`}
-              primaryInfo={`${getGreeting(summaryData['second_lang'])} 👋`}
+              className={"pink six-tile"}
+              heading={"Language"}
+              secondaryInfo={`The majority of people speak English but did you know the second most commonly spoken language in ${religionData["borough_name"]} is ${summaryData["second_lang"]}!`}
+              primaryInfo={`${getGreeting(summaryData["second_lang"])} 👋`}
             />
             <CardHIP
-              className={'blue six-tile'}
-              heading={'Race'}
-              imageSrc={
-                'https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg'
-              }
-              altImageText={'speedy gonzales'}
-              secondaryInfo={`${
-                religionData['borough_name']
-              } is home to a large ${secondRace()} community. Be sure to check out ${
-                summaryData['checkout']
+              className={"blue six-tile"}
+              heading={"Race"}
+              imageSrc={"https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"}
+              altImageText={"speedy gonzales"}
+              secondaryInfo={`${religionData["borough_name"]} is home to a large ${secondRace()} community. Be sure to check out ${
+                summaryData["checkout"]
               }`}
             />
             <CardHIP
-              className={'yellow six-tile house-type'}
-              heading={'House Type'}
-              secondaryInfo={
-                "Here's what the makeup of houses tend to look like"
-              }
-              imageSrc={
-                'https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg'
-              }
-              altImageText={'Speedy gonzales'}
+              className={"yellow six-tile house-type"}
+              heading={"House Type"}
+              secondaryInfo={"Here's what the makeup of houses tend to look like"}
+              imageSrc={"https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"}
+              altImageText={"Speedy gonzales"}
             />
             <CardHIP
-              className={'yellow six-tile'}
-              heading={'Religion'}
-              imageSrc={
-                'https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg'
-              }
-              altImageText={'Speedy gonzales'}
-              secondaryInfo={`The largest religious group identify as ${biggestReligion()}. However, expect to see ${
-                summaryData['expect']
-              } `}
+              className={"pink six-tile"}
+              heading={"Religion"}
+              imageSrc={"https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"}
+              altImageText={"Speedy gonzales"}
+              secondaryInfo={`The largest religious group identify as ${biggestReligion()}. However, expect to see ${summaryData["expect"]} `}
             />
             <CardHP
-              className={'pink six-tile age'}
-              heading={'Age'}
-              secondaryInfo={`The majority of people living in ${
-                religionData['borough_name']
-              } are aged ${ageFormatting(
-                ageData['data'][0]['category']
-              )}, with the second highest proportion of people aged ${ageFormatting(
-                ageData['data'][1]['category']
-              )}.`}
+              className={"blue six-tile age"}
+              heading={"Age"}
+              secondaryInfo={`The majority of people living in ${religionData["borough_name"]} are aged ${ageFormatting(
+                ageData["data"][0]["category"]
+              )}, with the second highest proportion of people aged ${ageFormatting(ageData["data"][1]["category"])}.`}
             />
+            <CardHPP
+              className={"yellow six-tile"}
+              heading={"Sex"}
+              primaryInfo={`${100 < sexData["data"][0]["value"] ? "🙋‍♂️" : "🙋‍♀️"}`}
+              secondaryInfo={`There are ${sexData["data"][0]["value"]} males to every 100 females!`}
             <CardHPP
               className={'blue six-tile'}
               heading={'Sex'}

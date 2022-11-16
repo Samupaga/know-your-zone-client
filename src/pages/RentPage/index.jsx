@@ -1,3 +1,4 @@
+
 import {
   BigNumberCard,
   CardHIP,
@@ -7,6 +8,7 @@ import {
 } from '../../components';
 import './rentPage.css';
 import { useState, useEffect } from 'react';
+
 
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -24,9 +26,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
       const averageRentPrice = await response.json();
       setAverageRent(averageRentPrice);
 
-      const responseTwo = await fetch(
-        `http://localhost:3000/rent/${boroughName}/accommodation`
-      );
+      const responseTwo = await fetch(`http://localhost:3000/rent/${boroughName}/accommodation`);
       const generalRentInfo = await responseTwo.json();
       setGeneralRent(generalRentInfo);
       setIsLoading(false);
@@ -56,7 +56,8 @@ export default function SummaryPage({ navSearchSearching, motto }) {
               secondaryInfo={'Trending rent for the past decade.'}
             />
             <CardHIP
-              className={'right-column card yellow rent-item-2'}
+              className={"right-column card blue rent-item-2"}
+
               // imageSrc={
               //   'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
               // }
@@ -70,6 +71,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
               smallNumber={'pcm'}
               secondaryInfo={'Average Rent'}
             />
+
             <div className='four-tile-wrapper right-column'>
               <CardHP
                 className={'card pink four-tile rent-item-4'}
@@ -91,6 +93,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
                 heading={`£${generalRent[5]['rent_median']}`}
                 secondaryInfo={'4+ Bed'}
               />
+
             </div>
           </motion.div>
         </div>
