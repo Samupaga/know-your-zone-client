@@ -1,6 +1,6 @@
 /* font imports */
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 /* variables */
 
@@ -61,7 +61,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto Slab", sans-serif;
+  font-family: 'Roboto Slab', sans-serif;
   /* color: var(--main-text-color-dark); */
 }
 
@@ -196,7 +196,7 @@ header {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding-top: 3rem;
+  padding-top: 1rem;
 }
 
 /* INNER NAV STYLES */
@@ -268,6 +268,12 @@ header {
   box-shadow: rgba(255, 255, 255, 0.16) 1px 1px 10px 1px;
 }
 
+.motto {
+  font-size: 1.5rem;
+  font-weight: 300;
+  padding: 0.25em 0;
+}
+
 .yellow {
   background-color: var(--accent-yellow);
   color: var(--main-text-color-dark);
@@ -289,7 +295,7 @@ header {
 }
 
 .card-heading {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .primary-info {
@@ -297,7 +303,7 @@ header {
 }
 
 .secondary-info {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .big-number {

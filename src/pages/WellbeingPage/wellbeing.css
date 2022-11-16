@@ -10,11 +10,13 @@
   background-color: var(--secondary-bg-color);
   border-radius: 5px 5px 20px 20px;
   padding: 2rem;
+  height: 65vh;
 }
 
 .four-wellbeing {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 10px;
 }
 
@@ -30,6 +32,14 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.big-number {
+  font-size: 3rem;
+}
+
+.four-tile > .secondary-info {
+  font-size: 1rem;
 }
 
 @media (max-width: 870px) {

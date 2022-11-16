@@ -18,3 +18,7 @@
   display: flex;
   align-items: stretch;
 } */
+
+.six-tile > .secondary-info {
+  font-size: 0.9rem;
+}
