@@ -148,7 +148,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
               <CardHP
                 className={'pink three-tile'}
                 heading={`${Math.floor(crimeStats[0]['offence_count'])}`}
-                secondaryInfo={'Counts of Burglary'}
+                secondaryInfo={'Counts of burglary'}
               />
               <CardHP
                 className={'pink three-tile'}
