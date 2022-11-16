@@ -9,6 +9,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
   const [isLoading, setIsLoading] = useState(true);
   const [summaryData, setSummaryData] = useState([]);
   const [allData, setAllData] = useState([]);
+  const [houseData, setHouseData] = useState([]);
 
   let boroughName = sessionStorage.getItem('borough');
   useEffect(() => {
@@ -19,6 +20,11 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
       );
       const rawDataLang = await langResponse.json();
       setSummaryData(rawDataLang);
+
+      // household data to then make graph
+      const response = await fetch(`http://localhost:3000/demographics/${boroughName}/household`)
+      let household = await response.json();
+      setHouseData(household);
 
       let requestArray = [
         fetch(`http://localhost:3000/demographics/${boroughName}/religion`),
@@ -153,9 +159,11 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
             />
             <CardHIP
               className={'blue six-tile house-type'}
-              heading={'House Type'}
+              heading={'Household Composition'}
+              chartType={'donut'}
+              dataResponse={houseData}
               secondaryInfo={
-                "Here's what the makeup of houses tend to look like"
+                `Hover over the chart slices to find out the different type of occupants you can expect to find in the borough of ${houseData.borough_name}`
               }
               imageSrc={
                 'https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg'
@@ -175,15 +183,15 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
             <CardHPH
               className={'pink six-tile'}
               heading={'Language'}
-              secondaryInfo={`The majority of people speak English but did you know the second most commonly spoken language in ${allData[0]['borough_name']} is ${summaryData['second_lang']}!`}
+              secondaryInfo={`The majority of people speak English but did you know that the second most commonly spoken language in ${allData[0]['borough_name']} is ${summaryData['second_lang']}?`}
               primaryInfo={`${getGreeting(summaryData['second_lang'])} 👋`}
             />
             <CardHP
               className={'blue six-tile age'}
               heading={'Age'}
-              secondaryInfo={`The majority of people living in ${
+              secondaryInfo={`The most prominent age group found in ${
                 allData[0]['borough_name']
-              } are aged ${ageFormatting(
+              } consists of people aged ${ageFormatting(
                 allData[2]['data'][0]['category']
               )}, with the second highest proportion of people aged ${ageFormatting(
                 allData[2]['data'][1]['category']
@@ -195,7 +203,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
               primaryInfo={`${
                 100 < allData[3]['data'][0]['value'] ? '🙋‍♂️' : '🙋‍♀️'
               }`}
-              secondaryInfo={`There are ${allData[3]['data'][0]['value']} males to every 100 females!`}
+              secondaryInfo={`There are ${allData[3]['data'][0]['value']} males for every 100 females!`}
             />
           </motion.div>
         </div>
