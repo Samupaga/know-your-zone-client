@@ -34,6 +34,14 @@
   gap: 1rem;
 }
 
+.big-number {
+  font-size: 3rem;
+}
+
+.four-tile > .secondary-info {
+  font-size: 1rem;
+}
+
 @media (max-width: 870px) {
   .wellbeing-tile-wrapper {
     grid-template-columns: 1fr;
