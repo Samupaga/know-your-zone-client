@@ -83,7 +83,7 @@ export default function SummaryPage({ navSearchSearching }) {
           />
           <BigNumberCard
             className={'pink six-tile'}
-            value={Math.floor(boroughData['crime_rate_per_1000'])}
+            value={boroughData['crime_rate_per_1000'].toFixed(2)}
             smallNumber={'/1000'}
             secondaryInfo={'Average Crime Rate over the last six months'}
           />
