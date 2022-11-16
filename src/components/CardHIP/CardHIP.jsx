@@ -11,24 +11,46 @@ const CardHIP = ({
   dataResponse,
   chartType, 
   secondaryInfo,
+  londonLabels, 
+  londonData, 
+  xAxisTitle, 
+  yAxisTitle
 }) => {
 
   const [chartData, setChartData] = useState(null);
   const [isDataLoading, setIsDataLoading] = useState(true)
 
   const createLineData = () => {
-    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-    const values  = [10, 20, 30, 40, 50, 60, 70]
+
+    const values = dataResponse
+        
+    const dataSets = [
+      {
+        label: 'borough', 
+        data: values, 
+        borderColor: 'black', 
+        backgroundColor: [
+          'yellow'
+        ]
+      }
+    ]
+
+    if (londonData !== null) {
+      dataSets.push({ 
+        label: 'London', 
+        data: londonData,
+        borderColor: 'rgb(255, 99, 132)', 
+        backgroundColor: [
+          'rgb(255, 99, 132)'
+        ],
+        
+      })
+    }
+      
+
     const chartOptions = {
-      labels: labels, 
-      datasets: [
-        { 
-          data: values, 
-          backgroundColor: [
-            'rgba(53, 162, 235, 0.5)'
-          ]
-        }
-      ]
+      labels: londonLabels, 
+      datasets: dataSets
     }
     setChartData(chartOptions)
   }
@@ -54,17 +76,21 @@ const CardHIP = ({
 
       setChartData(chartOptions)
     }
-
-    else {
-        createLineData()
-    }
   }
 
   const createBarData = () => {
-    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-    const values  = [10, 20, 30, 40, 50, 60, 70]
+
+    const londonLabels = ["Burglary", "Sexual Offences", "Violence Against the Person", "Theft", "Robbery", "Arson and Criminal Damage","Drug Offences","Vehicle Offences","Miscellaneous Crimes Against Society", "Possession of Weapons", "Public Order Offences"]
+    const londonValues = [1684, 805, 7594, 7059, 831, 1683, 1420, 3405, 332, 196, 1869]
+
+    console.log("this is the response: ", typeof parseInt(dataResponse[0].offence_count))
+
+    const values = dataResponse.map((elem, idx ) => parseInt(elem.offence_count) - londonValues[idx])
+
+    console.log('final values are: ', values)
+
     const chartOptions = {
-      labels: labels, 
+      labels: londonLabels, 
       datasets: [
         { 
           data: values, 
@@ -100,7 +126,7 @@ const CardHIP = ({
       <div className={`${className} card`}>
         <h3 className="card-heading">{heading}</h3>
         {/* {dataResponse === undefined || Object.keys(chartData).length === 0 ? null : <Chart chartData={chartData} />} */}
-        {chartData === null ? null : <Chart chartType={chartType} chartData={chartData} />}
+        {chartData === null ? null : <Chart chartType={chartType} chartData={chartData} xAxisTitle={xAxisTitle} yAxisTitle={yAxisTitle} />}
         <p className="secondary-info">{secondaryInfo}</p>
       </div>
     );

@@ -6,7 +6,7 @@ import LinePlot from './Line';
 import BarPlot from './Bar';
 
 
-const Chart = ({ chartType, chartData }) => {
+const Chart = ({ chartType, chartData, xAxisTitle, yAxisTitle }) => {
 
   if ( chartType === 'donut') {
     return (
@@ -17,7 +17,7 @@ const Chart = ({ chartType, chartData }) => {
   } else if ( chartType === 'line' ) {
     return (
       <div>
-        <LinePlot chartData={chartData} />
+        <LinePlot chartData={chartData} xAxisTitle={xAxisTitle} yAxisTitle={yAxisTitle} />
       </div>
     );
   } else {
