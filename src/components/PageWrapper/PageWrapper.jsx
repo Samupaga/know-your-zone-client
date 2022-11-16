@@ -19,16 +19,12 @@ function PageWrapper({ motto, navSearchSearching, setMotto }) {
         setMotto(rawData['motto']);
         console.log('raw data', rawData);
 
-        const wellbeingResponse = await fetch(
-          `http://localhost:3000/demographics/${boroughName}/wellbeing`
-        );
-
         setIsLoading(false);
       } catch (err) {
         console.log(err);
         setBoroughFound(false);
         setTimeout(() => {
-          //navigate('/');
+          navigate('/');
         }, 5000);
       }
     }
