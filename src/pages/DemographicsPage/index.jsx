@@ -206,7 +206,7 @@ export default function DemographicsPage({ navSearchSearching }) {
               primaryInfo={`${
                 100 < allData[3]["data"][0]["value"] ? "🙋‍♂️" : "🙋‍♀️"
               }`}
-              secondaryInfo={`There are ${allData[3]["data"][0]["value"]} males for every 100 females!`}
+              secondaryInfo={`There are ${Math.floor(allData[3]["data"][0]["value"])} males for every 100 females!`}
             />
           </motion.div>
         </div>
