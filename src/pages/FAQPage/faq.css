@@ -1,0 +1,27 @@
+.faq-page {
+  display: block;
+  margin: 1em auto;
+  max-width: 900px;
+  color: var(--secondary-bg-color);
+  line-height: 1.5;
+}
+
+.faq-page ul li {
+  padding: 0.25em;
+  word-break: break-all;
+}
+.faq-page ul {
+  padding: 0.25em 0;
+}
+
+.faq-page p {
+  padding: 1em 0;
+}
+
+.faq-page a {
+  color: var(--secondary-bg-color);
+}
+
+.faq-page h3 {
+  margin: 1em 0 0.5em;
+}
