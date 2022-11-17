@@ -51,6 +51,7 @@ function Search() {
         borough.toLowerCase().includes(searchQuery.toLowerCase())
       )
     );
+    console.log(filteredBoroughList.length);
   }
 
   function searchClick(e) {
