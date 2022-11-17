@@ -10,8 +10,11 @@ export default function RentPage({ navSearchSearching, motto }) {
   const [generalRent, setGeneralRent] = useState([]);
   const [rentHistory, setRentHistory] = useState([]);
 
-  const xAxisTitle = "Period Covering 2018/09 to 2022/03";
-  const yAxisTitle = "£ per Month";
+  const xAxisLineTitle = 'Period Covering 2018/09 to 2022/03';
+  const yAxisLineTitle = '£ per Month';
+
+  const xAxisBarTitle = 'Property Type';
+  const yAxisBarTitle = 'Difference in Rent (£)'
 
   const londonLabels = [
     "2018/09-2019/09",
@@ -21,6 +24,11 @@ export default function RentPage({ navSearchSearching, motto }) {
     "2020/09-2021/09",
     "2021/03-2022/03",
   ];
+
+  const londonBarLabels = ['Room', 'Studio', 'One Bedroom', 'Two Bedrooms', 'Three Bedrooms', 'Four or more Bedrooms'];
+
+  const londonBarData = [651, 934, 1214, 1523, 1953, 2662];
+
   //For later use - fetch request example
   // Get saved data from sessionStorage
   let boroughName = sessionStorage.getItem("borough");
@@ -66,13 +74,19 @@ export default function RentPage({ navSearchSearching, motto }) {
             chartType={"line"}
             londonLabels={londonLabels}
             dataResponse={rentHistory.reverse().map((elem) => elem.rent_median)}
-            xAxisTitle={xAxisTitle}
-            yAxisTitle={yAxisTitle}
+            xAxisTitle={xAxisLineTitle}
+            yAxisTitle={yAxisLineTitle}
           />
           <CardHIP
-            className={"right-column card blue rent-item-2"}
-            chartType={"donut"}
-            heading={"Split of some data"}
+            className={'right-column card blue rent-item-2'}
+            chartType={'bar'}
+            dataResponse={generalRent}
+            londonBarLabels={londonBarLabels}
+            londonBarData={londonBarData}
+            xAxisTitle={xAxisBarTitle}
+            yAxisTitle={yAxisBarTitle}
+            heading={'Difference in Rent Prices Over Past Year'}
+            secondaryInfo={'Hover over the bars to see the difference in rent prices for each accommodation type between this borough and the London average'}
           />
 
           <BigNumberCard
@@ -86,14 +100,14 @@ export default function RentPage({ navSearchSearching, motto }) {
 
           <div className="four-tile-wrapper right-column">
             <CardHP
-              className={"card pink four-tile rent-item-4"}
-              heading={`£${generalRent[0]["rent_median"]}`}
-              secondaryInfo={"Single Room"}
+              className={'card pink four-tile rent-item-4'}
+              heading={`£${generalRent[2]['rent_median']}`}
+              secondaryInfo={'Single Room'}
             />
             <CardHP
-              className={"card pink four-tile rent-item-5"}
-              heading={`£${generalRent[5]["rent_median"]}`}
-              secondaryInfo={"1 Bed"}
+              className={'card pink four-tile rent-item-5'}
+              heading={`£${generalRent[1]['rent_median']}`}
+              secondaryInfo={'1 Bed'}
             />
             <CardHP
               className={"card pink four-tile rent-item-6"}
@@ -101,9 +115,9 @@ export default function RentPage({ navSearchSearching, motto }) {
               secondaryInfo={"3 Bed"}
             />
             <CardHP
-              className={"card pink four-tile rent-item-7"}
-              heading={`£${generalRent[2]["rent_median"]}`}
-              secondaryInfo={"4+ Bed"}
+              className={'card pink four-tile rent-item-7'}
+              heading={`£${generalRent[0]['rent_median']}`}
+              secondaryInfo={'4+ Bed'}
             />
           </div>
         </motion.div>

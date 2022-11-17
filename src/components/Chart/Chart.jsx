@@ -25,7 +25,11 @@ const Chart = ({ chartType, chartData, xAxisTitle, yAxisTitle }) => {
   } else {
     return (
       <div className="data-img">
-        <BarPlot chartData={chartData} />
+        <BarPlot 
+          chartData={chartData} 
+          xAxisTitle={xAxisTitle}
+          yAxisTitle={yAxisTitle}
+        />
       </div>
     );
   }

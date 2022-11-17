@@ -10,6 +10,8 @@ const CardHIP = ({
   secondaryInfo,
   londonLabels,
   londonData,
+  londonBarLabels, 
+  londonBarData,
   xAxisTitle,
   yAxisTitle,
 }) => {
@@ -72,44 +74,39 @@ const CardHIP = ({
   };
 
   const createBarData = () => {
-    const londonLabels = [
-      "Burglary",
-      "Sexual Offences",
-      "Violence Against the Person",
-      "Theft",
-      "Robbery",
-      "Arson and Criminal Damage",
-      "Drug Offences",
-      "Vehicle Offences",
-      "Miscellaneous Crimes Against Society",
-      "Possession of Weapons",
-      "Public Order Offences",
-    ];
-    const londonValues = [
-      1684, 805, 7594, 7059, 831, 1683, 1420, 3405, 332, 196, 1869,
-    ];
 
-    const values = dataResponse.map(
-      (elem, idx) => parseInt(elem.offence_count) - londonValues[idx]
-    );
+    let values = [];
+    let labels = [];
+   
+    console.log(dataResponse)
+    if (dataResponse[1].hasOwnProperty('offence_category')) {
+      labels = londonBarLabels
+      values = dataResponse.map(
+        (elem, idx) => parseInt(elem.offence_count) - londonBarData[idx]
+      );
+    } else if (dataResponse[1].hasOwnProperty('rent_median')){
+      labels = londonBarLabels
+      const sortedData = dataResponse.slice().sort((a, b) => labels.indexOf(a.property_type) - labels.indexOf(b.property_type))
+      values = sortedData.map((elem, idx) => elem.rent_median - londonBarData[idx])
+    }
 
     const chartOptions = {
-      labels: londonLabels,
+      labels: labels,
       datasets: [
         {
           data: values,
           backgroundColor: [
-            "#0085ad",
-            "#af272f",
-            "#444444",
-            "#3b99ed",
-            "#743161",
-            "#522506",
-            "#fd7f1c",
-            "#4c8c2b",
-            "#cb6356",
-            "#5E4C6C",
-            "#191970",
+            '#0085ad',
+            '#af272f',
+            '#3b99ed',
+            '#743161',
+            '#444444',
+            '#522506',
+            '#fd7f1c',
+            '#4c8c2b',
+            '#cb6356',
+            '#5E4C6C',
+            '#191970',
           ],
         },
       ],
@@ -125,6 +122,7 @@ const CardHIP = ({
     } else if (chartType === "bar") {
       createBarData();
     }
+
 
     setIsDataLoading(false);
   }, []);
