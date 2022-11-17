@@ -12,7 +12,7 @@ function Navbar({ setNavSearchSearching }) {
   let stateCheck = hamburger ? "active" : "";
 
   let activeStyle = {
-    color: "var(--accent-pink)",
+    color: "var(--accent-pink-nav)",
   };
 
   const location = useLocation();
@@ -23,7 +23,7 @@ function Navbar({ setNavSearchSearching }) {
       <>
         <header>
           <nav className="nav-bar" id="nav-bar">
-            <NavLink to="/" className="logo" href="">
+            <NavLink to="/" className="logo">
               Know Your Zone
             </NavLink>
 
