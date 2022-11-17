@@ -17,7 +17,6 @@ function PageWrapper({ motto, navSearchSearching, setMotto }) {
         const rawData = await response.json();
         setBoroughData(rawData);
         setMotto(rawData['motto']);
-        console.log('raw data', rawData);
 
         setIsLoading(false);
       } catch (err) {
@@ -30,16 +29,21 @@ function PageWrapper({ motto, navSearchSearching, setMotto }) {
     }
     getBoroughInfo();
   }, [navSearchSearching]);
-  return (
-    <div className='page-wrapper'>
-      <h1>{boroughData['borough_name']}</h1>
-      <h3 className='motto'>
-        <em>"{motto}"</em>
-      </h3>
-      <InnerNav />
-      <Outlet />
-    </div>
-  );
+
+  if (isLoading != true) {
+    return (
+      <div className='page-wrapper'>
+        <h1>{boroughData['borough_name']}</h1>
+        <h3 className='motto'>
+          <em>"{motto}"</em>
+        </h3>
+        <InnerNav />
+        <Outlet />
+      </div>
+    );
+  } else {
+    return <div className='page-wrapper'></div>;
+  }
 }
 
 export default PageWrapper;

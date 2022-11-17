@@ -361,7 +361,7 @@ canvas {
 
   /* CARD STYLES */
 
-  .card-heading {
+  /* .card-heading {
     font-size: 1.6rem;
   }
 
@@ -383,7 +383,7 @@ canvas {
 
   .emoji {
     font-size: 5rem;
-  }
+  } */
 }
 
 @media (max-width: 600px) {

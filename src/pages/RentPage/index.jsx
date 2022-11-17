@@ -16,8 +16,8 @@ export default function RentPage({ navSearchSearching, motto }) {
   const [generalRent, setGeneralRent] = useState([]);
   const [rentHistory, setRentHistory] = useState([]);
 
-  const xAxisTitle = "Period Covering 2018/09 to 2022/03"
-  const yAxisTitle = "£ per Month"
+  const xAxisTitle = 'Period Covering 2018/09 to 2022/03';
+  const yAxisTitle = '£ per Month';
 
   const londonLabels = [
     '2018/09-2019/09',
@@ -43,13 +43,12 @@ export default function RentPage({ navSearchSearching, motto }) {
       );
       const generalRentInfo = await responseTwo.json();
       setGeneralRent(generalRentInfo);
+      console.log(generalRentInfo);
       setIsLoading(false);
     }
 
     getBoroughInfo();
   }, [navSearchSearching]);
-  // console.log("avg rent", averageRent);
-  // console.log("gen rent", generalRent);
 
   if (isLoading === false) {
     return (
@@ -67,7 +66,9 @@ export default function RentPage({ navSearchSearching, motto }) {
             }
             altImageText={'Gantt Chart'}
             heading={'Median Rent'}
-            secondaryInfo={'Median rent paid across all house types for the last 4 years'}
+            secondaryInfo={
+              'Median rent paid across all house types for the last 4 years'
+            }
             chartType={'line'}
             londonLabels={londonLabels}
             dataResponse={rentHistory.reverse().map((elem) => elem.rent_median)}
@@ -76,19 +77,17 @@ export default function RentPage({ navSearchSearching, motto }) {
           />
           <CardHIP
             className={'right-column card blue rent-item-2'}
-            // imageSrc={
-            //   'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
-            // }
             chartType={'donut'}
             heading={'Split of some data'}
-            altImageText={'Sarah Soutoul'}
           />
 
           <BigNumberCard
             className={'left-column card navy rent-item-3'}
             value={`£${averageRent['rent_median']}`}
             smallNumber={'pcm'}
-            secondaryInfo={'is the average rent price across all accommodation types'}
+            secondaryInfo={
+              'is the average rent price across all accommodation types'
+            }
           />
 
           <div className='four-tile-wrapper right-column'>
@@ -99,7 +98,7 @@ export default function RentPage({ navSearchSearching, motto }) {
             />
             <CardHP
               className={'card pink four-tile rent-item-5'}
-              heading={`£${generalRent[2]['rent_median']}`}
+              heading={`£${generalRent[5]['rent_median']}`}
               secondaryInfo={'1 Bed'}
             />
             <CardHP
@@ -109,7 +108,7 @@ export default function RentPage({ navSearchSearching, motto }) {
             />
             <CardHP
               className={'card pink four-tile rent-item-7'}
-              heading={`£${generalRent[5]['rent_median']}`}
+              heading={`£${generalRent[2]['rent_median']}`}
               secondaryInfo={'4+ Bed'}
             />
           </div>

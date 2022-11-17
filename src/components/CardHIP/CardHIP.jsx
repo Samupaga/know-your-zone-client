@@ -22,25 +22,20 @@ const CardHIP = ({
 
     const dataSets = [
       {
-        label: 'borough', 
-        data: values, 
-        borderColor: 'black', 
-        backgroundColor: [
-          'rgba(255, 205, 86)'
-        ]
-      }
-    ]
+        label: 'borough',
+        data: values,
+        borderColor: 'black',
+        backgroundColor: ['rgba(255, 205, 86)'],
+      },
+    ];
 
     if (londonData !== null) {
       dataSets.push({
         label: 'London',
         data: londonData,
-        borderColor: 'black', 
-        backgroundColor: [
-          'rgb(54, 162, 235)'
-        ],
-        
-      })
+        borderColor: 'black',
+        backgroundColor: ['rgb(54, 162, 235)'],
+      });
     }
 
     const chartOptions = {
@@ -68,10 +63,10 @@ const CardHIP = ({
               'rgba(225, 80, 219, 0.6)',
               'rgba(96, 0, 255, 0.6)',
               'rgb(201, 203, 207)',
-            ]
-          }
-        ]
-      }
+            ],
+          },
+        ],
+      };
 
       setChartData(chartOptions);
     }
@@ -95,27 +90,20 @@ const CardHIP = ({
       1684, 805, 7594, 7059, 831, 1683, 1420, 3405, 332, 196, 1869,
     ];
 
-    console.log(
-      'this is the response: ',
-      typeof parseInt(dataResponse[0].offence_count)
-    );
-
     const values = dataResponse.map(
       (elem, idx) => parseInt(elem.offence_count) - londonValues[idx]
     );
 
-    console.log('final values are: ', values);
-
     const chartOptions = {
       labels: londonLabels,
       datasets: [
-        { 
-          data: values, 
+        {
+          data: values,
           backgroundColor: [
-            '#0085ad', 
+            '#0085ad',
             '#af272f',
             '#444444',
-            '#3b99ed', 
+            '#3b99ed',
             '#743161',
             '#522506',
             '#fd7f1c',
@@ -123,12 +111,12 @@ const CardHIP = ({
             '#cb6356',
             '#5E4C6C',
             '#191970',
-          ]
-        }
-      ]
-    }
-    setChartData(chartOptions)
-  }
+          ],
+        },
+      ],
+    };
+    setChartData(chartOptions);
+  };
 
   useEffect(() => {
     if (chartType === 'donut') {
