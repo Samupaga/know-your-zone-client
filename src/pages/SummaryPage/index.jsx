@@ -81,6 +81,7 @@ export default function SummaryPage({ navSearchSearching }) {
           />
           <BigNumberCard
             className={'pink six-tile'}
+            heading={"Crimes per 1000 people"}
             value={boroughData['crime_rate_per_1000'].toFixed(2)}
             smallNumber={'/1000'}
             secondaryInfo={'Average crime rate for the last six months'}

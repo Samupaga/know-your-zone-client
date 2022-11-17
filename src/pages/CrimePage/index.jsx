@@ -182,6 +182,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
           </div>
           <BigNumberCard
             className={"left-column card navy"}
+            heading={"Crimes per 1000 people"}
             value={`${crimeRateBiannual.toFixed(2)}`}
             smallNumber={"/1000"}
             secondaryInfo={"Average crime rate for the last 6 months"}
