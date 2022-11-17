@@ -1,6 +1,6 @@
 export { default as InnerNav } from "../components/InnerNav";
 export { default as InnerNavTab } from "../components/InnerNavTab";
-export { default as Container } from "../components/Container";
+
 export { default as Card } from "../components/Card";
 export { default as DataVisualisation } from "../components/DataVisualisation";
 export { default as BigNumberCard } from "../components/BigNumberCard";
