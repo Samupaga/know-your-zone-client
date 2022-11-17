@@ -1,6 +1,8 @@
 /* font imports */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
 
 /* variables */
 
@@ -9,44 +11,11 @@
   --secondary-bg-color: #191f38ff;
   --main-bg-color: #fceef0ff;
 
-  /* experimentation */
-
-  /* light blue palette */
-  /* --accent-blue: #caf0f8;
-  --accent-yellow: #ade8f4;
-  --accent-pink: #90e0ef; */
-
-  /* general pastel palette */
-  /* --accent-blue: #cbc0d3;
-  --accent-yellow: #efd3d7;
-  --accent-pink: #dee2ff; */
-
   --accent-blue: #e2d3ee;
   --accent-yellow: #e9c3c9;
   --accent-pink: #feecfb;
 
-  /* coral palette */
-  /* --accent-blue: #ffe5d9;
-  --accent-yellow: #ffd7ba;
-  --accent-pink: #fec89a; */
-
-  /* dark coral palette not mad about this one */
-  /* --accent-blue: #ffb4a2;
-  --accent-yellow: #e5989b;
-  --accent-pink: #b5838d; */
-
-  /* pink palette i think best so far */
-  /* --accent-blue: #f8edeb;
-  --accent-yellow: #fae1dd;
-  --accent-pink: #fcd5ce; */
-
-  /* original colours */
-  /* --accent-blue: #5063f7ff;
-  --accent-yellow: #fae161ff;
-  --accent-pink: #f0195aff; */
-
-  /* mustard yellow */
-  /* --accent-pink: #fcd200; */
+  --accent-pink-nav: #ffb4a2;
 
   /* text color variables */
   --main-text-color-dark: #191f38ff;
@@ -61,7 +30,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: "Source Sans Pro", sans-serif, serif;
   /* color: var(--main-text-color-dark); */
 }
 
@@ -73,7 +42,7 @@ html {
 }
 
 h1 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 400;
 }
 
@@ -117,7 +86,7 @@ header {
   line-height: 0;
   color: var(--main-text-color-light);
 
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .hamburger {
