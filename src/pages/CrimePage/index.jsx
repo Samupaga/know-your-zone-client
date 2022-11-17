@@ -1,14 +1,8 @@
-import {
-  BigNumberCard,
-  CardHIP,
-  CardHP,
-  Navbar,
-  InnerNav,
-} from '../../components';
-import './crimePage.css';
-import { useState, useEffect } from 'react';
+import { BigNumberCard, CardHIP, CardHP } from "../../components";
+import "./crimePage.css";
+import { useState, useEffect } from "react";
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function SummaryPage({ navSearchSearching, motto }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,34 +10,34 @@ export default function SummaryPage({ navSearchSearching, motto }) {
   const [crimeStats, setCrimeStats] = useState([]);
   const [crimeRateBiannual, setCrimeRateBiannual] = useState(null);
 
-  const xAxisTitle = 'October 2020 - October 2022';
-  const yAxisTitle = 'Crime Rate';
+  const xAxisTitle = "October 2020 - October 2022";
+  const yAxisTitle = "Crime Rate";
 
   const londonLabels = [
-    '2020-10',
-    '2020-11',
-    '2020-12',
-    '2021-01',
-    '2021-02',
-    '2021-03',
-    '2021-04',
-    '2021-05',
-    '2021-06',
-    '2021-07',
-    '2021-08',
-    '2021-09',
-    '2021-10',
-    '2021-11',
-    '2021-12',
-    '2022-01',
-    '2022-02',
-    '2022-03',
-    '2022-04',
-    '2022-05',
-    '2022-06',
-    '2022-07',
-    '2022-08',
-    '2022-09',
+    "2020-10",
+    "2020-11",
+    "2020-12",
+    "2021-01",
+    "2021-02",
+    "2021-03",
+    "2021-04",
+    "2021-05",
+    "2021-06",
+    "2021-07",
+    "2021-08",
+    "2021-09",
+    "2021-10",
+    "2021-11",
+    "2021-12",
+    "2022-01",
+    "2022-02",
+    "2022-03",
+    "2022-04",
+    "2022-05",
+    "2022-06",
+    "2022-07",
+    "2022-08",
+    "2022-09",
   ];
 
   const londonCrimeRate = [
@@ -55,7 +49,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
 
   //For later use - fetch request example
   // Get saved data from sessionStorage
-  let boroughName = sessionStorage.getItem('borough');
+  let boroughName = sessionStorage.getItem("borough");
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
@@ -65,25 +59,25 @@ export default function SummaryPage({ navSearchSearching, motto }) {
 
       const rawData = await response.json();
       const options = {
-        method: 'POST',
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           crimeTypes: [
-            'Burglary',
-            'Sexual Offences',
-            'Violence Against the Person',
+            "Burglary",
+            "Sexual Offences",
+            "Violence Against the Person",
 
-            'Theft',
-            'Robbery',
-            'Arson and Criminal Damage',
-            'Drug Offences',
-            'Vehicle Offences',
-            'Miscellaneous Crimes Against Society',
-            'Possession of Weapons',
-            'Public Order Offences',
+            "Theft",
+            "Robbery",
+            "Arson and Criminal Damage",
+            "Drug Offences",
+            "Vehicle Offences",
+            "Miscellaneous Crimes Against Society",
+            "Possession of Weapons",
+            "Public Order Offences",
           ],
         }),
       };
@@ -114,58 +108,58 @@ export default function SummaryPage({ navSearchSearching, motto }) {
           initial={{ x: 300, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: -300, opacity: 0 }}
-          className='crime-tile-wrapper'
+          className="crime-tile-wrapper"
         >
           <CardHIP
-            className={'right-column card yellow'}
+            className={"right-column card yellow"}
             imageSrc={
-              'https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA'
+              "https://media-exp1.licdn.com/dms/image/C4E03AQFrCxt_gF8mPg/profile-displayphoto-shrink_800_800/0/1651744010490?e=1672876800&v=beta&t=eIRIryxgQ8MbQ5mc48UxVru8looxGUh0Pj3suahLJLA"
             }
-            heading={'Difference in Crime Counts for the Past Year'}
+            heading={"Difference in Crime Counts for the Past Year"}
             dataResponse={crimeStats}
-            chartType={'bar'}
+            chartType={"bar"}
             secondaryInfo={
-              'Hover over the bars to see the difference in crime counts between this borough and the average for all London boroughs'
+              "Hover over the bars to see the difference in crime counts between this borough and the average for all London boroughs"
             }
           />
           <CardHIP
-            heading={'Monthly crime rate'}
-            className={'left-column card yellow'}
+            heading={"Monthly crime rate"}
+            className={"left-column card yellow"}
             dataResponse={crimeData.reverse().map((elem) => elem.crime_rate)}
-            chartType={'line'}
+            chartType={"line"}
             xAxisTitle={xAxisTitle}
             yAxisTitle={yAxisTitle}
             londonLabels={londonLabels}
             londonData={londonCrimeRate}
             secondaryInfo={
-              'Hover over the markers to see the monthly crime rate in both this borough and London for the last 2 years'
+              "Hover over the markers to see the monthly crime rate in both this borough and London for the last 2 years"
             }
           />
-          <div className='three-tile-wrapper right-column'>
-            <p className='card-heading last-year'>In the Last Year</p>
-            <div className='inner-three-tile-wrapper'>
+          <div className="three-tile-wrapper right-column">
+            <p className="card-heading last-year">In the Last Year</p>
+            <div className="inner-three-tile-wrapper">
               <CardHP
-                className={'pink three-tile'}
-                heading={`${Math.floor(crimeStats[0]['offence_count'])}`}
-                secondaryInfo={'Counts of burglary'}
+                className={"pink three-tile"}
+                heading={`${Math.floor(crimeStats[0]["offence_count"])}`}
+                secondaryInfo={"Counts of burglary"}
               />
               <CardHP
-                className={'pink three-tile'}
-                heading={`${Math.floor(crimeStats[1]['offence_count'])}`}
-                secondaryInfo={'Counts of sexual offences'}
+                className={"pink three-tile"}
+                heading={`${Math.floor(crimeStats[1]["offence_count"])}`}
+                secondaryInfo={"Counts of sexual offences"}
               />
               <CardHP
-                className={'pink three-tile'}
-                heading={`${Math.floor(crimeStats[2]['offence_count'])}`}
-                secondaryInfo={'Counts of violent offences'}
+                className={"pink three-tile"}
+                heading={`${Math.floor(crimeStats[2]["offence_count"])}`}
+                secondaryInfo={"Counts of violent offences"}
               />
             </div>
           </div>
           <BigNumberCard
-            className={'left-column card navy'}
+            className={"left-column card navy"}
             value={`${crimeRateBiannual.toFixed(2)}`}
-            smallNumber={'/1000'}
-            secondaryInfo={'Average crime rate for the last 6 months'}
+            smallNumber={"/1000"}
+            secondaryInfo={"Average crime rate for the last 6 months"}
           />
         </motion.div>
       </AnimatePresence>

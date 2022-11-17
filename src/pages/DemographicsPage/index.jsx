@@ -1,4 +1,4 @@
-import { CardHP, CardHPP, CardHPH, CardHIP, InnerNav } from "../../components";
+import { CardHPP, CardHPH, CardHIP } from "../../components";
 import "./demoPage.css";
 import { useState, useEffect } from "react";
 import greetings from "../../assets/greetings";
@@ -6,7 +6,7 @@ import { FaBirthdayCake } from "react-icons/fa";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function DemographicsPage({ navSearchSearching, motto }) {
+export default function DemographicsPage({ navSearchSearching }) {
   const [isLoading, setIsLoading] = useState(true);
   const [summaryData, setSummaryData] = useState([]);
   const [allData, setAllData] = useState([]);

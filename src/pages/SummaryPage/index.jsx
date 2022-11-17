@@ -8,15 +8,7 @@ import {
   BsFillArrowDownSquareFill,
 } from "react-icons/bs";
 
-import {
-  BigNumberCard,
-  CardHIP,
-  CardHPP,
-  CardHEI,
-  Navbar,
-  Container,
-  InnerNav,
-} from "../../components";
+import { BigNumberCard, CardHIP, CardHPP, CardHEI } from "../../components";
 
 import "./summary.css";
 

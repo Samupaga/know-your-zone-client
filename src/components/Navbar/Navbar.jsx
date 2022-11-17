@@ -1,6 +1,6 @@
 import { useState } from "react";
 import NavSearch from "../NavSearch";
-import { Outlet, Link, NavLink, useLocation } from "react-router-dom";
+import { Outlet, NavLink, useLocation } from "react-router-dom";
 
 function Navbar({ setNavSearchSearching }) {
   const [hamburger, setHamburger] = useState(false);
@@ -8,11 +8,6 @@ function Navbar({ setNavSearchSearching }) {
   function toggleMenu() {
     setHamburger((hamburger) => !hamburger);
   }
-
-  const searchStyles = {
-    backgroundColor: "var(--main-bg-color)",
-    color: "var(--main-text-color-dark)",
-  };
 
   let stateCheck = hamburger ? "active" : "";
 
@@ -22,7 +17,6 @@ function Navbar({ setNavSearchSearching }) {
 
   const location = useLocation();
   const path = location.pathname;
-  console.log(path);
 
   if (path === "/") {
     return (
