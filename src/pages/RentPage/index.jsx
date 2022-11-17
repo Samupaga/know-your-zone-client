@@ -37,7 +37,7 @@ export default function RentPage({ navSearchSearching, motto }) {
       );
       const generalRentInfo = await responseTwo.json();
       setGeneralRent(generalRentInfo);
-      console.log(generalRentInfo);
+
       setIsLoading(false);
     }
 
