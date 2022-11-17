@@ -1,12 +1,13 @@
 import { InnerNav } from '../../components';
 import { useState, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 function PageWrapper({ motto, navSearchSearching, setMotto }) {
   const [isLoading, setIsLoading] = useState(true);
   const [boroughData, setBoroughData] = useState([]);
   const [boroughFound, setBoroughFound] = useState(true);
   let boroughName = sessionStorage.getItem('borough');
+  const navigate = useNavigate();
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
@@ -17,20 +18,19 @@ function PageWrapper({ motto, navSearchSearching, setMotto }) {
         const rawData = await response.json();
         setBoroughData(rawData);
         setMotto(rawData['motto']);
-
-        setIsLoading(false);
+        setBoroughFound(true);
       } catch (err) {
         console.log(err);
         setBoroughFound(false);
-        setTimeout(() => {
-          navigate('/');
-        }, 5000);
       }
     }
     getBoroughInfo();
   }, [navSearchSearching]);
 
-  if (isLoading != true) {
+  // console.log('after', boroughFound);
+
+  if (boroughData.borough_name) {
+    console.log('Found');
     return (
       <div className='page-wrapper'>
         <h1>{boroughData['borough_name']}</h1>
@@ -42,7 +42,7 @@ function PageWrapper({ motto, navSearchSearching, setMotto }) {
       </div>
     );
   } else {
-    return <div className='page-wrapper'></div>;
+    return null;
   }
 }
 
