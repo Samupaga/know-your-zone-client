@@ -106,7 +106,7 @@ export default function SummaryPage({ navSearchSearching }) {
             className={'blue six-tile'}
             heading={'Wellbeing'}
             emoji={`${wellbeingScore > 7.3 ? '😎' : '🙂'}`}
-            secondaryInfo={`${wellbeingScore} on the wellbeing score!`}
+            secondaryInfo={`The wellbeing score is ${wellbeingScore}!`}
           />
           <CardHPP
             className={'pink six-tile'}
