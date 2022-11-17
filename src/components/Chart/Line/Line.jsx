@@ -39,7 +39,8 @@ const LinePlot = ({ chartData, xAxisTitle, yAxisTitle }) => {
           }, 
           y : {
             ticks: {
-              display: true
+              display: true, 
+              color: 'black'
             }, 
             title: {
               display: true, 
