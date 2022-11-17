@@ -10,8 +10,11 @@ export default function SummaryPage({ navSearchSearching, motto }) {
   const [crimeStats, setCrimeStats] = useState([]);
   const [crimeRateBiannual, setCrimeRateBiannual] = useState(null);
 
-  const xAxisTitle = "October 2020 - October 2022";
-  const yAxisTitle = "Crime Rate";
+  const xAxisLineTitle = 'October 2020 - October 2022';
+  const yAxisLineTitle = 'Crime Rate';
+
+  const xAxisBarTitle = 'Crime Types';
+  const yAxisBarTitle = 'Counts of Crime';
 
   const londonLabels = [
     "2020-10",
@@ -46,6 +49,24 @@ export default function SummaryPage({ navSearchSearching, motto }) {
     7.96199307, 7.78275861, 7.05533922, 7.17168439, 6.898116, 7.69848697,
     7.1771348, 7.9181802, 7.66169674, 7.86514357, 7.68611874, 7.27408911,
   ];
+
+  const londonBarLabels = [
+    'Burglary',
+    'Sexual Offences',
+    'Violence Against the Person',
+    'Theft',
+    'Robbery',
+    'Arson and Criminal Damage',
+    'Drug Offences',
+    'Vehicle Offences',
+    'Miscellaneous Crimes Against Society',
+    'Possession of Weapons',
+    'Public Order Offences',
+  ];
+  const londonBarData = [
+    1684, 805, 7594, 7059, 831, 1683, 1420, 3405, 332, 196, 1869,
+  ];
+
 
   //For later use - fetch request example
   // Get saved data from sessionStorage
@@ -117,7 +138,11 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             }
             heading={"Difference in Crime Counts for the Past Year"}
             dataResponse={crimeStats}
-            chartType={"bar"}
+            chartType={'bar'}
+            londonBarData={londonBarData}
+            londonBarLabels={londonBarLabels}
+            xAxisTitle={xAxisBarTitle}
+            yAxisTitle={yAxisBarTitle}
             secondaryInfo={
               "Hover over the bars to see the difference in crime counts between this borough and the average for all London boroughs"
             }
@@ -126,9 +151,9 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             heading={"Monthly crime rate"}
             className={"left-column card yellow"}
             dataResponse={crimeData.reverse().map((elem) => elem.crime_rate)}
-            chartType={"line"}
-            xAxisTitle={xAxisTitle}
-            yAxisTitle={yAxisTitle}
+            chartType={'line'}
+            xAxisTitle={xAxisLineTitle}
+            yAxisTitle={yAxisLineTitle}
             londonLabels={londonLabels}
             londonData={londonCrimeRate}
             secondaryInfo={
