@@ -1,9 +1,10 @@
-import { CardHP, CardHPP, CardHPH, CardHIP, InnerNav } from '../../components';
-import './demoPage.css';
-import { useState, useEffect } from 'react';
-import greetings from '../../assets/greetings';
+import { CardHP, CardHPP, CardHPH, CardHIP, InnerNav } from "../../components";
+import "./demoPage.css";
+import { useState, useEffect } from "react";
+import greetings from "../../assets/greetings";
+import { FaBirthdayCake } from "react-icons/fa";
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function DemographicsPage({ navSearchSearching, motto }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +12,7 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
   const [allData, setAllData] = useState([]);
   const [houseData, setHouseData] = useState([]);
 
-  let boroughName = sessionStorage.getItem('borough');
+  let boroughName = sessionStorage.getItem("borough");
   useEffect(() => {
     async function getBoroughInfo() {
       setIsLoading(true);
@@ -66,20 +67,20 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
     let arr = allData[0];
 
     if (
-      arr['data'][0]['category'] != 'no_religion' &&
-      arr['data'][0]['category'] != 'other_religion'
+      arr["data"][0]["category"] != "no_religion" &&
+      arr["data"][0]["category"] != "other_religion"
     ) {
-      secondReligion = arr['data'][0]['category'];
+      secondReligion = arr["data"][0]["category"];
     } else if (
-      arr['data'][1]['category'] != 'no_religion' &&
-      arr['data'][1]['category'] != 'other_religion'
+      arr["data"][1]["category"] != "no_religion" &&
+      arr["data"][1]["category"] != "other_religion"
     ) {
-      secondReligion = arr['data'][1]['category'];
+      secondReligion = arr["data"][1]["category"];
     } else if (
-      arr['data'][2]['category'] != 'no_religion' &&
-      arr['data'][2]['category'] != 'other_religion'
+      arr["data"][2]["category"] != "no_religion" &&
+      arr["data"][2]["category"] != "other_religion"
     ) {
-      secondReligion = arr['data'][2]['category'];
+      secondReligion = arr["data"][2]["category"];
     }
     let capitalizedReligion = capitalizeFirstLetter(secondReligion);
     return capitalizedReligion;
@@ -90,17 +91,17 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
   function secondRace() {
     let arr = allData[1];
     if (
-      arr['data'][0]['category'] != 'white' &&
-      arr['data'][0]['category'] != 'other'
+      arr["data"][0]["category"] != "white" &&
+      arr["data"][0]["category"] != "other"
     ) {
-      secondPopularRace = arr['data'][0]['category'];
+      secondPopularRace = arr["data"][0]["category"];
     } else if (
-      arr['data'][1]['category'] != 'white' &&
-      arr['data'][1]['category'] != 'other'
+      arr["data"][1]["category"] != "white" &&
+      arr["data"][1]["category"] != "other"
     ) {
-      secondPopularRace = arr['data'][1]['category'];
+      secondPopularRace = arr["data"][1]["category"];
     } else {
-      secondPopularRace = arr['data'][2]['category'];
+      secondPopularRace = arr["data"][2]["category"];
     }
     let capitalizedRace = capitalizeFirstLetter(secondPopularRace);
     return capitalizedRace;
@@ -108,35 +109,35 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
 
   function ageFormatting(age) {
     switch (age) {
-      case 'a0_9':
-        return '0-9';
+      case "a0_9":
+        return "0-9";
         break;
-      case 'a10_17':
-        return '10-17';
+      case "a10_17":
+        return "10-17";
         break;
-      case 'a18_26':
-        return '18-26';
+      case "a18_26":
+        return "18-26";
         break;
-      case 'a27_35':
-        return '27-35';
+      case "a27_35":
+        return "27-35";
         break;
-      case 'a36_44':
-        return '36-44';
+      case "a36_44":
+        return "36-44";
         break;
-      case 'a45_53':
-        return '45-53';
+      case "a45_53":
+        return "45-53";
         break;
-      case 'a54_62':
-        return '54-62';
+      case "a54_62":
+        return "54-62";
         break;
-      case 'a63_71':
-        return '63-71';
+      case "a63_71":
+        return "63-71";
         break;
-      case 'a72_80':
-        return '72-80';
+      case "a72_80":
+        return "72-80";
         break;
-      case 'a81_':
-        return '81+';
+      case "a81_":
+        return "81+";
     }
     return age;
   }
@@ -149,62 +150,63 @@ export default function DemographicsPage({ navSearchSearching, motto }) {
             initial={{ x: 300, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: -300, opacity: 0 }}
-            className='demo-tile-wrapper'
+            className="demo-tile-wrapper"
           >
             <CardHIP
-              className={'pink six-tile'}
-              heading={'Population of people of each race'}
+              className={"pink six-tile"}
+              heading={"Population of people of each race"}
               dataResponse={allData[1]}
-              chartType={'donut'}
+              chartType={"donut"}
               secondaryInfo={`${
-                allData[0]['borough_name']
+                allData[0]["borough_name"]
               } is home to a large ${secondRace()} community. Be sure to check out ${
-                summaryData['checkout']
+                summaryData["checkout"]
               }`}
             />
             <CardHIP
-              className={'blue six-tile house-type'}
-              heading={'Household Composition'}
-              chartType={'donut'}
+              className={"blue six-tile house-type"}
+              heading={"Household Composition"}
+              chartType={"donut"}
               dataResponse={houseData}
               secondaryInfo={`Hover over the chart slices to find out the different types of households you can expect to find in the borough of ${boroughName}.`}
               imageSrc={
-                'https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg'
+                "https://www.formula1.com/content/dam/fom-website/sutton/2022/Italy/Sunday/1422823415.jpg"
               }
             />
             <CardHIP
-              className={'yellow six-tile'}
-              heading={'Population of people following each faith'}
-              chartType={'donut'}
+              className={"yellow six-tile"}
+              heading={"Population of people following each faith"}
+              chartType={"donut"}
               dataResponse={allData[0]}
               secondaryInfo={`The largest religious group identify as ${biggestReligion()}. However, expect to see ${
-                summaryData['expect']
+                summaryData["expect"]
               } `}
             />
             <CardHPH
-              className={'pink six-tile'}
-              heading={'Language'}
-              secondaryInfo={`The majority of people speak English but did you know that the second most commonly spoken language in ${allData[0]['borough_name']} is ${summaryData['second_lang']}?`}
-              primaryInfo={`${getGreeting(summaryData['second_lang'])} 👋`}
+              className={"pink six-tile"}
+              heading={"Language"}
+              secondaryInfo={`The majority of people speak English but did you know that the second most commonly spoken language in ${allData[0]["borough_name"]} is ${summaryData["second_lang"]}?`}
+              primaryInfo={`${getGreeting(summaryData["second_lang"])} 👋`}
             />
-            <CardHP
-              className={'blue six-tile age'}
-              heading={'Age'}
+            <CardHPP
+              className={"blue six-tile age"}
+              heading={"Age"}
+              primaryInfo={<FaBirthdayCake size={75} />}
               secondaryInfo={`The most prominent age group found in ${
-                allData[0]['borough_name']
+                allData[0]["borough_name"]
               } consists of people aged ${ageFormatting(
-                allData[2]['data'][0]['category']
+                allData[2]["data"][0]["category"]
               )}, with the second highest proportion of people aged ${ageFormatting(
-                allData[2]['data'][1]['category']
+                allData[2]["data"][1]["category"]
               )}.`}
             />
             <CardHPP
-              className={'yellow six-tile'}
-              heading={'Sex'}
+              className={"yellow six-tile"}
+              heading={"Sex"}
               primaryInfo={`${
-                100 < allData[3]['data'][0]['value'] ? '🙋‍♂️' : '🙋‍♀️'
+                100 < allData[3]["data"][0]["value"] ? "🙋‍♂️" : "🙋‍♀️"
               }`}
-              secondaryInfo={`There are ${allData[3]['data'][0]['value']} males for every 100 females!`}
+              secondaryInfo={`There are ${allData[3]["data"][0]["value"]} males for every 100 females!`}
             />
           </motion.div>
         </div>
