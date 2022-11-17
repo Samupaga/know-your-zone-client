@@ -49,10 +49,10 @@ export default function SummaryPage({ navSearchSearching }) {
         setIsLoading(false);
       } catch (err) {
         console.log(err);
-        setBoroughFound(false);
-        setTimeout(() => {
-          //navigate('/');
-        }, 5000);
+
+        // setTimeout(() => {
+        //   navigate('/');
+        // }, 5000);
       }
     }
     getBoroughInfo();
@@ -126,13 +126,6 @@ export default function SummaryPage({ navSearchSearching }) {
           />
         </motion.div>
       </AnimatePresence>
-    );
-  } else if (boroughFound === false) {
-    return (
-      <h3>
-        We are really sorry, the borough you have entered has not been found.
-        You will now be redirected back to the home page.
-      </h3>
     );
   } // else {
   //   return (
