@@ -27,11 +27,7 @@ const BarPlot = ({ chartData, xAxisTitle, yAxisTitle }) => {
                  ticks: {
                     display: true, 
                     color: 'black'
-                 }, 
-                 title: {
-                    display: true, 
-                    color: 'black'
-                 }, 
+                 },
                  title: {
                     display: true, 
                     text: yAxisTitle,
