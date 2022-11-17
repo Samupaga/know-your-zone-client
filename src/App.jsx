@@ -1,5 +1,5 @@
-import './normalize.css';
-import './styles.css';
+import "./normalize.css";
+import "./styles.css";
 
 import {
   RentPage,
@@ -10,26 +10,26 @@ import {
   DemographicsPage,
   WellbeingPage,
   NotFoundPage,
-} from './pages';
-import { Navbar, PageWrapper } from './components';
-import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+} from "./pages";
+import { Navbar, PageWrapper } from "./components";
+import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
   const [navSearchSearching, setNavSearchSearching] = useState(false);
-  const [motto, setMotto] = useState('');
+  const [motto, setMotto] = useState("");
 
   return (
     <>
       <Routes>
         <Route
-          path='/'
+          path="/"
           element={<Navbar setNavSearchSearching={setNavSearchSearching} />}
         >
           <Route index element={<HomePage />} />
-          <Route path='faq' element={<FAQPage />} />
+          <Route path="faq" element={<FAQPage />} />
           <Route
-            path='borough'
+            path="borough"
             element={
               <PageWrapper
                 navSearchSearching={navSearchSearching}
@@ -39,7 +39,7 @@ function App() {
             }
           >
             <Route
-              path='summary'
+              path="summary"
               element={
                 <SummaryPage
                   navSearchSearching={navSearchSearching}
@@ -49,7 +49,7 @@ function App() {
               }
             />
             <Route
-              path='rent'
+              path="rent"
               element={
                 <RentPage
                   navSearchSearching={navSearchSearching}
@@ -58,7 +58,7 @@ function App() {
               }
             />
             <Route
-              path='crime'
+              path="crime"
               element={
                 <CrimePage
                   navSearchSearching={navSearchSearching}
@@ -67,7 +67,7 @@ function App() {
               }
             />
             <Route
-              path='demographics'
+              path="demographics"
               element={
                 <DemographicsPage
                   navSearchSearching={navSearchSearching}
@@ -76,7 +76,7 @@ function App() {
               }
             />
             <Route
-              path='wellbeing'
+              path="wellbeing"
               element={
                 <WellbeingPage
                   navSearchSearching={navSearchSearching}
@@ -85,7 +85,7 @@ function App() {
               }
             />
           </Route>
-          <Route path='*' element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </>

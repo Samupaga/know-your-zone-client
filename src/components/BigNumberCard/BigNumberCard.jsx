@@ -2,7 +2,6 @@ const BigNumberCard = ({
   value,
   className,
   secondaryInfo,
-  bigNumber,
   smallNumber,
   heading,
 }) => {
