@@ -10,11 +10,11 @@ export default function SummaryPage({ navSearchSearching, motto }) {
   const [crimeStats, setCrimeStats] = useState([]);
   const [crimeRateBiannual, setCrimeRateBiannual] = useState(null);
 
-  const xAxisLineTitle = 'October 2020 - October 2022';
-  const yAxisLineTitle = 'Crime Rate';
+  const xAxisLineTitle = "October 2020 - October 2022";
+  const yAxisLineTitle = "Crime Rate";
 
-  const xAxisBarTitle = 'Crime Types';
-  const yAxisBarTitle = 'Counts of Crime';
+  const xAxisBarTitle = "Crime Types";
+  const yAxisBarTitle = "Counts of Crime";
 
   const londonLabels = [
     "2020-10",
@@ -51,22 +51,21 @@ export default function SummaryPage({ navSearchSearching, motto }) {
   ];
 
   const londonBarLabels = [
-    'Burglary',
-    'Sexual Offences',
-    'Violence Against the Person',
-    'Theft',
-    'Robbery',
-    'Arson and Criminal Damage',
-    'Drug Offences',
-    'Vehicle Offences',
-    'Miscellaneous Crimes Against Society',
-    'Possession of Weapons',
-    'Public Order Offences',
+    "Burglary",
+    "Sexual Offences",
+    "Violence Against the Person",
+    "Theft",
+    "Robbery",
+    "Arson and Criminal Damage",
+    "Drug Offences",
+    "Vehicle Offences",
+    "Miscellaneous Crimes Against Society",
+    "Possession of Weapons",
+    "Public Order Offences",
   ];
   const londonBarData = [
     1684, 805, 7594, 7059, 831, 1683, 1420, 3405, 332, 196, 1869,
   ];
-
 
   //For later use - fetch request example
   // Get saved data from sessionStorage
@@ -138,7 +137,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             }
             heading={"Difference in Crime Counts for the Past Year"}
             dataResponse={crimeStats}
-            chartType={'bar'}
+            chartType={"bar"}
             londonBarData={londonBarData}
             londonBarLabels={londonBarLabels}
             xAxisTitle={xAxisBarTitle}
@@ -151,7 +150,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             heading={"Monthly crime rate"}
             className={"left-column card yellow"}
             dataResponse={crimeData.reverse().map((elem) => elem.crime_rate)}
-            chartType={'line'}
+            chartType={"line"}
             xAxisTitle={xAxisLineTitle}
             yAxisTitle={yAxisLineTitle}
             londonLabels={londonLabels}
@@ -184,7 +183,7 @@ export default function SummaryPage({ navSearchSearching, motto }) {
             className={"left-column card navy"}
             value={`${crimeRateBiannual.toFixed(2)}`}
             smallNumber={"/1000"}
-            secondaryInfo={"Average crime rate for the last 6 months"}
+            secondaryInfo={"Average counts of crime at a rate per 1000 people"}
           />
         </motion.div>
       </AnimatePresence>
